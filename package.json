@@ -1,0 +1,19 @@
+{
+  "name": "comp5347-assignment2",
+  "version": "1.0.0",
+  "description": "An eCommerce Web Application.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.sydney.edu.au/COMP5347-2021/comp5347-assignment2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
