@@ -2,7 +2,9 @@ import React from 'react'
 
 import logo from '../resources/logo.svg';
 import checkout96 from '../resources/checkout96.png';
-import addusermale96 from '../resources/addusermale96.png';
+import login96 from '../resources/login96.png';
+import user96 from '../resources/user96.png';
+import signout96 from '../resources/signout96.png';
 
 import '../styles/NavBar.css';
 
@@ -11,7 +13,7 @@ const NavBar = ({ pageState, setPageState, authState, setAuthState }) => {
         <div className="nav">
             <div id="title-section">
                 <img id="logo" src={logo} alt={"Website Logo"} />
-                <p id="name">PhoneZone</p>
+                <p id="name">Phone Zone</p>
             </div>
 
             <div id="search">
@@ -33,16 +35,24 @@ const NavBar = ({ pageState, setPageState, authState, setAuthState }) => {
             </div>
 
             <div id="profile">
-                <button>
-                    <img className="profile-button" src={checkout96} alt="Checkout" />
+                <button className="profile-button">
+                    <img className="profile-button-icon" src={checkout96} alt="Checkout" />
                 </button>
                 {authState === 0 ?
-                    <button>
-                        <img className="profile-button" src={addusermale96} alt="Login" />
+                    <button
+                        className="profile-button"
+                        onClick={() => setAuthState(1)}>
+                        <img className="profile-button-icon" src={login96} alt="Login" />
                     </button> :
                     <div>
-                        <button>Profile</button>
-                        <button>Signout</button>
+                        <button className="profile-button">
+                            <img className="profile-button-icon" src={user96} alt="Profile" />
+                        </button>
+                        <button
+                            className="profile-button"
+                            onClick={() => setAuthState(0)}>
+                            <img className="profile-button-icon" src={signout96} alt="Logout" />
+                        </button>
                     </div>
                 }
             </div>

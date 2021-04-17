@@ -5,8 +5,8 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 .nav > * {
@@ -17,6 +17,7 @@
  * Title and logo styles 
  */
 #title-section {
+    justify-self: flex-start;
     display: flex;
     flex-direction: row;
 }
@@ -28,14 +29,15 @@
 #name {
     padding-left: 0.6em;
     font-size: large;
+    font-weight: 500;
 }
 
 /*
  * Search section styles 
  */
 #search {
-    flex-grow: 1;
     justify-self: center;
+    flex-grow: 1;
 }
 
 input {
@@ -57,7 +59,13 @@ input:focus {
 /*
  * Profile section styles 
  */
-#profile > button {
+#profile {
+    justify-self: flex-end;
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-button {
     margin: 0.4em 0.4em;
     padding: 0.8em;
     border-radius: 50%;
@@ -66,14 +74,14 @@ input:focus {
     outline: none;
 }
 
-#profile > button:hover {
+.profile-button:hover {
     background-color: aliceblue;
 }
 
-#profile > button:focus {
+.profile-button:focus {
     background-color:rgb(226, 240, 253);
 }
 
-.profile-button {
+.profile-button-icon {
     max-height: 2em;
 }
