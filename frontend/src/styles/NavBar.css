@@ -1,0 +1,20 @@
+.nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav > * {
+    padding-inline: 2.5em;
+}
+
+#title {
+    display: flex;
+    flex-direction: row;
+}
+
+#title > * {
+    max-height: fit-content;
+}

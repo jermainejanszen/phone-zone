@@ -1,8 +1,15 @@
 import { useState, useEffect } from 'react';
+import NavBar from '../components/NavBar';
 import logo from '../logo.svg';
 import '../styles/App.css';
 
-function App() {
+const App = () => {
+
+  // 0 = home, 1 = search, 2 = item
+  const [pageState, setPageState] = useState(0);
+
+  // 0 = signed out, 1 = signed in
+  const [authState, setAuthState] = useState(0);
 
   const [data, setData] = useState(null);
 
@@ -14,6 +21,12 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar 
+        className="nav"
+        pageState={pageState} 
+        setPageState={setPageState} 
+        authState={authState}
+        setAuthState={setAuthState} />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
