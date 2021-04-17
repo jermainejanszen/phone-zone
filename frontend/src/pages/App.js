@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import NavBar from '../components/NavBar';
-import logo from '../logo.svg';
+import logo from '../resources/logo.svg';
 import '../styles/App.css';
 
 const App = () => {

@@ -1,13 +1,17 @@
 import React from 'react'
-import logo from '../logo.svg';
+
+import logo from '../resources/logo.svg';
+import checkout96 from '../resources/checkout96.png';
+import addusermale96 from '../resources/addusermale96.png';
+
 import '../styles/NavBar.css';
 
 const NavBar = ({ pageState, setPageState, authState, setAuthState }) => {
     return (
         <div className="nav">
-            <div id="title">
-                <img src={logo} alt={"Website Logo"} />
-                <h3>PhoneZone</h3>
+            <div id="title-section">
+                <img id="logo" src={logo} alt={"Website Logo"} />
+                <p id="name">PhoneZone</p>
             </div>
 
             <div id="search">
@@ -29,9 +33,13 @@ const NavBar = ({ pageState, setPageState, authState, setAuthState }) => {
             </div>
 
             <div id="profile">
-                <button>Checkout</button>
+                <button>
+                    <img className="profile-button" src={checkout96} alt="Checkout" />
+                </button>
                 {authState === 0 ?
-                    <button>Sign-in</button> :
+                    <button>
+                        <img className="profile-button" src={addusermale96} alt="Login" />
+                    </button> :
                     <div>
                         <button>Profile</button>
                         <button>Signout</button>

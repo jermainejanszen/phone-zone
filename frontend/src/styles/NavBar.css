@@ -1,3 +1,6 @@
+/* 
+ * Full nav bar styles
+ */
 .nav {
     width: 100%;
     display: flex;
@@ -7,14 +10,70 @@
 }
 
 .nav > * {
-    padding-inline: 2.5em;
+    padding: 0.8em 2.5em;
 }
 
-#title {
+/*
+ * Title and logo styles 
+ */
+#title-section {
     display: flex;
     flex-direction: row;
 }
 
-#title > * {
-    max-height: fit-content;
+#logo {
+    height: 4em;
+}
+
+#name {
+    padding-left: 0.6em;
+    font-size: large;
+}
+
+/*
+ * Search section styles 
+ */
+#search {
+    flex-grow: 1;
+    justify-self: center;
+}
+
+input {
+    width: 60%;
+    padding: 0.5em 1em;
+    padding-left: 2.5em;
+    border: 2px solid gray;
+    border-radius: 16px;
+    background-image: url('../resources/search.svg');
+    background-size: 1.6em;
+    background-position: 0.5em, 1em;
+    background-repeat: no-repeat;
+}
+
+input:focus {
+    outline: none;
+}
+
+/*
+ * Profile section styles 
+ */
+#profile > button {
+    margin: 0.4em 0.4em;
+    padding: 0.8em;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+#profile > button:hover {
+    background-color: aliceblue;
+}
+
+#profile > button:focus {
+    background-color:rgb(226, 240, 253);
+}
+
+.profile-button {
+    max-height: 2em;
 }
