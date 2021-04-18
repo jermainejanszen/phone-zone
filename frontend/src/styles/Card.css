@@ -26,6 +26,10 @@
     border-radius: 10px;
 }
 
+.card:hover {
+    box-shadow: 0px -1px 9px rgb(19, 103, 182);
+}
+
 .brandPrice {
     display: flex;
     flex-direction: row;
