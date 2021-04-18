@@ -1,9 +1,38 @@
 
 .card {
-    margin: 1.2em;
-    padding: 1.2em;
+    margin: 2em;
     width: fit-content;
     border-radius: 10px;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
+    width: 15em;
+    overflow: hidden;
+}
 
+/* Image */
+.cardImage {
+    width: 15em;
+    border-radius: 10px;
+}
+
+/* Text */
+.cardDetails {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.cardText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#brand {
+    font-weight: bold;
+}
+
+#title {
+    font-style: italic;
 }

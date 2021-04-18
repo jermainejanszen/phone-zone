@@ -1,14 +1,15 @@
 
 import '../styles/Card.css';
 
-const Card = ({ title, brand, image, seller, price }) => {
+const Card = ({ item }) => {
     return (
         <div className="card">
-            <img className="cardImage" src={image} alt="The phone" />
-            <p className="cardText" id="title">{title}</p>
-            <p className="cardText" id="brand">{brand}</p>
-            <p className="cardText" id="seller">{seller}</p>
-            <p className="cardText" id="price">{price}</p>
+            <img className="cardImage" src={item.image} alt="The phone" />
+            <div className="cardDetails">
+                <p className="cardText" id="brand">{item.brand}</p>
+                <p className="cardText" id="price">{`$${item.price}`}</p>
+                <p className="cardText" id="title">{item.title}</p>
+            </div>
         </div>
     )
 }

@@ -1,16 +1,26 @@
-import Loading from './Loading';
 import Card from './Card';
-import phoneImage from '../resources/logo.svg';
+
+const mockItem = {
+    "title": "Galaxy s III mini SM-G730V Verizon Cell Phone BLUE",
+    "brand": "Samsung",
+    "image": "/phone_images/Samsung.jpeg",
+    "stock": 9,
+    "seller": "5f5237a4c1beb1523fa3db73",
+    "price": 56.0,
+    "reviews": [
+      {
+        "reviewer": "5f5237a4c1beb1523fa3db1f",
+        "rating": 3,
+        "comment": "Got phone yesterday all ... pleased now!"
+      }
+    ]
+}
 
 const Home = () => {
     return (
         <div>
             <Card
-                title="iPhone 12"
-                brand="Apple"
-                image={phoneImage}
-                seller="Ben Gane"
-                price="$999.99" />
+                item={mockItem} />
         </div>
     )
 }
