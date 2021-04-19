@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Main from './pages/main';
+import Main from './pages/Main';
 import './styles/App.css';
 
 const App = () => {
