@@ -16,7 +16,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .Loading-logo {
-    animation: Loading-logo-spin infinite 5s linear;
+    animation: Loading-logo-spin infinite 2s linear;
   }
 }
 
