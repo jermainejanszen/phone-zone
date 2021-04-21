@@ -9,7 +9,7 @@ const Signup = () => {
     const [state, setState] = useState(0)
 
     const getPageContents = () => {
-        if (state == 1) {
+        if (state === 1) {
             return (
                 <form>
                     <h1>Login</h1>
@@ -53,6 +53,7 @@ const Signup = () => {
                     <label class="required" for="email">Email</label>
                     <input title="email" type="email" required></input>
                     <label class="required" for="password-field">Password</label>
+                    <p>Make sure it's at least 8 characters including a lowercase and uppercase letter.</p>
                     <input id="password-text" title="password" type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$" required></input>
                     <div id="password-visibility-container">
                         <label id="password-visibility-label" for="password-visibility">Toggle Password Visibility</label>
