@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Main from './pages/Main';
+import Signup from './pages/Signup';
 import './styles/App.css';
 
 const App = () => {
@@ -8,11 +10,19 @@ const App = () => {
     const [authState, setAuthState] = useState(0);
 
   return (
-    <div className="App">
-        <Main
-            authState={authState}
-            setAuthState={setAuthState} />
-    </div>
+    <Router>
+        <div className="App">
+            <Switch>
+                <Route path="/signup">
+                    <Signup />
+                </Route>
+                <Route path="/">
+                    <Main
+                        authState={authState} />
+                </Route>
+            </Switch>
+        </div>
+    </Router>
   );
 }
 

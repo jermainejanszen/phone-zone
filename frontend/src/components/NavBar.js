@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 import logo from '../resources/logo.svg';
 import checkout96 from '../resources/checkout96.png';
@@ -39,11 +40,11 @@ const NavBar = ({ pageState, setPageState, authState, setAuthState }) => {
                     <img className="profile-button-icon" src={checkout96} alt="Checkout" />
                 </button>
                 {authState === 0 ?
-                    <button
-                        className="profile-button"
-                        onClick={() => setAuthState(1)}>
+                    <Link
+                        to="/signup"
+                        className="profile-button">
                         <img className="profile-button-icon" src={login96} alt="Login" />
-                    </button> :
+                    </Link> :
                     <div>
                         <button className="profile-button">
                             <img className="profile-button-icon" src={user96} alt="Profile" />
