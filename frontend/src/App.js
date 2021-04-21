@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import Login from './pages/Login';
 import Main from './pages/Main';
 import Signup from './pages/Signup';
 import './styles/App.css';
@@ -16,9 +17,11 @@ const App = () => {
                 <Route path="/signup">
                     <Signup />
                 </Route>
+                <Route path="/login">
+                    <Login />
+                </Route>
                 <Route path="/">
-                    <Main
-                        authState={authState} />
+                    <Main authState={authState} />
                 </Route>
             </Switch>
         </div>
