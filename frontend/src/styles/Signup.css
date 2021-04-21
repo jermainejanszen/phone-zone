@@ -1,18 +1,18 @@
-h1 {
+.signup-form > h1 {
     text-align: center;
     font-weight: 500;
 }
 
-form {
+.form-container > form {
     text-align: left;
 }
 
-label {
+.signup-form > label {
     font-weight: 500;
     font-size: 16px;
 }
 
-input {
+.signup-form > input {
     display: block;
     padding: 7.5px;
     margin-bottom: 15px;
@@ -21,17 +21,17 @@ input {
     font-size: 15px;
 }
 
-input:focus {
+.signup-form > input:focus {
     outline: none;
     border: 2px solid #6598cf;
     box-shadow: 0 0 10px #719ECE;
 }
 
-a {
+.signup-form > a {
     text-decoration: none;
 }
 
-#form-container {
+.form-container {
     margin: 0;
     position: absolute;
     top: 50%;

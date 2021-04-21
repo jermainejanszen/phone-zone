@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../styles/Signup.css';
+// import '../styles/Signup.css';
 
 const Signup = () => {
     return (
-        <div id="form-container">
-            <form>
+        <div className="form-container">
+            <form className="signup-form">
                 <h1>Create your account</h1>
 
                 <label class="required" for="first-name">First Name</label>

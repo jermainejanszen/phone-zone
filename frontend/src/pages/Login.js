@@ -1,19 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import '../styles/Login.css';
 
 const Login = () => {
+
+    const history = useHistory();
+
     return (
-        <div id="form-container">
-           <form>
-                <h1>Login</h1>
+        <div className="form-container">
+           <form className="login-form">
+                <h1 className="formHeading">Login</h1>
 
-                <label for="email">Email</label>
-                <input title="email" type="email" required></input>
+                <div className="fieldDiv">
+                    <label className="formLabel" for="email">Email</label>
+                    <input className="formInputText" title="email" type="email" required />
+                </div>
 
-                <label for="password">Password</label>
-                <input id="password" title="password" type="password" required></input>
+                <div className="fieldDiv">
+                    <label className="formLabel" for="password">Password</label>
+                    <input className="formInputText" id="password" title="password" type="password" required />
+                </div>
 
                 <div id="password-visibility-container">
                     <label id="password-visibility-label" for="password-visibility">Toggle Password Visibility</label>
@@ -29,11 +36,18 @@ const Login = () => {
                     </input>
                 </div>
 
-                <input id="login-button" type="submit" value="Login"></input>
-
-                <Link to="/signup">
-                    <input id="nav-button" type="button" value="Click here to create an account"></input>
-                </Link>
+                <div className="loginButtonsDiv">
+                    <input className="loginButtons" id="login-button" type="submit" value="Login" />
+                    
+                    <button 
+                        className="loginButtons" 
+                        id="nav-button"
+                        onClick={() => {
+                            history.push('/signup');
+                        }}>
+                            Create a new account
+                    </button>
+                </div>
             </form>
         </div>
     );
