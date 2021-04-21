@@ -31,8 +31,7 @@ const Login = () => {
 
                 <input id="login-button" type="submit" value="Login"></input>
 
-                <Link
-                    to="/signup">
+                <Link to="/signup">
                     <input id="nav-button" type="button" value="Click here to create an account"></input>
                 </Link>
             </form>

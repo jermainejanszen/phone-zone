@@ -40,8 +40,7 @@ const Signup = () => {
 
                 <input id="signup-button" type="submit" value="Create account"></input>
 
-                <Link
-                    to="/login">
+                <Link to="/login">
                     <input id="nav-button" type="button" value="Click here to login"></input>
                 </Link>
             </form>
