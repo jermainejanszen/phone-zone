@@ -52,7 +52,7 @@ input:focus {
     color: red;
 }
 
-#signup-button {
+#signup-button, #nav-button, #login-button{
     margin-left: auto;
     margin-right: auto;
     background-color: #80b3e9;
@@ -67,6 +67,12 @@ input:focus {
 h1 {
     text-align: center;
     font-weight: 500;
+}
+
+#nav-button {
+    margin-top: 30px;
+    background-color: #4b96e6;
+    width: 320px;
 }
 
 
