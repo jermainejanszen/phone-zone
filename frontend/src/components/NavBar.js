@@ -45,7 +45,7 @@ const NavBar = ({ pageState, setPageState, authState, setAuthState }) => {
                 </Link>
                 {authState === 0 ?
                     <Link
-                        to="/signup"
+                        to="/login"
                         className="profile-button">
                         <img className="profile-button-icon" src={login96} alt="Login" />
                     </Link> :
