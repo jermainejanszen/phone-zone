@@ -18,7 +18,7 @@ const NavBar = ({ pageState, setPageState, authState, setAuthState }) => {
             </div>
 
             <div id="search">
-                <input type="text" />
+                <input id="search-input" type="text" />
                 {pageState === 1 ?
                     <div>
                         <label for="brand">Brand</label>
