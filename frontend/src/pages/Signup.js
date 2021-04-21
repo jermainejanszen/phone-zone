@@ -11,7 +11,7 @@ const Signup = () => {
     const getPageContents = () => {
         if (state == 1) {
             return (
-                <form id="signup-form">
+                <form>
                     <h1>Login</h1>
                     <label for="email">Email</label>
                     <input title="email" type="email" required></input>
@@ -44,7 +44,7 @@ const Signup = () => {
             );
         } else {
             return (
-                <form id="signup-form">
+                <form>
                     <h1>Create your account</h1>
                     <label class="required" for="first-name">First Name</label>
                     <input title="first-name" type="text" required></input>
