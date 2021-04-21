@@ -13,7 +13,9 @@ const NavBar = ({ pageState, setPageState, authState, setAuthState }) => {
     return (
         <div className="nav">
             <div id="title-section">
-                <img id="logo" src={logo} alt={"Website Logo"} />
+                <Link to="/">
+                    <img id="logo" src={logo} alt={"Website Logo"} />
+                </Link>
                 <p id="name">Phone Zone</p>
             </div>
 
@@ -36,9 +38,11 @@ const NavBar = ({ pageState, setPageState, authState, setAuthState }) => {
             </div>
 
             <div id="profile">
-                <button className="profile-button">
+                <Link
+                    to="/checkout" 
+                    className="profile-button">
                     <img className="profile-button-icon" src={checkout96} alt="Checkout" />
-                </button>
+                </Link>
                 {authState === 0 ?
                     <Link
                         to="/signup"
