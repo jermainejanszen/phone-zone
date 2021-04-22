@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import '../styles/Auth.css';
@@ -6,20 +7,35 @@ import '../styles/Auth.css';
 const Login = () => {
 
     const history = useHistory();
+    const [form, setForm] = useState({});
+
+    const handleChange = (event) => {
+        setForm({
+            ...form,
+            [event.target.title]: event.target.value.trim()
+        });
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(form)
+
+        /* TODO: Implement logic for loggin the user in */
+    }
 
     return (
         <div className="formContainer">
-            <form className="authForm">
+            <form className="authForm" onSubmit={handleSubmit}>
                 <h1 className="formHeading">Login</h1>
 
                 <div className="fieldDiv">
                     <label className="formLabel">Email</label>
-                    <input className="formInputText" title="email" type="email" required />
+                    <input className="formInputText" onChange={handleChange} title="email" type="email" required />
                 </div>
 
                 <div className="fieldDiv">
                     <label className="formLabel">Password</label>
-                    <input className="formInputText" id="password" title="password" type="password" required />
+                    <input className="formInputText" onChange={handleChange} id="password" title="password" type="password" required />
                 </div>
 
                 <div id="password-visibility-container">
