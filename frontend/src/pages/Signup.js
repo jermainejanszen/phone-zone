@@ -19,6 +19,8 @@ const Signup = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log(form)
+
+        /* TODO: Implement logic for signing the user up */
     }
 
     return (
@@ -28,12 +30,12 @@ const Signup = () => {
 
                 <div className="fieldDiv">
                     <label className="formLabelRequired">First Name</label>
-                    <input className="formInputText" onChange={handleChange} title="firstName" type="text" required />
+                    <input className="formInputText" onChange={handleChange} title="firstname" type="text" required />
                 </div>
 
                 <div className="fieldDiv">
                     <label className="formLabelRequired">Last Name</label>
-                    <input className="formInputText" onChange={handleChange} title="lastName" type="text" required />
+                    <input className="formInputText" onChange={handleChange} title="lastname" type="text" required />
                 </div>
 
                 <div className="fieldDiv">
