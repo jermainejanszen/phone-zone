@@ -1,6 +1,6 @@
 import Loading from './Loading';
 
-const Home = () => {
+const Item = () => {
     return (
         <div>
             <Loading />
@@ -8,4 +8,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Item

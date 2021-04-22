@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, matchPath } from 'react-router-dom';
 
 import logo from '../resources/logo.svg';
 import checkout96 from '../resources/checkout96.png';
@@ -9,11 +9,12 @@ import signout96 from '../resources/signout96.png';
 
 import '../styles/NavBar.css';
 
-const NavBar = ({ pageState, setPageState, authState, setAuthState }) => {
+const NavBar = ({ authState, setAuthState }) => {
+
     return (
         <div className="nav">
             <div id="title-section">
-                <Link to="/" onClick={() => setPageState(0)}>
+                <Link to="/home">
                     <img id="logo" src={logo} alt={"Website Logo"} />
                 </Link>
                 <p id="name">Phone Zone</p>
@@ -21,7 +22,7 @@ const NavBar = ({ pageState, setPageState, authState, setAuthState }) => {
 
             <div id="search">
                 <input id="search-input" type="text" />
-                {pageState === 1 ?
+                {matchPath("/search") ?
                     <div>
                         <label for="brand">Brand</label>
                         <select name="brand">

@@ -55,19 +55,14 @@ const mockItems = [
     }
 ]
 
-const FiveGrid = ({ setPageState }) => {
+const FiveGrid = () => {
     return (
         <div className="fiveGrid">
-            <Card className="card" item={mockItems[0]}
-                setPageState={setPageState} />
-            <Card className="card" item={mockItems[1]}
-                setPageState={setPageState} />
-            <Card className="card" item={mockItems[2]}
-                setPageState={setPageState} />
-            <Card className="card" item={mockItems[3]}
-                setPageState={setPageState} />
-            <Card className="card" item={mockItems[4]}
-                setPageState={setPageState} />
+            <Card className="card" item={mockItems[0]} />
+            <Card className="card" item={mockItems[1]} />
+            <Card className="card" item={mockItems[2]} />
+            <Card className="card" item={mockItems[3]} />
+            <Card className="card" item={mockItems[4]} />
         </div>
     )
 }
