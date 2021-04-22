@@ -1,44 +1,44 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import '../styles/Login.css';
+import '../styles/Auth.css';
 
 const Signup = () => {
 
     const history = useHistory();
 
     return (
-        <div className="form-container">
-            <form className="login-form">
+        <div className="formContainer">
+            <form className="authForm">
                 <h1 className="formHeading">Create your account</h1>
 
                 <div className="fieldDiv">
-                    <label className="formLabel required" for="first-name">First Name</label>
+                    <label className="formLabelRequired" for="first-name">First Name</label>
                     <input className="formInputText" title="first-name" type="text" required />
                 </div>
 
                 <div className="fieldDiv">
-                    <label className="formLabel required" for="last-name">Last Name</label>
+                    <label className="formLabelRequired" for="last-name">Last Name</label>
                     <input className="formInputText" title="last-name" type="text" required />
                 </div>
 
                 <div className="fieldDiv">
-                    <label className="formLabel required" for="email">Email</label>
+                    <label className="formLabelRequired" for="email">Email</label>
                     <input className="formInputText" title="email" type="email" required />
                 </div>
 
                 <div className="fieldDiv">
-                    <div id="password-field-label">
-                        <label className="formLabel required" for="password">Password</label>
-                        <p class="advice">
+                    
+                        <label className="formLabelRequired" for="password">Password</label>
+                        <p className="advice">
                             Make sure it's at least 8 characters including a lowercase and an uppercase letter.
                         </p>
-                    </div>
+                    
                     <input className="formInputText" id="password" title="password" type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$" required />
                 </div>
 
                 <div id="password-visibility-container">
-                    <label id="password-visibility-label" for="password-visibility">Toggle Password Visibility</label>
+                    <label className="formLabel" for="password-visibility">Toggle Password Visibility</label>
                     <input 
                         id="password-visibility" 
                         title="password-visibility"
@@ -51,12 +51,11 @@ const Signup = () => {
                     </input>
                 </div>
 
-                <div className="loginButtonsDiv">
-                    <input className="loginButtons" id="signup-button" type="submit" value="Create account" />
+                <div className="buttonsDiv">
+                    <input className="submitButton" type="submit" value="Create account" />
 
                     <button 
-                        className="loginButtons" 
-                        id="nav-button"
+                        className="navButton" 
                         onClick={() => {
                             history.push('/login');
                         }}>

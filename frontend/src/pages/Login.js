@@ -1,15 +1,15 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import '../styles/Login.css';
+import '../styles/Auth.css';
 
 const Login = () => {
 
     const history = useHistory();
 
     return (
-        <div className="form-container">
-           <form className="login-form">
+        <div className="formContainer">
+            <form className="authForm">
                 <h1 className="formHeading">Login</h1>
 
                 <div className="fieldDiv">
@@ -23,7 +23,7 @@ const Login = () => {
                 </div>
 
                 <div id="password-visibility-container">
-                    <label id="password-visibility-label" for="password-visibility">Toggle Password Visibility</label>
+                    <label className="formLabel" for="password-visibility">Toggle Password Visibility</label>
                     <input 
                         id="password-visibility" 
                         title="password-visibility"
@@ -36,12 +36,11 @@ const Login = () => {
                     </input>
                 </div>
 
-                <div className="loginButtonsDiv">
-                    <input className="loginButtons" id="login-button" type="submit" value="Login" />
+                <div className="buttonsDiv">
+                    <input className="submitButton" type="submit" value="Login" />
                     
                     <button 
-                        className="loginButtons" 
-                        id="nav-button"
+                        className="navButton" 
                         onClick={() => {
                             history.push('/signup');
                         }}>
