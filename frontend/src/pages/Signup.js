@@ -13,23 +13,23 @@ const Signup = () => {
                 <h1 className="formHeading">Create your account</h1>
 
                 <div className="fieldDiv">
-                    <label className="formLabelRequired" for="first-name">First Name</label>
+                    <label className="formLabelRequired">First Name</label>
                     <input className="formInputText" title="first-name" type="text" required />
                 </div>
 
                 <div className="fieldDiv">
-                    <label className="formLabelRequired" for="last-name">Last Name</label>
+                    <label className="formLabelRequired">Last Name</label>
                     <input className="formInputText" title="last-name" type="text" required />
                 </div>
 
                 <div className="fieldDiv">
-                    <label className="formLabelRequired" for="email">Email</label>
+                    <label className="formLabelRequired">Email</label>
                     <input className="formInputText" title="email" type="email" required />
                 </div>
 
                 <div className="fieldDiv">
                     
-                        <label className="formLabelRequired" for="password">Password</label>
+                        <label className="formLabelRequired">Password</label>
                         <p className="advice">
                             Make sure it's at least 8 characters including a lowercase and an uppercase letter.
                         </p>
@@ -38,7 +38,7 @@ const Signup = () => {
                 </div>
 
                 <div id="password-visibility-container">
-                    <label className="formLabel" for="password-visibility">Toggle Password Visibility</label>
+                    <label className="formLabel">Toggle Password Visibility</label>
                     <input 
                         id="password-visibility" 
                         title="password-visibility"
