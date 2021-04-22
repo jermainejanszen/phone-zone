@@ -13,7 +13,7 @@ const NavBar = ({ pageState, setPageState, authState, setAuthState }) => {
     return (
         <div className="nav">
             <div id="title-section">
-                <Link to="/">
+                <Link to="/" onClick={() => setPageState(0)}>
                     <img id="logo" src={logo} alt={"Website Logo"} />
                 </Link>
                 <p id="name">Phone Zone</p>
