@@ -4,24 +4,24 @@ import edit from '../resources/edit.svg';
 import key from '../resources/key.svg';
 import selling96 from '../resources/selling96.png';
 
-const ProfileNavBar = () => {
+const ProfileNavBar = ({pageState, setPageState}) => {
     return (
         <div id="profile">
-                <Link
-                    to="/password" 
-                    className="profile-button">
+                <button
+                    className="profile-button"
+                    onClick={() => setPageState(0)}>
                     <img className="profile-button-icon" src={edit} alt="Edit" />
-                </Link>
-                <Link
-                    to="/password" 
-                    className="profile-button">
+                </button>
+                <button
+                    className="profile-button"
+                    onClick={() => setPageState(2)}>
                     <img className="profile-button-icon" src={key} alt="Change" />
-                </Link>
-                <Link
-                    to="/password" 
-                    className="profile-button">
+                </button>
+                <button
+                    className="profile-button"
+                    onClick={() => setPageState(1)}>
                     <img className="profile-button-icon" src={selling96} alt="Manage" />
-                </Link>
+                </button>
                 
         </div>
     )

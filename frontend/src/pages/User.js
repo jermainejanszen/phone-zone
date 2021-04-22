@@ -21,7 +21,9 @@ const User = () => {
 
     return (
         <div>
-            <ProfileNavBar />
+            <ProfileNavBar
+                pageState={pageState} 
+                setPageState={setPageState} />
             {getPageContents(pageState)}
         </div>
         
