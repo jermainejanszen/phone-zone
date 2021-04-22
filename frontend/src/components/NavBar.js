@@ -50,9 +50,11 @@ const NavBar = ({ pageState, setPageState, authState, setAuthState }) => {
                         <img className="profile-button-icon" src={login96} alt="Login" />
                     </Link> :
                     <div>
-                        <button className="profile-button">
+                        <Link
+                        to="/user"
+                        className="profile-button">
                             <img className="profile-button-icon" src={user96} alt="Profile" />
-                        </button>
+                        </Link> 
                         <button
                             className="profile-button"
                             onClick={() => setAuthState(0)}>

@@ -23,7 +23,7 @@ const User = () => {
 
     return (
         <div>
-            
+            {getPageContents(pageState)}
         </div>
     )
 }
