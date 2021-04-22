@@ -5,7 +5,6 @@ import '../styles/Profile.css';
 const Profile = () => {
     const history = useHistory();
     return (
-
         <div className="profile-container">
                 <form className="profile-form"> 
                     <h1>Hi, X</h1>
@@ -22,7 +21,7 @@ const Profile = () => {
                         <input className="formInputText" title="email" type="text" />
                     </div>
                     <button 
-                        className="updaterofileButton" 
+                        className="updateProfileButton" 
                         id="update-profile-button"
                         onClick={() => {
                             history.push('/editProfile');
@@ -30,8 +29,6 @@ const Profile = () => {
                             Update Profile
                     </button>
                 </form>
-            
-            
         </div>
     )
 }

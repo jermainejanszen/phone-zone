@@ -5,6 +5,7 @@ import User from './pages/User'
 import Main from './pages/Main';
 import Signup from './pages/Signup';
 import './styles/App.css';
+import EditPassword from './components/EditPassword';
 
 const App = () => {
 
@@ -23,6 +24,9 @@ const App = () => {
                 </Route>
                 <Route path="/user">
                     <User />
+                </Route>
+                <Route path="/password">
+                    <EditPassword />
                 </Route>
                 <Route path="/">
                     <Main authState={authState} />

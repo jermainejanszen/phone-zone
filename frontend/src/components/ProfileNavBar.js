@@ -8,17 +8,17 @@ const ProfileNavBar = () => {
     return (
         <div id="profile">
                 <Link
-                    to="/checkout" 
+                    to="/password" 
                     className="profile-button">
                     <img className="profile-button-icon" src={edit} alt="Edit" />
                 </Link>
                 <Link
-                    to="/checkout" 
+                    to="/password" 
                     className="profile-button">
                     <img className="profile-button-icon" src={key} alt="Change" />
                 </Link>
                 <Link
-                    to="/checkout" 
+                    to="/password" 
                     className="profile-button">
                     <img className="profile-button-icon" src={selling96} alt="Manage" />
                 </Link>
