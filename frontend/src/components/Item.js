@@ -1,9 +1,13 @@
-import Loading from './Loading';
+import { useHistory } from 'react-router-dom';
 
 const Item = () => {
+
+    const history = useHistory();
+    const item = history.location?.state;
+
     return (
         <div>
-            <Loading />
+            <h1>{item.title}</h1>
         </div>
     )
 }
