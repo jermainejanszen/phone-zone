@@ -20,7 +20,7 @@ const Login = () => {
         event.preventDefault()
         console.log(form)
 
-        /* TODO: Implement logic for loggin the user in */
+        /* TODO: Implement logic for logging the user in */
     }
 
     return (
