@@ -6,23 +6,25 @@ const Profile = () => {
     const history = useHistory();
     return (
         <div className="profile-container">
+            <h1>Hi, Jane</h1>
+            <hr></hr>
                 <form className="profile-form"> 
-                    <h1>Hi, X</h1>
+                <h2>Update your details:</h2>
                     <div className="fieldDiv">
                         <label className="formLabel" for="firstName">First Name</label>
-                        <input className="formInputText" title="firstName" type="text" />
+                        <input className="formInputText" value="Jane" title="firstName" type="text" />
                     </div>
                     <div className="fieldDiv">
                         <label className="formLabel" for="lastName">Last Name</label>
-                        <input className="formInputText" title="lastName" type="text" />
+                        <input className="formInputText" value="Doe" title="lastName" type="text" />
                     </div>
                     <div className="fieldDiv">
                         <label className="formLabel" for="email">Email</label>
-                        <input className="formInputText" title="email" type="text" />
+                        <input className="formInputText" value="jane@doe.com" title="email" type="text" />
                     </div>
                     <button 
                         className="updateProfileButton" 
-                        id="update-profile-button"
+                        id="update-button"
                         onClick={() => {
                             history.push('/editProfile');
                         }}>
@@ -30,6 +32,7 @@ const Profile = () => {
                     </button>
                 </form>
         </div>
+
     )
 }
 

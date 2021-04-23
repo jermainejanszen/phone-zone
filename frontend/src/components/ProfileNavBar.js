@@ -1,29 +1,42 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import edit from '../resources/edit.svg';
 import key from '../resources/key.svg';
 import selling96 from '../resources/selling96.png';
+import signout96 from '../resources/signout96.png';
+import '../styles/ProfileNavBar.css'; 
 
-const ProfileNavBar = ({pageState, setPageState}) => {
+const ProfileNavBar = ({pageState, setPageState, authState, setAuthState}) => {
     return (
-        <div id="profile">
+        <div>
+            <div id="nav">
+                <button
+                    className="profile-button"
+                    onClick={() => setAuthState(0)}>
+                    <img className="profile-button-icon" src={signout96} alt="Logout" />
+                </button>
+            </div>
+            <div id="sideBar">
                 <button
                     className="profile-button"
                     onClick={() => setPageState(0)}>
+                    <label>Edit Profile</label>
                     <img className="profile-button-icon" src={edit} alt="Edit" />
                 </button>
                 <button
                     className="profile-button"
                     onClick={() => setPageState(2)}>
+                    <label>Change Password</label>
                     <img className="profile-button-icon" src={key} alt="Change" />
                 </button>
                 <button
                     className="profile-button"
                     onClick={() => setPageState(1)}>
+                    <label>Manage Listings</label>
                     <img className="profile-button-icon" src={selling96} alt="Manage" />
                 </button>
-                
-        </div>
+            </div>
+        </div>  
+        
     )
 }
 

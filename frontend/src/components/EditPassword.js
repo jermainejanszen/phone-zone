@@ -8,8 +8,10 @@ const EditPassword = () => {
 
     return (
         <div className="profile-container">
-            <form>
-                <h1>Change your password</h1>
+                <h1>Hi, Jane</h1>
+                <hr></hr>
+            <form id="password-form">
+                <h2>Change your password</h2>
                 <div className="fieldDiv">
                     <label className="formLabel" for="password">Current Password</label>
                     <input className="formInputText" id="password" title="password" type="password" required />
@@ -20,7 +22,7 @@ const EditPassword = () => {
                 </div>
                 <button 
                         className="updatePasswordButton" 
-                        id="update-password-button"
+                        id="update-button"
                         onClick={() => {
                             history.push('/editProfile');
                         }}>

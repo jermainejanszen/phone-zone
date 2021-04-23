@@ -15,7 +15,7 @@ const getPageContents = (state) => {
     }
 }
 
-const User = () => {
+const User = ({authState, setAuthState}) => {
 
     const [pageState, setPageState] = useState(0);
 
@@ -23,7 +23,9 @@ const User = () => {
         <div>
             <ProfileNavBar
                 pageState={pageState} 
-                setPageState={setPageState} />
+                setPageState={setPageState}
+                authState={authState}
+                setAuthState={setAuthState} />
             {getPageContents(pageState)}
         </div>
         

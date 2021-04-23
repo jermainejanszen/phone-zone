@@ -23,7 +23,7 @@ const App = () => {
                     <Login />
                 </Route>
                 <Route path="/user">
-                    <User />
+                    <User authState={authState}/>
                 </Route>
                 <Route path="/password">
                     <EditPassword />
