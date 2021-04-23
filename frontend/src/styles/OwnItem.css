@@ -1,0 +1,12 @@
+.itemIcon {
+    height: 1em;
+    background-color: lightgray;
+    margin: 0.5em 0.5em;
+    padding: 0.8em;
+    border-radius: 50%;
+}
+
+.itemIcon:hover {
+    background-color: #4b96e6;
+  
+}

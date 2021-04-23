@@ -7,33 +7,33 @@ import '../styles/ProfileNavBar.css';
 
 const ProfileNavBar = ({pageState, setPageState, authState, setAuthState}) => {
     return (
-        <div>
+        <div className="navBar">
             <div id="nav">
                 <button
                     className="profile-button"
                     id = "signout-button"
                     onClick={() => setAuthState(0)}>
-                    <img className="profile-button-icon" src={signout96} alt="Logout" />
+                    <img className="tab-button-icon" src={signout96} alt="Logout" />
                 </button>
             </div>
             <div id="sideBar">
                 <button
-                    className="profile-button"
+                    className="tab-button"
                     onClick={() => setPageState(0)}>
                     <label>Edit Profile</label>
-                    <img className="profile-button-icon" src={edit} alt="Edit" />
+                    <img className="tab-button-icon" src={edit} alt="Edit" />
                 </button>
                 <button
-                    className="profile-button"
+                    className="tab-button"
                     onClick={() => setPageState(2)}>
                     <label>Change Password</label>
-                    <img className="profile-button-icon" src={key} alt="Change" />
+                    <img className="tab-button-icon" src={key} alt="Change" />
                 </button>
                 <button
-                    className="profile-button"
+                    className="tab-button"
                     onClick={() => setPageState(1)}>
                     <label>Manage Listings</label>
-                    <img className="profile-button-icon" src={selling96} alt="Manage" />
+                    <img className="tab-button-icon" src={selling96} alt="Manage" />
                 </button>
             </div>
         </div>  

@@ -2,7 +2,7 @@ import React from 'react'
 import FiveGrid from './FiveGrid';
 import '../styles/Home.css';
 import plus from '../resources/plus.svg';
-import Card from './Card';
+import OwnItem from './OwnItem';
 import '../styles/Profile.css';
 
 
@@ -28,7 +28,26 @@ const mockItems = [
         "price": 173.0,
         "reviews": [],
         "disabled": ""
-    }]
+    },{
+        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
+        "brand": "Sony",
+        "image": "/phone_images/Sony.jpeg",
+        "stock": 0,
+        "seller": "5f5237a4c1beb1523fa3da68",
+        "price": 173.0,
+        "reviews": [],
+        "disabled": ""
+    },{
+        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
+        "brand": "Sony",
+        "image": "/phone_images/Sony.jpeg",
+        "stock": 0,
+        "seller": "5f5237a4c1beb1523fa3da68",
+        "price": 173.0,
+        "reviews": [],
+        "disabled": ""
+    },
+]
 
 const NewListing = () => {
     return (
@@ -36,8 +55,13 @@ const NewListing = () => {
             <div class="my-listings">
             <h2>Your Listings</h2>
                 <div class="scroll-menu">
-                    <Card className="card" item={mockItems[0]} />
-                    <Card className="card" item={mockItems[1]} />
+                    <OwnItem className="ownItem" item={mockItems[0]} />
+                    <OwnItem className="ownItem" item={mockItems[1]} />
+                    <OwnItem className="ownItem" item={mockItems[0]} />
+                    <OwnItem className="ownItem" item={mockItems[1]} />
+                    <OwnItem className="ownItem" item={mockItems[1]} />
+                    <OwnItem className="ownItem" item={mockItems[0]} />
+                    <OwnItem className="ownItem" item={mockItems[1]} />
                 </div>
             </div>
             <hr></hr>
@@ -45,30 +69,30 @@ const NewListing = () => {
                 <form className="manage-listings-form">
                     <h2>Add a new item</h2>
                     <div className="fieldDiv">
-                        <label className="formLabel" for="itemName">Item Name</label>
-                        <input className="formInputText" title="itemName" type="text" required/>
-                    </div>
-                    <div className="fieldDiv">
                         <label className="formLabel" for="model">Model</label>
-                        <input className="formInputText" title="model" type="text" required/>
+                        <input className="formInputText" title="model" type="text" placeholder="e.g. Sony" required/>
                     </div>
                     <div className="fieldDiv">
                         <label className="formLabel" for="make">Make</label>
-                        <input className="formInputText" title="make" type="text" required/>
+                        <input className="formInputText" title="make" type="text" placeholder="e.g. Sony Ericsson TM506 Unlock..." required/>
                     </div>
                     <div className="fieldDiv">
                         <label className="formLabel" for="description">Description</label>
-                        <input className="formInputText" title="description" type="text" required/>
+                        <input className="formInputText" id="description" title="description" type="text" required/>
                     </div>
                     <div className="fieldDiv">
                         <label className="formLabel" for="price">Price</label>
-                        <input className="formInputText" title="price" type="text" required/>
+                        <input className="formInputText" title="price" type="text" type="number" required/>
                     </div>
-                    <div className="uploadImage">
-                        <span>Upload an Image</span>
-                        <input name="Select File" type="file" />
+                    <div className="buttons">
+                        <div className="uploadImage">
+                            <span>Upload an Image</span>
+                            <input name="Select File" type="file" />
+                        </div>
+                        <div>
+                            <button id="update-button">Add item</button>
+                        </div>
                     </div>
-                    <button className="addNewItemButton" id="update-button">Add item</button>
                 </form>
             </div>
         </div>
