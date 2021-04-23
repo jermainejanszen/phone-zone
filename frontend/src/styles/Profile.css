@@ -1,7 +1,6 @@
 .fieldDiv {
     display: flex;
     flex-direction: column;
-
 }
 
 .profile-form {
@@ -43,3 +42,38 @@ h2 {
     text-align: center;
     height: 3em;
 }
+
+.my-listings {
+    margin-left: 10em;
+    margin-top: 5em;
+}
+
+div.scroll-menu {
+    overflow: auto;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+
+  div.scroll-menu .card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  #add-listing {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: right;
+    align-content: center;
+    margin-right: 20em;
+    margin-top: 5em;
+  }
+
+  .formInputText {
+      background-color: rgba(207, 220, 247, 0.041);
+  }
