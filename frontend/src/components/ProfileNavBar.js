@@ -11,6 +11,7 @@ const ProfileNavBar = ({pageState, setPageState, authState, setAuthState}) => {
             <div id="nav">
                 <button
                     className="profile-button"
+                    id = "signout-button"
                     onClick={() => setAuthState(0)}>
                     <img className="profile-button-icon" src={signout96} alt="Logout" />
                 </button>

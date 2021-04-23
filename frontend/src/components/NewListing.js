@@ -42,9 +42,9 @@ const NewListing = () => {
             </div>
             <hr></hr>
             <div id="add-listing">
-                <form>
+                <form className="manage-listings-form">
                     <h2>Add a new item</h2>
-                <div className="fieldDiv">
+                    <div className="fieldDiv">
                         <label className="formLabel" for="itemName">Item Name</label>
                         <input className="formInputText" title="itemName" type="text" required/>
                     </div>
@@ -64,16 +64,11 @@ const NewListing = () => {
                         <label className="formLabel" for="price">Price</label>
                         <input className="formInputText" title="price" type="text" required/>
                     </div>
-                    <button
-                        className="profile-button">
-                        <label className="formLabel" for="upload">Upload an image</label> 
-                        <img className="profile-button-icon" src={plus} alt="Add" />
-                    </button>
-                    <button 
-                        className="addNewItemButton" 
-                        id="update-button">
-                            Add item
-                    </button>
+                    <div className="uploadImage">
+                        <span>Upload an Image</span>
+                        <input name="Select File" type="file" />
+                    </div>
+                    <button className="addNewItemButton" id="update-button">Add item</button>
                 </form>
             </div>
         </div>
