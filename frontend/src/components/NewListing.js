@@ -84,11 +84,9 @@ const NewListing = () => {
                         <label className="formLabel" for="price">Price</label>
                         <input className="formInputText" title="price" type="text" type="number" required/>
                     </div>
+                    
                     <div className="buttons">
-                        <div className="uploadImage">
-                            <span>Upload an Image</span>
-                            <input name="Select File" type="file" />
-                        </div>
+                        <input className="uploadImage" name="Select File" type="file" />
                         <div>
                             <button id="update-button">Add item</button>
                         </div>

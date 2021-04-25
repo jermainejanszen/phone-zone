@@ -10,9 +10,9 @@
 .profile-form {
     display: flex;
     flex-direction: column;
-    margin-right: 10em;
+    margin-right: 20em;
     margin-top: 5em;
-    min-width: 40em;
+    min-width: 30em;
     max-width: 60em;
 }
 
@@ -48,6 +48,8 @@ h2 {
     display: flex;
     flex-direction: column;
     text-align: center;
+    min-width: 30em;
+    max-width: 60em;
 }
 
 .my-listings {
@@ -105,24 +107,23 @@ div.scroll-menu {
     width:100%;
 }
 
-  .uploadImage{
-    border-color: black;
+.uploadImage::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .uploadImage::before {
+    content: 'Select Image';
+    text-align: center;
+    display: inline-block;
+    background-color: aliceblue;
     border-radius: 10em;
-    color: black;
-    font-size: 17px;
+    width:100%;
     padding: 0.7em 0em;
     margin: 0.7em 0em;
-    width: 70%;
-    background-color: aliceblue;
-    align-content: center;
-    text-align: center;
-    position:relative;
-    width:100%;
-    
-}
-.uploadImage input[type="file"]{
-    -webkit-appearance:none; 
-    position:absolute;
-    top:0; left:0;
-    opacity:0; 
-}
+    border-color: black;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 17px;
+  }
+  .uploadImage:hover::before {
+    border-color: black;
+  }
