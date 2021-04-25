@@ -1,10 +1,8 @@
 import React from 'react'
-import FiveGrid from './FiveGrid';
 import '../styles/Home.css';
-import plus from '../resources/plus.svg';
 import OwnItem from './OwnItem';
 import '../styles/Profile.css';
-
+import '../styles/NewListing.css';
 
 const mockItems = [
     {
@@ -51,10 +49,10 @@ const mockItems = [
 
 const NewListing = () => {
     return (
-        <div className="profile-container">
-            <div class="my-listings">
+        <div className="profileContainer">
+            <div id="my-listings">
             <h2>Your Listings</h2>
-                <div class="scroll-menu">
+                <div className="scrollMenu">
                     <OwnItem className="ownItem" item={mockItems[0]} />
                     <OwnItem className="ownItem" item={mockItems[1]} />
                     <OwnItem className="ownItem" item={mockItems[0]} />
@@ -66,7 +64,7 @@ const NewListing = () => {
             </div>
             <hr></hr>
             <div id="add-listing">
-                <form className="manage-listings-form">
+                <form id="manage-listings-form">
                     <h2>Add a new item</h2>
                     <div className="fieldDiv">
                         <label className="formLabel" for="model">Model</label>
@@ -84,11 +82,10 @@ const NewListing = () => {
                         <label className="formLabel" for="price">Price</label>
                         <input className="formInputText" title="price" type="text" type="number" required/>
                     </div>
-                    
                     <div className="buttons">
                         <input className="uploadImage" name="Select File" type="file" />
                         <div>
-                            <button id="update-button">Add item</button>
+                            <button className="updateButton">Add item</button>
                         </div>
                     </div>
                 </form>

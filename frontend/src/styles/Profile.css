@@ -1,63 +1,30 @@
+/** field in input form **/
 .fieldDiv {
     display: flex;
     flex-direction: column;
 }
 
-#description {
-    height: 5em;
-}
-
-.profile-form {
-    display: flex;
-    flex-direction: column;
-    margin-right: 20em;
-    margin-top: 5em;
-    min-width: 30em;
-    max-width: 60em;
-}
-
-.manage-listings-form {
-    display: flex;
-    flex-direction: column;
-    margin-right: 10em;
-    margin-top: 4em;
-    min-width: 30em;
-    max-width: 50em;
-}
-
-.profile-container {
+/** container containing profile information */ 
+.profileContainer {
     display: flex;
     flex-direction: row;
     text-align: center;
 }
 
+/** formatting for header 1 in profile section **/
 h1 {
     font-size:8em;
     text-align: left;
     margin-left: 1em;
 }
 
+/** formatting for header 2 in profile section **/
 h2 {
     font-size:2em;
     text-align: center;
 }
 
-#password-form {
-    margin-right: 20em;
-    margin-top: 5em;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    min-width: 30em;
-    max-width: 60em;
-}
-
-.my-listings {
-    margin-left: 10em;
-    margin-top: 3em;
-    max-width: 40%;
-}
-
+/** styling of buttons within profile section **/
 .buttons {
     display: flex;
     flex-direction: column;
@@ -65,34 +32,8 @@ h2 {
     align-content: center;
 }
 
-div.scroll-menu {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-
-  }
-
-  div.scroll-menu .card {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    display: inline-block;
-
-  }
-
-  #add-listing {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    text-align: right;
-    align-content: center;
-  }
-
-  .formInputText {
-      background-color: rgba(207, 220, 247, 0.041);
-  }
-
-  #update-button {
+/** formatting for buttons corresponding to updates across the various profile pages **/
+.updateButton {
     border: transparent;
     border-radius: 10em;
     color: white;
@@ -106,24 +47,3 @@ div.scroll-menu {
     position:relative;
     width:100%;
 }
-
-.uploadImage::-webkit-file-upload-button {
-    visibility: hidden;
-  }
-  .uploadImage::before {
-    content: 'Select Image';
-    text-align: center;
-    display: inline-block;
-    background-color: aliceblue;
-    border-radius: 10em;
-    width:100%;
-    padding: 0.7em 0em;
-    margin: 0.7em 0em;
-    border-color: black;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 17px;
-  }
-  .uploadImage:hover::before {
-    border-color: black;
-  }

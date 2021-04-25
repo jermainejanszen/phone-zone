@@ -1,0 +1,9 @@
+/** forms used in the edit profile section of the e-commerce site **/
+#profile-form {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20em;
+    margin-top: 5em;
+    min-width: 30em;
+    max-width: 60em;
+}

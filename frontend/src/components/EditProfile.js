@@ -1,14 +1,15 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
 import '../styles/Profile.css';
+import '../styles/EditProfile.css';
 
 const Profile = () => {
     const history = useHistory();
     return (
-        <div className="profile-container">
+        <div className="profileContainer">
             <h1>Hi, Jane</h1>
             <hr></hr>
-                <form className="profile-form"> 
+                <form id="profile-form"> 
                 <h2>Update your details:</h2>
                     <div className="fieldDiv">
                         <label className="formLabel" for="firstName">First Name</label>
@@ -23,8 +24,7 @@ const Profile = () => {
                         <input className="formInputText" value="jane@doe.com" title="email" type="text" />
                     </div>
                     <button 
-                        className="updateProfileButton" 
-                        id="update-button"
+                        className="updateButton" 
                         onClick={() => {
                             history.push('/editProfile');
                         }}>
