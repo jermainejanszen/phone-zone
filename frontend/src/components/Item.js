@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router-dom';
-import Review from './Review';
+import Reviews from './Reviews';
 
 import addshoppingcart96 from '../resources/addshoppingcart96.png';
 import '../styles/Item.css';
@@ -26,16 +26,14 @@ const Item = () => {
                     </div>
                 </div>
                 <div id="item-text-div">
-                    <p id="item-title">{item.title}</p>
                     <p id="item-brand">{item.brand}</p>
-                    <p id="item-stock">{item.stock}</p>
-                    <p id="item-seller">{item.seller}</p>
+                    <p id="item-title">{item.title}</p>
+                    <p id="item-stock">{`Stock remaining: ${item.stock}`}</p>
+                    <p id="item-seller">{`Seller: ${item.seller}`}</p>
                     <p id="item-price">{`$${item.price}`}</p>
                 </div>
             </div>
-            <div id="item-reviews-div">
-                {item.reviews.map(value => <Review data={value} />)}
-            </div>
+            <Reviews id="item-reviews-div" reviews={item.reviews} />
         </div>
     )
 }

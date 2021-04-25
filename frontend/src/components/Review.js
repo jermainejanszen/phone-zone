@@ -1,11 +1,11 @@
-import React from 'react'
+import '../styles/Review.css';
 
 const Review = ({ data }) => {
     return (
-        <div>
-            <p>{`User: ${data.reviewer}`}</p>
-            <p>{`Rating: ${data.rating}`}</p>
-            <p>{`Comment: ${data.comment}`}</p>
+        <div id="review-div">
+            <p id="review-user">{`User: ${data.reviewer}`}</p>
+            <p id="review-rating">{`Rating: ${data.rating}`}</p>
+            <p id="review-comment">{`Comment: ${data.comment}`}</p>
         </div>
     )
 }
