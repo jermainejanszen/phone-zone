@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import Login from './pages/Login';
 import Main from './pages/Main';
 import Signup from './pages/Signup';
@@ -20,8 +20,11 @@ const App = () => {
                 <Route path="/login">
                     <Login />
                 </Route>
-                <Route path="/">
+                <Route path="/home">
                     <Main authState={authState} />
+                </Route>
+                <Route path="/">
+                    <Redirect to="/home" />
                 </Route>
             </Switch>
         </div>

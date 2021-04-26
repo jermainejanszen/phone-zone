@@ -49,7 +49,19 @@ const mockItems = [
         "price": 53.0,
         "reviews": [{
             "reviewer": "5f5237a4c1beb1523fa3dac0",
+            "rating": 0,
+            "comment": "Horrible . This was the worst iPhone I've ever bought . I couldn't even connect to MY wifi in the set up . Total waste of money ! The screen was shattered and I couldn't even get past the set up . Don't waste your time with this seller ! Just buy an iPhone 5s at Walmart on Straighttalk for $199 !"
+        },{
+            "reviewer": "5f5237a4c1beb1523fa3dac0",
             "rating": 1,
+            "comment": "Horrible . This was the worst iPhone I've ever bought . I couldn't even connect to MY wifi in the set up . Total waste of money ! The screen was shattered and I couldn't even get past the set up . Don't waste your time with this seller ! Just buy an iPhone 5s at Walmart on Straighttalk for $199 !"
+        },{
+            "reviewer": "5f5237a4c1beb1523fa3dac0",
+            "rating": 3,
+            "comment": "Horrible . This was the worst iPhone I've ever bought . I couldn't even connect to MY wifi in the set up . Total waste of money ! The screen was shattered and I couldn't even get past the set up . Don't waste your time with this seller ! Just buy an iPhone 5s at Walmart on Straighttalk for $199 !"
+        },{
+            "reviewer": "5f5237a4c1beb1523fa3dac0",
+            "rating": 5,
             "comment": "Horrible . This was the worst iPhone I've ever bought . I couldn't even connect to MY wifi in the set up . Total waste of money ! The screen was shattered and I couldn't even get past the set up . Don't waste your time with this seller ! Just buy an iPhone 5s at Walmart on Straighttalk for $199 !"
         }]
     }

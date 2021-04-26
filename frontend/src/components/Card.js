@@ -1,9 +1,18 @@
 
+import { Link, useRouteMatch } from 'react-router-dom';
 import '../styles/Card.css';
 
-const Card = ({ item }) => {
+const Card = ({ item, setPageState }) => {
+
+    const match = useRouteMatch();
+
     return (
-        <div className="card">
+        <Link 
+            className="card"
+            to={{
+                pathname: `${match.path}/item/?title=${item.title}`,
+                state: item
+            }}>
             <img className="cardImage" src={item.image} alt="The phone" />
             <div className="cardDetails">
                 <div className="brandPrice">
@@ -12,7 +21,7 @@ const Card = ({ item }) => {
                 </div>
                 <p className="cardText" id="title">{item.title}</p>
             </div>
-        </div>
+        </Link>
     )
 }
 
