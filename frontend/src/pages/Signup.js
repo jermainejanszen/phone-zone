@@ -10,6 +10,21 @@ const Signup = () => {
     const [form, setForm] = useState({});
 
     const handleChange = (event) => {
+        const field = event.target;
+        const label = document.getElementById(event.target.title + "-label");
+
+        if (field.title !== "password") {
+            field.value = field.value.trim();
+        }
+
+        if (field.checkValidity()) {
+            label.classList.remove("formLabelInvalid");
+            label.classList.add("formLabelValid");
+        } else {
+            label.classList.remove("formLabelValid");
+            label.classList.add("formLabelInvalid");
+        }
+
         setForm({
             ...form,
             [event.target.title]: event.target.value.trim()
@@ -29,27 +44,27 @@ const Signup = () => {
                 <h1 className="formHeading">Create your account</h1>
 
                 <div className="fieldDiv">
-                    <label className="formLabelRequired">First Name</label>
+                    <label id="firstname-label" className="formLabelInvalid">First Name</label>
                     <input className="formInputText" onChange={handleChange} title="firstname" type="text" required />
                 </div>
 
                 <div className="fieldDiv">
-                    <label className="formLabelRequired">Last Name</label>
+                    <label id="lastname-label" className="formLabelInvalid">Last Name</label>
                     <input className="formInputText" onChange={handleChange} title="lastname" type="text" required />
                 </div>
 
                 <div className="fieldDiv">
-                    <label className="formLabelRequired">Email</label>
+                    <label id="email-label" className="formLabelInvalid">Email</label>
                     <input className="formInputText" onChange={handleChange} title="email" type="email" required />
                 </div>
 
                 <div className="fieldDiv">
                     
-                        <label className="formLabelRequired">Password</label>
-                        <p className="advice">
-                            Make sure it's at least 8 characters including a lowercase and an uppercase letter.
-                        </p>
-                    
+                    <label id="password-label" className="formLabelInvalid">Password</label>
+                    <p className="advice">
+                        Make sure it's at least 8 characters including a lowercase and an uppercase letter.
+                    </p>
+                
                     <input className="formInputText" id="password" onChange={handleChange} title="password" type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$" required />
                 </div>
 
