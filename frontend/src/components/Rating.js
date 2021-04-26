@@ -5,22 +5,20 @@ import '../styles/Rating.css';
 
 const Rating = ({ rating }) => {
 
-    const star = <img 
-                    src={star96} 
-                    alt="Unfilled star" 
-                    className="ratingStar" />;
-
-    const filledStar = <img 
-                            src={starfilled96} 
-                            alt="Filled star" 
-                            className="ratingStar" />;
-
     var stars = [];
     for (let i = 0; i < 5; i++) {
         if(i < rating) {
-            stars.push(filledStar);
+            stars.push(<img
+                key={i} 
+                src={starfilled96} 
+                alt="Filled star" 
+                className="ratingStar" />);
         } else {
-            stars.push(star);
+            stars.push(<img
+                key={i} 
+                src={star96} 
+                alt="Unfilled star" 
+                className="ratingStar" />);
         }
     }
 
