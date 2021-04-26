@@ -44,23 +44,23 @@ const Signup = () => {
                 <h1 className="formHeading">Create your account</h1>
 
                 <div className="fieldDiv">
-                    <label id="firstname-label" className="formLabelInvalid">First Name</label>
+                    <label id="firstname-label" className="formLabel formLabelInvalid">First Name</label>
                     <input className="formInputText" onChange={handleChange} title="firstname" type="text" required />
                 </div>
 
                 <div className="fieldDiv">
-                    <label id="lastname-label" className="formLabelInvalid">Last Name</label>
+                    <label id="lastname-label" className="formLabel formLabelInvalid">Last Name</label>
                     <input className="formInputText" onChange={handleChange} title="lastname" type="text" required />
                 </div>
 
                 <div className="fieldDiv">
-                    <label id="email-label" className="formLabelInvalid">Email</label>
+                    <label id="email-label" className="formLabel formLabelInvalid">Email</label>
                     <input className="formInputText" onChange={handleChange} title="email" type="email" required />
                 </div>
 
                 <div className="fieldDiv">
                     
-                    <label id="password-label" className="formLabelInvalid">Password</label>
+                    <label id="password-label" className="formLabel formLabelInvalid">Password</label>
                     <p className="advice">
                         Make sure it's at least 8 characters including a lowercase and an uppercase letter.
                     </p>
