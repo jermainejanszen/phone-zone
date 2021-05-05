@@ -1,0 +1,88 @@
+.signup-form > h1 {
+    text-align: center;
+    font-weight: 500;
+}
+
+.form-container > form {
+    text-align: left;
+}
+
+.signup-form > label {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.signup-form > input {
+    display: block;
+    padding: 7.5px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    width: 300px;
+    font-size: 15px;
+}
+
+.signup-form > input:focus {
+    outline: none;
+    border: 2px solid #6598cf;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+.signup-form > a {
+    text-decoration: none;
+}
+
+.form-container {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#password-visibility-container {
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#password-visibility {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 0px 0px 0px 10px;
+}
+
+#signup-button, #nav-button {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #80b3e9;
+    border: transparent;
+    border-radius: 5px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 17px;
+}
+
+#nav-button {
+    margin-top: 30px;
+    background-color: #4b96e6;
+    width: 320px;
+}
+
+.required:after {
+    content: " *";
+    color: red;
+}
+
+.advice {
+    width: 300px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: gray;
+}

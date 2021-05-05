@@ -1,0 +1,46 @@
+
+.card {
+    margin: 2em;
+    width: fit-content;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
+    width: 15em;
+    overflow: hidden;
+}
+
+/* Image */
+.cardImage {
+    width: 15em;
+    border-radius: 10px;
+    margin: 1em 0em;
+}
+
+/* Text */
+.cardDetails {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0em 1em;
+    box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.card:hover {
+    box-shadow: 0px -1px 9px rgb(19, 103, 182);
+}
+
+.brandPrice {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#brand {
+    font-weight: bold;
+}
+
+#title {
+    font-style: italic;
+    flex-grow: 1;
+}
