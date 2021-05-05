@@ -1,6 +1,6 @@
 import Loading from './Loading';
 
-const Item = () => {
+const Search = () => {
     return (
         <div>
             <Loading />
@@ -8,4 +8,4 @@ const Item = () => {
     )
 }
 
-export default Item
+export default Search
