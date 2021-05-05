@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, matchPath } from 'react-router-dom';
+import { Link, matchPath, useHistory } from 'react-router-dom';
 
 import logo from '../resources/logo.svg';
 import checkout96 from '../resources/checkout96.png';
@@ -10,6 +10,8 @@ import signout96 from '../resources/signout96.png';
 import '../styles/NavBar.css';
 
 const NavBar = ({ authState, setAuthState }) => {
+
+    const history = useHistory();
 
     return (
         <div className="nav">
@@ -39,23 +41,23 @@ const NavBar = ({ authState, setAuthState }) => {
             </div>
 
             <div id="profile">
-                <Link
-                    to="/checkout" 
+                <button
+                    onClick={() => history.push('/checkout')}
                     className="profile-button">
                     <img className="profile-button-icon" src={checkout96} alt="Checkout" />
-                </Link>
+                </button>
                 {authState === 0 ?
-                    <Link
-                        to="/login"
+                    <button
+                        onClick={() => history.push('/login')}
                         className="profile-button">
                         <img className="profile-button-icon" src={login96} alt="Login" />
-                    </Link> :
+                    </button> :
                     <div>
-                        <Link
-                        to="/user"
+                        <button
+                        onClick={() => history.push('/user')}
                         className="profile-button">
                             <img className="profile-button-icon" src={user96} alt="Profile" />
-                        </Link> 
+                        </button> 
                         <button
                             className="profile-button"
                             onClick={() => setAuthState(0)}>
