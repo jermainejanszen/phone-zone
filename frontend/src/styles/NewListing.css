@@ -4,7 +4,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     text-align: right;
-    margin: 1em 4em 1em 1em;
+    margin: 2em 4em 1em 1em;
   }
 
 /** description box of input form **/
@@ -39,31 +39,10 @@
     margin: 1em 4em;
 }
 
-/** styling for upload image button **/
-.uploadImage::-webkit-file-upload-button {
-    visibility: hidden;
-  }
-
-/** styling for upload image button **/
-.uploadImage::before {
-    content: 'Select Image';
-    text-align: center;
-    display: inline-block;
-    background-color: aliceblue;
-    border-radius: 10em;
-    width:100%;
-    padding: 0.7em 0em;
-    margin: 0.7em 0em;
-    border-color: black;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 17px;
-  }
-
-/** styling for upload image button **/
-.uploadImage:hover::before {
-    border-color: black;
-  }
+.updateButton {
+    align-self: center;
+    max-width: 16em;
+}
 
 /** description box of input form **/
 #description {

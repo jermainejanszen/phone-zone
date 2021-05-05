@@ -1,10 +1,11 @@
 import React from 'react'
-import '../styles/Home.css';
 import Card from './Card';
-import '../styles/Profile.css';
-import '../styles/NewListing.css';
+
 import remove from '../resources/remove.svg';
 import hide96 from '../resources/hide96.png';
+
+import '../styles/Profile.css';
+import '../styles/NewListing.css';
 
 const mockItems = [
     {
@@ -109,12 +110,22 @@ const NewListing = () => {
                 <form id="manage-listings-form">
                     <h2>Add a new item</h2>
                     <div className="fieldDiv">
-                        <label className="formLabel" for="model">Model</label>
-                        <input className="formInputText" title="model" type="text" placeholder="e.g. Sony" required/>
+                        <label className="formLabel" for="brand">Brand</label>
+                        <select className="formSelect" title="brand" type="text" placeholder="e.g. Sony" required>
+                            <option value="Apple">Apple</option>
+                            <option value="BlackBerry">BlackBerry</option>
+                            <option value="HTC">HTC</option>
+                            <option value="Huawei">Huawei</option>
+                            <option value="LG">LG</option>
+                            <option value="Motorola">Motorola</option>
+                            <option value="Nokia">Nokia</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="Sony">Sony</option>
+                        </select>
                     </div>
                     <div className="fieldDiv">
-                        <label className="formLabel" for="make">Make</label>
-                        <input className="formInputText" title="make" type="text" placeholder="e.g. Sony Ericsson TM506 Unlock..." required/>
+                        <label className="formLabel" for="title">Title</label>
+                        <input className="formInputText" title="title" type="text" placeholder="e.g. Sony Ericsson TM506 Unlock..." required/>
                     </div>
                     <div className="fieldDiv">
                         <label className="formLabel" for="description">Description</label>
@@ -122,14 +133,9 @@ const NewListing = () => {
                     </div>
                     <div className="fieldDiv">
                         <label className="formLabel" for="price">Price</label>
-                        <input className="formInputText" title="price" type="text" type="number" required/>
+                        <input className="formInputText" title="price" type="number" required/>
                     </div>
-                    <div className="buttons">
-                        <input className="uploadImage" name="Select File" type="file" />
-                        <div>
-                            <button className="updateButton">Add item</button>
-                        </div>
-                    </div>
+                    <button className="updateButton">Add item</button>
                 </form>
             </div>
         </div>

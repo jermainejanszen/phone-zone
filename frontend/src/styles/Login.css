@@ -48,6 +48,14 @@
     box-shadow: 0 0 10px #719ECE;
 }
 
+.formSelect {
+    display: block;
+    padding: 0.6em 0.6em;
+    margin: 0.4em 0em 1em 0em;
+    width: 98%;
+    font-size: 1em;
+}
+
 #password-visibility-container {
     margin-bottom: 20px;
     text-align: center;
