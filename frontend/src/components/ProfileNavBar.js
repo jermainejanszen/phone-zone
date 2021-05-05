@@ -1,4 +1,5 @@
-import React from 'react'
+import { Link } from 'react-router-dom';
+import logo from '../resources/logo.svg';
 import edit from '../resources/edit.svg';
 import key from '../resources/key.svg';
 import selling96 from '../resources/selling96.png';
@@ -9,6 +10,12 @@ const ProfileNavBar = ({pageState, setPageState, authState, setAuthState}) => {
     return (
         <div className="navBar">
             <div id="nav">
+                <div id="profile-title-section">
+                    <Link to="/">
+                        <img id="logo" src={logo} alt={"Website Logo"} />
+                    </Link>
+                    <p id="name">Phone Zone</p>
+                </div>
                 <div id="sideBar">
                     <button
                         className="tab-button"

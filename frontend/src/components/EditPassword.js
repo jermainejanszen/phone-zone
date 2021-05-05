@@ -9,8 +9,7 @@ const EditPassword = () => {
 
     return (
         <div className="profileContainer">
-                <h1>Hi, Jane</h1>
-                <hr></hr>
+            <h1>Hi, Jane</h1>
             <form id="password-form">
                 <h2>Change your password</h2>
                 <div className="fieldDiv">
