@@ -6,9 +6,12 @@ module.exports.getPhones=function(req,res){
 		if (err){
 			console.log("Cannot find phones!")
 		}else{
-			console.log(result[0])
-			return result[0];
+			console.log(result)
+			// res.render('../views/src/pages/Main.js', {name:name})
 		}	
 	})	
 
 }
+
+
+
