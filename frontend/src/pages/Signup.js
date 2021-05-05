@@ -1,44 +1,75 @@
 import React from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import '../styles/Login.css';
+import '../styles/Auth.css';
 
 const Signup = () => {
 
     const history = useHistory();
+    const [form, setForm] = useState({});
+
+    const handleChange = (event) => {
+        const field = event.target;
+        const label = document.getElementById(event.target.title + "-label");
+
+        if (field.title !== "password") {
+            field.value = field.value.trim();
+        }
+
+        if (field.checkValidity()) {
+            label.classList.remove("formLabelInvalid");
+            label.classList.add("formLabelValid");
+        } else {
+            label.classList.remove("formLabelValid");
+            label.classList.add("formLabelInvalid");
+        }
+
+        setForm({
+            ...form,
+            [event.target.title]: event.target.value.trim()
+        });
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(form)
+
+        /* TODO: Implement logic for signing the user up */
+    }
 
     return (
-        <div className="form-container">
-            <form className="login-form">
+        <div className="formContainer">
+            <form className="authForm" onSubmit={handleSubmit}>
                 <h1 className="formHeading">Create your account</h1>
 
                 <div className="fieldDiv">
-                    <label className="formLabel required" for="first-name">First Name</label>
-                    <input className="formInputText" title="first-name" type="text" required />
+                    <label id="firstname-label" className="formLabel formLabelInvalid">First Name</label>
+                    <input className="formInputText" onChange={handleChange} title="firstname" type="text" required />
                 </div>
 
                 <div className="fieldDiv">
-                    <label className="formLabel required" for="last-name">Last Name</label>
-                    <input className="formInputText" title="last-name" type="text" required />
+                    <label id="lastname-label" className="formLabel formLabelInvalid">Last Name</label>
+                    <input className="formInputText" onChange={handleChange} title="lastname" type="text" required />
                 </div>
 
                 <div className="fieldDiv">
-                    <label className="formLabel required" for="email">Email</label>
-                    <input className="formInputText" title="email" type="email" required />
+                    <label id="email-label" className="formLabel formLabelInvalid">Email</label>
+                    <input className="formInputText" onChange={handleChange} title="email" type="email" required />
                 </div>
 
                 <div className="fieldDiv">
-                    <div id="password-field-label">
-                        <label className="formLabel required" for="password">Password</label>
-                        <p class="advice">
-                            Make sure it's at least 8 characters including a lowercase and an uppercase letter.
-                        </p>
-                    </div>
-                    <input className="formInputText" id="password" title="password" type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$" required />
+                    
+                    <label id="password-label" className="formLabel formLabelInvalid">Password</label>
+                    <p className="advice">
+                        Make sure it's at least 8 characters including a lowercase and an uppercase letter.
+                    </p>
+                
+                    <input className="formInputText" id="password" onChange={handleChange} title="password" type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$" required />
                 </div>
 
                 <div id="password-visibility-container">
-                    <label id="password-visibility-label" for="password-visibility">Toggle Password Visibility</label>
+                    <label className="formLabel">Toggle Password Visibility</label>
                     <input 
                         id="password-visibility" 
                         title="password-visibility"
@@ -51,12 +82,11 @@ const Signup = () => {
                     </input>
                 </div>
 
-                <div className="loginButtonsDiv">
-                    <input className="loginButtons" id="signup-button" type="submit" value="Create account" />
+                <div className="buttonsDiv">
+                    <input className="submitButton" type="submit" value="Create account" />
 
                     <button 
-                        className="loginButtons" 
-                        id="nav-button"
+                        className="navButton" 
                         onClick={() => {
                             history.push('/login');
                         }}>
