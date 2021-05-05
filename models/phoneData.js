@@ -15,4 +15,24 @@ var PhoneSchema = new mongoose.Schema(
 
 var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 
+Phone.getPhones = function() {
+    return new Promise((resolve, reject) => {
+        this.find((err, docs) => {
+            if (err) {
+                console.error(err)
+                return reject(err)
+            }
+            resolve (docs)
+        })
+    })
+}
+
+Phone.getPhones()
+  .then(docs => {
+    console.log(docs)
+  })
+  .catch(err => {
+    console.error(err)
+  })
+
 module.exports = Phone
