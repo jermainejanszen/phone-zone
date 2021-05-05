@@ -39,7 +39,8 @@
     margin: 0.4em 0.4em;
     padding: 0.8em 5em;
     background: none;
-    border: none;
+    border: 2px solid;
+    border-color: white;
     border-radius: 12px;
     outline: none;
     display: flex;
@@ -47,12 +48,14 @@
     align-items: center;
 }
 
-.tab-button:hover {
-    background-color: aliceblue;
+.current-tab {
+    border: 2px solid;
+    border-color:rgb(194, 222, 248);
+    background-color:rgba(228, 238, 248, 0.5);
 }
 
-.tab-button:focus {
-    background-color:rgb(226, 240, 253);
+.tab-button:hover {
+    background-color: aliceblue;
 }
 
 .tab-button-icon {

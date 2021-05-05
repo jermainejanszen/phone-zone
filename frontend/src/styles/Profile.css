@@ -13,6 +13,10 @@
     justify-content: space-around;
 }
 
+.profileContainer::-webkit-scrollbar {
+    display: none;
+}
+
 /** formatting for header 1 in profile section **/
 .profileContainer > h1 {
     font-size: 8em;
