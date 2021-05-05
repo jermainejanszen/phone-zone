@@ -1,0 +1,35 @@
+.checkoutItemContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 3em;
+    padding-bottom: 3em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.checkoutItemImage {
+    width: 12em;
+}
+
+.checkoutColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 20em;
+}
+
+.checkoutInfoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-grow: 1;
+}
+
+.checkoutInfoContainer > * {
+    height: 100%;
+}
+
+.checkoutColumn > * {
+    margin-top: 0.75em;
+} 

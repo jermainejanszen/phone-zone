@@ -2,7 +2,7 @@ import Card from './Card';
 
 import '../styles/FiveGrid.css';
 
-const mockItems = [
+export const mockItems = [
     {
         "title": "Galaxy s III mini SM-G730V Verizon Cell Phone BLUE",
         "brand": "Samsung",
@@ -79,4 +79,4 @@ const FiveGrid = () => {
     )
 }
 
-export default FiveGrid
+export default FiveGrid;
