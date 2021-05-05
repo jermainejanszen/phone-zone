@@ -1,0 +1,61 @@
+/** section where user can add a new item to sell **/
+#add-listing {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: right;
+    margin: 2em 4em 1em 1em;
+  }
+
+/** description box of input form **/
+#manage-listings-form {
+    display: flex;
+    flex-direction: column;
+    min-width: 30em;
+    max-width: 50em;
+}
+
+#manage-listings-form > h2 {
+    text-align: center;
+}
+
+/** menu of user's own phone listings **/
+.scrollMenu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+/** phone items within menu of user's phone listings **/
+.scrollMenu > .cardContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+/** div with items user is currently selling **/
+#my-listings {
+    margin: 1em 4em;
+}
+
+.updateButton {
+    align-self: center;
+    max-width: 16em;
+}
+
+/** description box of input form **/
+#description {
+    height: 5em;
+}
+
+.itemIcon {
+    height: 1em;
+    background-color: rgba(211, 211, 211, 0.6);
+    margin: 0.5em 0.5em;
+    padding: 0.8em;
+    border-radius: 50%;
+}
+
+.itemIcon:hover {
+    background-color: #4b96e68a;
+}

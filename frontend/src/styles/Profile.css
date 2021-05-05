@@ -1,0 +1,52 @@
+/** field in input form **/
+.fieldDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+/** container containing profile information */ 
+.profileContainer {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    width: 100%;
+    justify-content: space-around;
+}
+
+/** formatting for header 1 in profile section **/
+.profileContainer > h1 {
+    font-size: 8em;
+    text-align: left;
+    margin-left: 1em;
+    min-width: 5em;
+}
+
+/** formatting for header 2 in profile section **/
+.profileContainer > h2 {
+    font-size: 2em;
+    text-align: center;
+}
+
+/** styling of buttons within profile section **/
+.buttons {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+/** formatting for buttons corresponding to updates across the various profile pages **/
+.updateButton {
+    border: transparent;
+    border-radius: 10em;
+    color: white;
+    font-size: 17px;
+    padding: 0.7em 0em;
+    margin: 0.7em 0em;
+    width: 70%;
+    background-color: #4b96e6;
+    align-content: center;
+    text-align: center;
+    position:relative;
+    width:100%;
+}
