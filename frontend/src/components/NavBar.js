@@ -14,6 +14,8 @@ const NavBar = ({ authState, setAuthState }) => {
 
     const history = useHistory();
     const searchInput = useRef(null);
+    const searchBrand = useRef(null);
+    const searchPrice = useRef(null);
 
     return (
         <div className="nav">
