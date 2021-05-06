@@ -24,14 +24,25 @@ userSchema.statics.getPassword = function(id, callback){
           .exec(callback)
 }
 
-//update users' password  
-userSchema.statics.updatePassword = function(id, newPassword, callback){
+// get users' information 
+userSchema.statics.getUserInformation = function(id, callback){
+  return this
+          .find({_id: id})
+          .exec(callback)
+}
+
+//update users' infromation  
+userSchema.statics.updateUserInformation = function(id, newFirstName, newLastName, newEmail, callback){
+  return this
+          .update({_id: id}, {$set:{'firstname':newFirstName, 'lastname':newLastName, 'email':newEmail}})
+          .exec(callback)
+        }
+
+userSchema.statics.updatePassword= function(id, newPassword, callback){
   return this
           .update({_id: id}, {$set:{'password':newPassword}})
           .exec(callback)
         }
-
-
 
 var User = mongoose.model('User', userSchema, 'user_data')
 
@@ -43,7 +54,25 @@ var User = mongoose.model('User', userSchema, 'user_data')
 //   }
 // })
 
-User.getPassword('5f5237a4c1beb1523fa3da65', function(err, result){
+
+
+// User.getPassword('5f5237a4c1beb1523fa3da65', function(err, result){
+//   if (err){
+//     console.log("Query error!")
+//   } else {
+//     console.log(result)
+//   }
+// })
+
+// User.updatePassword('5f5237a4c1beb1523fa3da65', "potatosalad", function(err, result){
+//   if (err){
+//     console.log("Query error!")
+//   } else {
+//     console.log(result)
+//   }
+// })
+
+User.getUserInformation('5f5237a4c1beb1523fa3da65', function(err, result){
   if (err){
     console.log("Query error!")
   } else {
@@ -51,15 +80,8 @@ User.getPassword('5f5237a4c1beb1523fa3da65', function(err, result){
   }
 })
 
-User.updatePassword('5f5237a4c1beb1523fa3da65', "potatosalad", function(err, result){
-  if (err){
-    console.log("Query error!")
-  } else {
-    console.log(result)
-  }
-})
 
-User.getPassword('5f5237a4c1beb1523fa3da65', function(err, result){
+User.updateUserInformation('5f5237a4c1beb1523fa3da65', 'john', 'smith', 'john.smith@gmail.com', function(err, result){
   if (err){
     console.log("Query error!")
   } else {
