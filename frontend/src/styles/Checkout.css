@@ -16,8 +16,7 @@
 }
 
 #checkout-container {
-    min-width: 115em;
-    max-width: 150em;
+    width: 150em;
     margin-left: auto;
     margin-right: auto;
 }
