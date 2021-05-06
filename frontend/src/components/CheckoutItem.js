@@ -5,19 +5,14 @@ import '../styles/Item.css';
 
 const CheckoutItem = ({ item }) => {
 
-    const quantityInput = useRef(null);
     const [quantity, setQuantity] = useState(0);
 
     const minusOnClickHandler = () => {
-        const curValue = parseInt(quantityInput.current.value);
-        quantityInput.current.value = Math.max(curValue - 1, 0);
-        setQuantity(quantityInput.current.value);
+        setQuantity(Math.max(quantity - 1, 0));
     }
 
     const plusOnClickHandler = () => {
-        const curValue = parseInt(quantityInput.current.value);
-        quantityInput.current.value = Math.min(curValue + 1, item.stock);
-        setQuantity(quantityInput.current.value);
+        setQuantity(Math.min(quantity + 1, item.stock));
     }
 
     return (
@@ -44,8 +39,7 @@ const CheckoutItem = ({ item }) => {
                             type="text" 
                             pattern="[0-9]*" 
                             value={quantity} 
-                            readOnly
-                            ref={quantityInput} />
+                            readOnly />
                         <button 
                             className="quantityButton" 
                             id="item-plus-button"
