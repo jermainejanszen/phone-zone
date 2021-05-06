@@ -39,6 +39,13 @@ PhoneSchema.statics.bestSellers = function(callback) {
           .exec(callback)
 }
 
+// Find all items with search term in their title
+PhoneSchema.statics.searchItemsOnTitle = function(searchTerm, callback) {
+        return this
+                .find({title: { $regex: searchTerm, $options: "i" }})
+                .exec(callback)
+      }
+
 var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 
 //call methods 
@@ -58,7 +65,16 @@ var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 //   }
 // })
 
-Phone.bestSellers(function(err, result) {
+// Phone.bestSellers(function(err, result) {
+//   if (err){
+//     console.log("Query error!")
+//   } else {
+//     console.log(result)
+//   }
+// })
+  
+// find all items with 'blue' in their title 
+Phone.searchItemsOnTitle("blue", function(err, result) {
   if (err){
     console.log("Query error!")
   } else {
@@ -66,6 +82,7 @@ Phone.bestSellers(function(err, result) {
   }
 })
   
+
 
 module.exports = Phone
 
