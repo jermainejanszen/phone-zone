@@ -66,6 +66,21 @@ PhoneSchema.statics.removeItem = function(itemId, callback) {
                 .remove({_id, itemId})
                 .exec(callback)
       }
+
+//set item to disabled //TODO this doesn't work
+PhoneSchema.statics.disableItem = function(id, callback){
+        return this
+                .update({_id: id}, {$set:{$exists:true}})
+                .exec(callback)
+              }
+
+//delete item
+PhoneSchema.statics.deleteItem = function(id, callback){
+        return this
+                .remove({_id: id})
+                .exec(callback)
+              }
+
 var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 
 //call methods 
@@ -110,7 +125,23 @@ var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 //         }
 //       })
 
-Phone.searchItemsBySeller("5f5237a4c1beb1523fa3db73", function(err, result) {
+// Phone.searchItemsBySeller("5f5237a4c1beb1523fa3db73", function(err, result) {
+//         if (err){
+//           console.log("Query error!")
+//         } else {
+//           console.log(result)
+//         }
+//       })
+
+// Phone.disableItem("6091e173cbdb0f1713584d51", function(err, result) {
+//         if (err){
+//           console.log("Query error!")
+//         } else {
+//           console.log(result)
+//         }
+//       })
+
+Phone.deleteItem("6091e173cbdb0f1713584d51", function(err, result) {
         if (err){
           console.log("Query error!")
         } else {

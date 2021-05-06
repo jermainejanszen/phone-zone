@@ -24,6 +24,13 @@ userSchema.statics.getPassword = function(id, callback){
           .exec(callback)
 }
 
+//validate user information when they sign into the platform 
+userSchema.statics.validateUserInformation = function(email, password, callback){
+  return this
+        .find({email:email, password:password})
+        .exec(callback)
+}
+
 // get users' information 
 userSchema.statics.getUserInformation = function(id, callback){
   return this
@@ -38,11 +45,20 @@ userSchema.statics.updateUserInformation = function(id, newFirstName, newLastNam
           .exec(callback)
         }
 
+//update user password 
 userSchema.statics.updatePassword= function(id, newPassword, callback){
   return this
           .update({_id: id}, {$set:{'password':newPassword}})
           .exec(callback)
         }
+
+// //create new user //TODO
+// userSchema.statics.createNewUser = function(firstName, lastName, email, password, callback){
+//   return this 
+//           .create({'firstname': firstName, 'lastname': lastName, 'email':email, 'password':password})
+// }
+
+
 
 var User = mongoose.model('User', userSchema, 'user_data')
 
@@ -72,16 +88,25 @@ var User = mongoose.model('User', userSchema, 'user_data')
 //   }
 // })
 
-User.getUserInformation('5f5237a4c1beb1523fa3da65', function(err, result){
-  if (err){
-    console.log("Query error!")
-  } else {
-    console.log(result)
-  }
-})
+// User.getUserInformation('5f5237a4c1beb1523fa3da65', function(err, result){
+//   if (err){
+//     console.log("Query error!")
+//   } else {
+//     console.log(result)
+//   }
+// })
 
+// User.updateUserInformation('5f5237a4c1beb1523fa3da65', 'john', 'smith', 'john.smith@gmail.com', function(err, result){
+//   if (err){
+//     console.log("Query error!")
+//   } else {
+//     console.log(result)
+//   }
+// })
 
-User.updateUserInformation('5f5237a4c1beb1523fa3da65', 'john', 'smith', 'john.smith@gmail.com', function(err, result){
+User.createNewUser('john', 'smith', 'john.smith@gmail.com', 'password')
+
+User.validateUserInformation('john.smith@gmail.com', 'password', function(err, result){
   if (err){
     console.log("Query error!")
   } else {
