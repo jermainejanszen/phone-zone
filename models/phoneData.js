@@ -46,6 +46,13 @@ PhoneSchema.statics.searchItemsOnTitle = function(searchTerm, callback) {
                 .exec(callback)
       }
 
+// Find all items of certain brand
+PhoneSchema.statics.searchItemsOnBrand = function(brandName, callback) {
+        return this
+                .find({brand: brandName})
+                .exec(callback)
+      }
+
 var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 
 //call methods 
@@ -74,13 +81,21 @@ var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 // })
   
 // find all items with 'blue' in their title 
-Phone.searchItemsOnTitle("blue", function(err, result) {
-  if (err){
-    console.log("Query error!")
-  } else {
-    console.log(result)
-  }
-})
+// Phone.searchItemsOnTitle("blue", function(err, result) {
+//   if (err){
+//     console.log("Query error!")
+//   } else {
+//     console.log(result)
+//   }
+// })
+
+Phone.searchItemsOnBrand("Sony", function(err, result) {
+        if (err){
+          console.log("Query error!")
+        } else {
+          console.log(result)
+        }
+      })
   
 
 
