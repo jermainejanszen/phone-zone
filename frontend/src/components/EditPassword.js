@@ -13,12 +13,12 @@ const EditPassword = () => {
             <form id="password-form">
                 <h2>Change your password</h2>
                 <div className="fieldDiv">
-                    <label className="formLabel" for="password">Current Password</label>
-                    <input className="formInputText" id="password" title="password" type="password" required />
+                    <label className="formLabel" htmlFor="password">Current Password</label>
+                    <input className="formInputText" id="cur-password" title="password" type="password" required />
                 </div>
                 <div className="fieldDiv">
-                    <label className="formLabel" for="password">New Password</label>
-                    <input className="formInputText" id="password" title="password" type="password" required />
+                    <label className="formLabel" htmlFor="password">New Password</label>
+                    <input className="formInputText" id="new-password" title="password" type="password" required />
                 </div>
                 <button 
                         className="updateButton" 

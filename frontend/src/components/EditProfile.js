@@ -1,11 +1,8 @@
 import React, { useRef, useState } from 'react'
-import { useHistory } from 'react-router-dom';
 import '../styles/Profile.css';
 import '../styles/EditProfile.css';
 
 const Profile = () => {
-
-    const history = useHistory();
 
     const [firstName, setFirstName] = useState("Jane");
     const [lastName, setLastName] = useState("Doe");
