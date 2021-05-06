@@ -251,9 +251,9 @@ const NewListing = () => {
             <div id="my-listings">
                 <h2>Your Listings</h2>
                 <div className="scrollMenu">
-                    {mockItems.map(item => {
+                    {mockItems.map((item, index) => {
                         return (
-                            <div className="cardContainer">
+                            <div className="cardContainer" key={index}>
                                 <div>
                                     <img className="itemIcon" src={hide96} alt="Hide Item" />
                                     <img className="itemIcon" src={remove} alt="Delete Item" />
