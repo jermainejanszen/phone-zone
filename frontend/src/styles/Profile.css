@@ -19,10 +19,12 @@
 
 /** formatting for header 1 in profile section **/
 .profileContainer > h1 {
-    font-size: 8em;
+    font-size: 7em;
     text-align: left;
     margin-left: 1em;
     min-width: 5em;
+    max-width: 35vw;
+    text-overflow: clip;
 }
 
 /** formatting for header 2 in profile section **/
