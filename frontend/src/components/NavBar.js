@@ -16,6 +16,7 @@ const NavBar = ({ authState, setAuthState }) => {
     const [currUrl, setCurrUrl] = useState(useRouteMatch().url);
     const [searchMode, setSearchMode] = useState(/\/home\/search*/.test(currUrl));
 
+    // Checks the current url to determine whether to show the search page
     useEffect(() => {
         const inSearchMode = /\/home\/search*/.test(currUrl);
         if (searchMode !== inSearchMode) {
@@ -26,6 +27,27 @@ const NavBar = ({ authState, setAuthState }) => {
     const searchInput = useRef(null);
     const searchBrand = useRef(null);
     const searchPrice = useRef(null);
+
+    const onSearchHandler = () => {
+        var searchQuery = "";
+        if (searchInput.current != null) {
+            searchQuery = searchInput.current.value;
+        }
+
+        var brandQuery = "all";
+        if (searchBrand.current != null) {
+            brandQuery = searchBrand.current.value;
+        }
+
+        var priceQuery = "2000";
+        if (searchPrice.current != null) {
+            priceQuery = searchPrice.current.value;
+        }
+
+        const newUrl = `/home/search/?search=${searchQuery}?brand=${brandQuery}?price=${priceQuery}`;
+        history.push(newUrl);
+        setCurrUrl(newUrl);
+    }
 
     return (
         <div className="nav">
@@ -40,7 +62,7 @@ const NavBar = ({ authState, setAuthState }) => {
                 <input id="search-input" type="text" ref={searchInput} />
                 {searchMode ?
                     <div>
-                        <label for="brand">Brand</label>
+                        <label htmlFor="brand">Brand</label>
                         <select name="brand" ref={searchBrand}>
                             <option value="all">All Brands</option>
                             <option value="apple">Apple</option>
@@ -53,23 +75,13 @@ const NavBar = ({ authState, setAuthState }) => {
                             <option value="samsung">Samsung</option>
                             <option value="sony">Sony</option>
                         </select>
-                        <label for="price">Max price:</label>
-                        <input type="range" name="price" min="0" max="2000" ref={searchPrice} />
+                        <label htmlFor="price">Max price:</label>
+                        <input type="range" name="price" defaultValue="2000" min="0" max="2000" ref={searchPrice} />
                     </div> :
                     <></>
                 }
                 <button className="profile-button" id="nav-search-button"
-                        onClick={() => {
-                            if (searchInput !== null) {
-                                if (searchInput.current.value.length < 1) {
-                                    history.push('/home/search');
-                                    setCurrUrl('/home/search');
-                                } else {
-                                    history.push(`/home/search/?query=${searchInput.current.value}`);
-                                    setCurrUrl(`/home/search/?query=${searchInput.current.value}`);
-                                }
-                            }
-                        }}>
+                        onClick={onSearchHandler}>
                     <img 
                         className="profile-button-icon" 
                         src={nextpage96} alt="Search" />
