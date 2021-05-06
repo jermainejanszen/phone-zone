@@ -1,12 +1,9 @@
 import React, { useRef, useState } from 'react'
-import { mockItems } from './FiveGrid';
 
 import '../styles/CheckoutItem.css';
 import '../styles/Item.css';
 
-const CheckoutItem = () => {
-
-    const item = mockItems[0];
+const CheckoutItem = ({ item }) => {
 
     const quantityInput = useRef(null);
     const [quantity, setQuantity] = useState(0);

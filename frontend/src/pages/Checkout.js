@@ -2,12 +2,19 @@ import React from 'react'
 import { useHistory } from 'react-router-dom';
 import CheckoutItem from '../components/CheckoutItem';
 import back from '../resources/back96.png';
+import { mockItems } from '../components/FiveGrid';
 
 import '../styles/Checkout.css';
 
 const Checkout = () => {
 
     const history = useHistory();
+
+    const getCheckoutItems = () => {
+        return mockItems.map((item) => {
+            return <li><CheckoutItem item={item}/></li>
+        });
+    }
 
     return (
         <div>
@@ -21,10 +28,7 @@ const Checkout = () => {
             <h1>Checkout</h1>
             <div id="items-container">
                 <ul id="items-list">
-                    <li><CheckoutItem /></li>
-                    <li><CheckoutItem /></li>
-                    <li><CheckoutItem /></li>
-                    <li><CheckoutItem /></li>
+                    {getCheckoutItems()}
                 </ul>
             </div>
         </div>
