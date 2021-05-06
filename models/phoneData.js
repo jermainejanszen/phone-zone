@@ -11,10 +11,7 @@ var PhoneSchema = new mongoose.Schema(
           reviewer:String,
           rating:Number,
           comment:String
-         }
-         ]
-       }
-		 )
+         }]})
 
 // get all phones 
 PhoneSchema.statics.getPhones = function(callback) {
@@ -32,11 +29,12 @@ PhoneSchema.statics.soldOutSoon = function(callback) {
             .exec(callback)
 }
 
-// Find best sellers
+// Find best sellers (atleast 2 ratings, not disabled)
 PhoneSchema.statics.bestSellers = function(callback) {
   return this
-          .find({ratings: {"$gt": 0}, disabled: {$exists: false} })
-          .sort({'stock':1})
+          .aggregate([{$addFields:{averageRating: {$avg: "$reviews.rating"}, numberOfRatings: {$size : "$reviews.rating"}}}])
+          .match({disabled: {$exists: false}, numberOfRatings: {"$gt": 1}})
+          .sort({averageRating:-1})
           .limit(5)
           .exec(callback)
 }
@@ -59,6 +57,14 @@ var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 //     console.log(result)
 //   }
 // })
+
+Phone.bestSellers(function(err, result) {
+  if (err){
+    console.log("Query error!")
+  } else {
+    console.log(result)
+  }
+})
   
 
 module.exports = Phone
