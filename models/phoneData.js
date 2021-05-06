@@ -1,7 +1,8 @@
 var mongoose = require('./db')
 
 var PhoneSchema = new mongoose.Schema(
-		{title: String, 
+	{_id: mongoose.SchemaTypes.ObjectId,
+        title: String, 
          brand: String,
          image:String,
          stock:Number,
@@ -53,6 +54,18 @@ PhoneSchema.statics.searchItemsOnBrand = function(brandName, callback) {
                 .exec(callback)
       }
 
+// Find all items by seller id
+PhoneSchema.statics.searchItemsBySeller = function(sellerId, callback) {
+        return this
+                .find({seller: sellerId})
+                .exec(callback)
+      }
+
+PhoneSchema.statics.removeItem = function(itemId, callback) {
+        return this
+                .remove({_id, itemId})
+                .exec(callback)
+      }
 var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 
 //call methods 
@@ -89,7 +102,15 @@ var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 //   }
 // })
 
-Phone.searchItemsOnBrand("Sony", function(err, result) {
+// Phone.searchItemsOnBrand("Sony", function(err, result) {
+//         if (err){
+//           console.log("Query error!")
+//         } else {
+//           console.log(result)
+//         }
+//       })
+
+Phone.searchItemsBySeller("5f5237a4c1beb1523fa3db73", function(err, result) {
         if (err){
           console.log("Query error!")
         } else {
