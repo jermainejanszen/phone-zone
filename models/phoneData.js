@@ -1,8 +1,7 @@
 var mongoose = require('./db')
 
 var PhoneSchema = new mongoose.Schema(
-	{_id: mongoose.SchemaTypes.ObjectId,
-        title: String, 
+	{title: String, 
          brand: String,
          image:String,
          stock:Number,
@@ -12,7 +11,9 @@ var PhoneSchema = new mongoose.Schema(
           reviewer:String,
           rating:Number,
           comment:String
-         }]})
+         }],
+        disabled:String,
+        }, {versionKey: false})
 
 // get all phones 
 PhoneSchema.statics.getPhones = function(callback) {
@@ -61,16 +62,30 @@ PhoneSchema.statics.searchItemsBySeller = function(sellerId, callback) {
                 .exec(callback)
       }
 
+// Find item by id
+PhoneSchema.statics.searchItemsById = function(id, callback) {
+        return this
+                .find({_id: id})
+                .exec(callback)
+      }
+
 PhoneSchema.statics.removeItem = function(itemId, callback) {
         return this
                 .remove({_id, itemId})
                 .exec(callback)
       }
 
-//set item to disabled //TODO this doesn't work
+//set item to disabled 
 PhoneSchema.statics.disableItem = function(id, callback){
         return this
-                .update({_id: id}, {$set:{$exists:true}})
+                .update({_id: id}, {$set:{'disabled':''}})
+                .exec(callback)
+              }
+
+//remove disabled status from item 
+PhoneSchema.statics.removeDisabledStatus = function(id, callback){
+        return this
+                .update({_id: id}, {$unset:{'disabled':''}})
                 .exec(callback)
               }
 
@@ -80,6 +95,17 @@ PhoneSchema.statics.deleteItem = function(id, callback){
                 .remove({_id: id})
                 .exec(callback)
               }
+
+// //create new phone 
+PhoneSchema.statics.createNewPhone = function(title, brand, image, stock, seller, price, disabled, callback){
+        if (disabled){
+                return this 
+                        .create({'title': title, 'brand': brand, 'image':image, 'stock':stock, 'seller':seller, 'price':price, reviews:[], 'disabled':''})
+        } else {
+                return this 
+                        .create({'title': title, 'brand': brand, 'image':image, 'stock':stock, 'seller':seller, 'price':price})
+        }
+      }            
 
 var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 
@@ -125,7 +151,7 @@ var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 //         }
 //       })
 
-// Phone.searchItemsBySeller("5f5237a4c1beb1523fa3db73", function(err, result) {
+// Phone.searchItemsBySeller("5f5237a4c1beb1523fa3dbac", function(err, result) {
 //         if (err){
 //           console.log("Query error!")
 //         } else {
@@ -133,7 +159,7 @@ var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 //         }
 //       })
 
-// Phone.disableItem("6091e173cbdb0f1713584d51", function(err, result) {
+// Phone.deleteItem("6091e173cbdb0f1713584d51", function(err, result) {
 //         if (err){
 //           console.log("Query error!")
 //         } else {
@@ -141,15 +167,38 @@ var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 //         }
 //       })
 
-Phone.deleteItem("6091e173cbdb0f1713584d51", function(err, result) {
+// Phone.createNewPhone("CLEAR CLEAN ESN Sprint EPIC 4G Galaxy", "Samsung", "imageurl", 3, "5f5237a4c1beb1523fa3dbac", 200.01, true, function(err, result) {
+//         if (err){
+//           console.log("Query error!")
+//         } else {
+//           console.log(result)
+//         }
+//       })
+
+// Phone.searchItemsById("6091e173cbdb0f1713584d4f", function(err, result) {
+//         if (err){
+//           console.log("Query error!")
+//         } else {
+//           console.log(result)
+//         }
+//       })
+  
+// Phone.disableItem("6091e173cbdb0f1713584d4f", function(err, result) {
+//         if (err){
+//           console.log("Query error!")
+//         } else {
+//           console.log(result)
+//         }
+//       })
+
+  
+Phone.removeDisabledStatus("6091e173cbdb0f1713584d4f", function(err, result) {
         if (err){
           console.log("Query error!")
         } else {
           console.log(result)
         }
       })
-  
-
 
 module.exports = Phone
 
