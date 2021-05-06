@@ -2,7 +2,7 @@ var mongoose = require('./db')
 var ObjectId = require('mongoose').Schema.ObjectId
 
 var userSchema = new mongoose.Schema(
-		{    _id: mongoose.SchemaTypes.ObjectId,
+		{  
          firstname: String, 
          lastname: String,
          email:String,
@@ -53,10 +53,10 @@ userSchema.statics.updatePassword= function(id, newPassword, callback){
         }
 
 // //create new user //TODO
-// userSchema.statics.createNewUser = function(firstName, lastName, email, password, callback){
-//   return this 
-//           .create({'firstname': firstName, 'lastname': lastName, 'email':email, 'password':password})
-// }
+userSchema.statics.createNewUser = function(firstName, lastName, email, password, callback){
+  return this 
+          .create({'firstname': firstName, 'lastname': lastName, 'email':email, 'password':password})
+}
 
 
 
@@ -88,13 +88,13 @@ var User = mongoose.model('User', userSchema, 'user_data')
 //   }
 // })
 
-// User.getUserInformation('5f5237a4c1beb1523fa3da65', function(err, result){
-//   if (err){
-//     console.log("Query error!")
-//   } else {
-//     console.log(result)
-//   }
-// })
+User.getUserInformation('5f5237a4c1beb1523fa3da65', function(err, result){
+  if (err){
+    console.log("Query error!")
+  } else {
+    console.log(result)
+  }
+})
 
 // User.updateUserInformation('5f5237a4c1beb1523fa3da65', 'john', 'smith', 'john.smith@gmail.com', function(err, result){
 //   if (err){
@@ -104,7 +104,13 @@ var User = mongoose.model('User', userSchema, 'user_data')
 //   }
 // })
 
-User.createNewUser('john', 'smith', 'john.smith@gmail.com', 'password')
+User.createNewUser('john', 'smith', 'john.smith@gmail.com', 'password', function(err, result){
+  if (err){
+    console.log("Query error!")
+  } else {
+    console.log(result)
+  }
+})
 
 User.validateUserInformation('john.smith@gmail.com', 'password', function(err, result){
   if (err){
