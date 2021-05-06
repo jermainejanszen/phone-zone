@@ -53,7 +53,7 @@ const CheckoutItem = ({ item, onRemove }) => {
                     <p>{item.stock}</p>
                 </div>
                 <div className="checkoutColumn">
-                    <b>Total Price</b>
+                    <b>Subtotal</b>
                     <p>${quantity * item.price}</p>
                 </div>
             </div>
