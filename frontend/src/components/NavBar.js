@@ -15,6 +15,7 @@ const NavBar = ({ authState, setAuthState }) => {
     const history = useHistory();
     const [currUrl, setCurrUrl] = useState(useRouteMatch().url);
     const [searchMode, setSearchMode] = useState(/\/home\/search*/.test(currUrl));
+    const [maxPrice, setMaxPrice] = useState("2000");
 
     // Checks the current url to determine whether to show the search page
     useEffect(() => {
@@ -49,6 +50,10 @@ const NavBar = ({ authState, setAuthState }) => {
         setCurrUrl(newUrl);
     }
 
+    const onPriceChangeHandler = () => {
+        setMaxPrice(searchPrice.current?.value);
+    }
+
     return (
         <div className="nav">
             <div id="title-section">
@@ -61,22 +66,35 @@ const NavBar = ({ authState, setAuthState }) => {
             <div id="search">
                 <input id="search-input" type="text" ref={searchInput} />
                 {searchMode ?
-                    <div>
-                        <label htmlFor="brand">Brand</label>
-                        <select name="brand" ref={searchBrand}>
-                            <option value="all">All Brands</option>
-                            <option value="apple">Apple</option>
-                            <option value="blackberry">Blackberry</option>
-                            <option value="htc">HTC</option>
-                            <option value="huawei">Huawei</option>
-                            <option value="lg">LG</option>
-                            <option value="motorola">Motorola</option>
-                            <option value="nokia">Nokia</option>
-                            <option value="samsung">Samsung</option>
-                            <option value="sony">Sony</option>
-                        </select>
-                        <label htmlFor="price">Max price:</label>
-                        <input type="range" name="price" defaultValue="2000" min="0" max="2000" ref={searchPrice} />
+                    <div id="search-filters-div">
+                        <div id="search-brand-div">
+                            <label htmlFor="brand">Brand</label>
+                            <select id="search-brand" name="brand" ref={searchBrand}>
+                                <option value="all">All Brands</option>
+                                <option value="apple">Apple</option>
+                                <option value="blackberry">Blackberry</option>
+                                <option value="htc">HTC</option>
+                                <option value="huawei">Huawei</option>
+                                <option value="lg">LG</option>
+                                <option value="motorola">Motorola</option>
+                                <option value="nokia">Nokia</option>
+                                <option value="samsung">Samsung</option>
+                                <option value="sony">Sony</option>
+                            </select>
+                        </div>
+                        <div id="search-price-div">
+                            <label htmlFor="price">Max price:</label>
+                            <input 
+                                id="search-price" 
+                                type="range" 
+                                name="price" 
+                                defaultValue="2000" 
+                                min="0" 
+                                max="2000"
+                                onChange={onPriceChangeHandler}
+                                ref={searchPrice} />
+                            <p id="search-price-text">{`$${maxPrice}`}</p>
+                        </div>
                     </div> :
                     <></>
                 }
