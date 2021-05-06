@@ -1,9 +1,11 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 
 import '../styles/CheckoutItem.css';
 import '../styles/Item.css';
 
-const CheckoutItem = ({ item }) => {
+import remove from '../resources/remove96.png';
+
+const CheckoutItem = ({ item, onRemove }) => {
 
     const [quantity, setQuantity] = useState(0);
 
@@ -55,6 +57,7 @@ const CheckoutItem = ({ item }) => {
                     <p>${quantity * item.price}</p>
                 </div>
             </div>
+            <img id="remove-button" src={remove} alt="Remove Item" onClick={() => onRemove(item.title)} />
         </div>
     );
 }

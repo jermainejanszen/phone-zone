@@ -14,3 +14,10 @@
 #back-button {
     width: 3em;
 }
+
+#checkout-container {
+    min-width: 115em;
+    max-width: 150em;
+    margin-left: auto;
+    margin-right: auto;
+}
