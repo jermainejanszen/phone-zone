@@ -58,20 +58,9 @@ userSchema.statics.createNewUser = function(firstName, lastName, email, password
           .create({'firstname': firstName, 'lastname': lastName, 'email':email, 'password':password})
 }
 
-
-
 var User = mongoose.model('User', userSchema, 'user_data')
 
-// User.getUsers(function(err, result) {
-//   if (err){
-//     console.log("Query error!")
-//   } else {
-//     console.log(result)
-//   }
-// })
-
-
-
+//eventually remove from here 
 // User.getPassword('5f5237a4c1beb1523fa3da65', function(err, result){
 //   if (err){
 //     console.log("Query error!")
