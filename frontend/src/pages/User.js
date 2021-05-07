@@ -1,30 +1,35 @@
-import { useState } from 'react';
-import Profile from '../components/Profile';
-import EditUser from '../components/EditUser';
+import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
+
+import EditProfile from '../components/EditProfile';
 import EditPassword from '../components/EditPassword';
 import NewListing from '../components/NewListing';
+import ProfileNavBar from '../components/ProfileNavBar';
 
+const User = ({authState, setAuthState}) => {
 
-const getPageContents = (state) => {
-    if(state === 1) {
-        return <EditUser />;
-    } else if(state === 2) {
-        return <EditPassword />;
-    } else if (state === 3) {
-        return <NewListing />;
-    } else {
-        return <Profile />;
-    }
-}
-
-const User = () => {
-
-    const [pageState, setPageState] = useState(0);
+    const match = useRouteMatch();
 
     return (
         <div>
-            
+            <ProfileNavBar
+                authState={authState}
+                setAuthState={setAuthState} />
+            <Switch>
+                <Route path={`${match.path}/listings`}>
+                    <NewListing />
+                </Route>
+                <Route path={`${match.path}/editpassword`}>
+                    <EditPassword />
+                </Route>
+                <Route path={match.path}>
+                    <EditProfile />
+                </Route>
+                <Route path="/">
+                    <Redirect to="/home" />
+                </Route>
+            </Switch>
         </div>
+        
     )
 }
 
