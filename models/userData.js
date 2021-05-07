@@ -52,7 +52,7 @@ userSchema.statics.updatePassword= function(id, newPassword, callback){
           .exec(callback)
         }
 
-// //create new user //TODO
+// //create new user 
 userSchema.statics.createNewUser = function(firstName, lastName, email, password, callback){
   return this 
           .create({'firstname': firstName, 'lastname': lastName, 'email':email, 'password':password})

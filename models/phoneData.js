@@ -96,6 +96,15 @@ PhoneSchema.statics.deleteItem = function(id, callback){
                 .exec(callback)
               }
 
+// decrement stock of phone // this could lead to negative amounts, need validation checking somewhere
+PhoneSchema.statics.decrementStock = function(id, amount, callback){
+        return this
+                .update({_id: id}, {$inc:{'stock':-amount}})
+                .exec(callback)
+              }
+
+
+
 // //create new phone 
 PhoneSchema.statics.createNewPhone = function(title, brand, image, stock, seller, price, disabled, callback){
         if (disabled){
@@ -175,13 +184,13 @@ var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 //         }
 //       })
 
-// Phone.searchItemsById("6091e173cbdb0f1713584d4f", function(err, result) {
-//         if (err){
-//           console.log("Query error!")
-//         } else {
-//           console.log(result)
-//         }
-//       })
+Phone.searchItemsById("6091e173cbdb0f1713584d4f", function(err, result) {
+        if (err){
+          console.log("Query error!")
+        } else {
+          console.log(result)
+        }
+      })
   
 // Phone.disableItem("6091e173cbdb0f1713584d4f", function(err, result) {
 //         if (err){
@@ -192,7 +201,15 @@ var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 //       })
 
   
-Phone.removeDisabledStatus("6091e173cbdb0f1713584d4f", function(err, result) {
+// Phone.removeDisabledStatus("6091e173cbdb0f1713584d4f", function(err, result) {
+//         if (err){
+//           console.log("Query error!")
+//         } else {
+//           console.log(result)
+//         }
+//       })
+
+Phone.decrementStock("6091e173cbdb0f1713584d4f", 2, function(err, result) {
         if (err){
           console.log("Query error!")
         } else {
