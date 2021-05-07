@@ -1,0 +1,22 @@
+#items-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#back-button-div {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 1.5em 2.5em;
+}
+
+#back-button {
+    width: 3em;
+}
+
+#checkout-container {
+    width: 150em;
+    margin-left: auto;
+    margin-right: auto;
+}
