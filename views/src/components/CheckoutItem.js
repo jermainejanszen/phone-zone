@@ -19,7 +19,7 @@ const CheckoutItem = ({ item, onRemove }) => {
 
     return (
         <div className="checkoutItemContainer">
-            <img className="checkoutItemImage" src={item.image}></img>
+            <img className="checkoutItemImage" src={`/phone_images/${item.brand}.jpeg`} alt="The phone" />
             <div className="checkoutInfoContainer">
                 <div className="checkoutColumn">
                     <b>{item.brand}</b>

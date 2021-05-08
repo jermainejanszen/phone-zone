@@ -267,7 +267,7 @@ const NewListing = () => {
                 <form id="manage-listings-form">
                     <h2>Add a new item</h2>
                     <div className="fieldDiv">
-                        <label className="formLabel" for="brand">Brand</label>
+                        <label className="formLabel" htmlFor="brand">Brand</label>
                         <select className="formSelect" title="brand" type="text" placeholder="e.g. Sony" required>
                             <option value="Apple">Apple</option>
                             <option value="BlackBerry">BlackBerry</option>
@@ -281,7 +281,7 @@ const NewListing = () => {
                         </select>
                     </div>
                     <div className="fieldDiv">
-                        <label className="formLabel" for="title">Title</label>
+                        <label className="formLabel" htmlFor="title">Title</label>
                         <input className="formInputText" title="title" type="text" placeholder="e.g. Sony Ericsson TM506 Unlock..." required/>
                     </div>
                     <div className="fieldDiv">
@@ -289,7 +289,7 @@ const NewListing = () => {
                         <input className="formInputText" id="description" title="description" type="text" required/>
                     </div>
                     <div className="fieldDiv">
-                        <label className="formLabel" for="price">Price</label>
+                        <label className="formLabel" htmlFor="price">Price</label>
                         <input className="formInputText" title="price" type="number" required/>
                     </div>
                     <button className="updateButton">Add item</button>

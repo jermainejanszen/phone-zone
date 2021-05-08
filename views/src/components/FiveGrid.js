@@ -90,7 +90,7 @@ const FiveGrid = ({ source }) => {
                 }
                 setItems(newItems);
             });
-    }, [])
+    }, [source])
 
     return (
         <div className="fiveGrid">
