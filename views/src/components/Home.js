@@ -11,7 +11,7 @@ const Home = () => {
             </div>
             <div className="topFiveGrid" id="best-sellers">
                 <h2>Best Sellers</h2>
-                <FiveGrid className="grid" source="/soldOutSoon" />
+                <FiveGrid className="grid" source="/bestSellers" />
             </div>
         </div>
     )

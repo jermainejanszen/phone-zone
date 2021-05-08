@@ -4,6 +4,7 @@ var router = express.Router()
 
 router.get('/getPhones', controller.getPhones)
 router.get('/soldOutSoon', controller.soldOutSoon)
+router.get('/bestSellers', controller.bestSellers)
 
 module.exports = router
 

@@ -20,3 +20,13 @@ module.exports.soldOutSoon = (req, res) => {
 		}	
 	});
 }
+
+module.exports.bestSellers = (req, res) => {
+	Phone.bestSellers((err, result) => {
+		if (err) {
+			console.log("Query error!")
+		} else {
+			return res.json(JSON.stringify({ message: {... result} }));
+		}	
+	});
+}
