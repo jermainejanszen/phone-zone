@@ -45,4 +45,6 @@
 #title {
     font-style: italic;
     flex-grow: 1;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
 }
