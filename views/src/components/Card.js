@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import '../styles/Card.css';
 
@@ -20,7 +19,7 @@ const Card = ({ item }) => {
                 <p className="cardText" id="title">{item.title}</p>
             </div>
         </Link>
-    )
+    );
 }
 
 export default Card

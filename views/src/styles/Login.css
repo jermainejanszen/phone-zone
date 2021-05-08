@@ -1,0 +1,97 @@
+.form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: stretch;
+    min-width: 30vh;
+    max-width: 30vh;
+}
+
+.login-form > a {
+    text-decoration: none;
+}
+
+.formHeading {
+    text-align: center;
+    font-weight: 500;
+}
+
+.fieldDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.formLabel {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.formInputText {
+    display: block;
+    padding: 0.6em 0.6em;
+    margin: 0.4em 0em 1em 0em;
+    width: 93%;
+    font-size: 1em;
+}
+
+.formInputText:focus {
+    outline: none;
+    border: 2px solid #6598cf;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+#password-visibility-container {
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+}
+
+#password-visibility {
+    width: 15px;
+    height: 15px;
+    margin-left: 0.8em;
+}
+
+#password-field-label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0.4em 0em 1em 0em;
+}
+
+#password-field-label > * {
+    margin: 0em;
+}
+
+#password-field-label > p {
+    font-size: 0.8em;
+    text-align: start;
+}
+
+.loginButtonsDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.loginButtons  {
+    border: transparent;
+    border-radius: 10px;
+    color: white;
+    font-size: 17px;
+    padding: 0.7em 0em;
+    margin: 0.7em 0em;
+    background-color: #4b96e6;
+}

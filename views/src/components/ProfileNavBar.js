@@ -1,10 +1,13 @@
+
 import { useState } from 'react';
 import { Link, useHistory, useRouteMatch } from 'react-router-dom';
+
 import logo from '../resources/logo.svg';
 import edit from '../resources/edit.svg';
 import key from '../resources/key.svg';
 import selling96 from '../resources/selling96.png';
 import signout96 from '../resources/signout96.png';
+
 import '../styles/ProfileNavBar.css'; 
 
 const ProfileNavBar = ({authState, setAuthState}) => {
@@ -59,7 +62,6 @@ const ProfileNavBar = ({authState, setAuthState}) => {
                 </button>
             </div>
         </div>  
-        
     )
 }
 

@@ -28,8 +28,7 @@ const User = ({authState, setAuthState}) => {
                     <Redirect to="/home" />
                 </Route>
             </Switch>
-        </div>
-        
+        </div>  
     )
 }
 

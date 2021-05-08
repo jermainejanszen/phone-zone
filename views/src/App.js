@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Switch, Route, BrowserRouter as Router, Redirect } from 'react-router-dom';
+
 import Checkout from './pages/Checkout';
 import Login from './pages/Login';
 import User from './pages/User'
 import Main from './pages/Main';
 import Signup from './pages/Signup';
-import './styles/App.css';
 import EditPassword from './components/EditPassword';
+
+import './styles/App.css';
 
 const App = () => {
 

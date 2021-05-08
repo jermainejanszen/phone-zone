@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from 'react'
 import '../styles/Profile.css';
 import '../styles/EditProfile.css';
@@ -46,7 +47,6 @@ const Profile = () => {
                 </button>
             </form>
         </div>
-
     )
 }
 

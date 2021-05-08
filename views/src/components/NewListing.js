@@ -1,4 +1,3 @@
-import React from 'react'
 import Card from './Card';
 
 import remove from '../resources/remove.svg';
