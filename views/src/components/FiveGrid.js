@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react';
 import Card from './Card';
+import Loading from './Loading';
 
 import '../styles/FiveGrid.css';
 
@@ -67,14 +69,37 @@ export const mockItems = [
     }
 ]
 
-const FiveGrid = () => {
+const FiveGrid = ({ source }) => {
+
+    const [items, setItems] = useState(null);
+
+    useEffect(() => {
+        fetch(source)
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+            })
+            .then(data => JSON.parse(data))
+            .then(data => {
+                var newItems = [];
+                for(let i = 0; i < 5; i++) {
+                    if (data.message[i]) {
+                        newItems.push(data.message[i]);
+                    }
+                }
+                setItems(newItems);
+            });
+    }, [])
+
     return (
         <div className="fiveGrid">
-            <Card className="card" item={mockItems[0]} />
-            <Card className="card" item={mockItems[1]} />
-            <Card className="card" item={mockItems[2]} />
-            <Card className="card" item={mockItems[3]} />
-            <Card className="card" item={mockItems[4]} />
+            {items ? 
+                items.map((item, index) => {
+                    return <Card className="card" item={item} key={index} />
+                }) :
+                <Loading />
+            }
         </div>
     )
 }

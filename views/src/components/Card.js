@@ -10,7 +10,7 @@ const Card = ({ item }) => {
                 pathname: `/home/item/?title=${item.title}`,
                 state: item
             }}>
-            <img className="cardImage" src={item.image} alt="The phone" />
+            <img className="cardImage" src={`/phone_images/${item.brand}.jpeg`} alt="The phone" />
             <div className="cardDetails">
                 <div className="brandPrice">
                     <p className="cardText" id="brand">{item.brand}</p>
