@@ -1,10 +1,15 @@
-
+import { Link } from 'react-router-dom';
 import '../styles/Card.css';
 
 const Card = ({ item }) => {
+
     return (
-        <div className="card">
-            
+        <Link 
+            className="card"
+            to={{
+                pathname: `/home/item/?title=${item.title}`,
+                state: item
+            }}>
             <img className="cardImage" src={item.image} alt="The phone" />
             <div className="cardDetails">
                 <div className="brandPrice">
@@ -13,8 +18,8 @@ const Card = ({ item }) => {
                 </div>
                 <p className="cardText" id="title">{item.title}</p>
             </div>
-        </div>
-    )
+        </Link>
+    );
 }
 
 export default Card

@@ -1,0 +1,9 @@
+#search-results-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 95em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 6em;
+}

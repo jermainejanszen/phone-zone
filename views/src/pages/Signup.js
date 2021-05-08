@@ -1,69 +1,109 @@
-import React from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import logo from '../resources/logo.svg';
 
-import '../styles/Login.css';
+import '../styles/Auth.css';
 
 const Signup = () => {
 
     const history = useHistory();
+    const [form, setForm] = useState({});
+
+    const handleChange = (event) => {
+        const field = event.target;
+        const label = document.getElementById(event.target.title + "-label");
+
+        if (field.title !== "password") {
+            field.value = field.value.trim();
+        }
+
+        if (field.checkValidity()) {
+            label.classList.remove("formLabelInvalid");
+            label.classList.add("formLabelValid");
+        } else {
+            label.classList.remove("formLabelValid");
+            label.classList.add("formLabelInvalid");
+        }
+
+        setForm({
+            ...form,
+            [event.target.title]: event.target.value.trim()
+        });
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(form)
+
+        /* TODO: Implement logic for signing the user up */
+    }
 
     return (
-        <div className="form-container">
-            <form className="login-form">
-                <h1 className="formHeading">Create your account</h1>
+        <div>
+            <div id="auth-logo-div">
+                <img id="auth-logo" src={logo} alt={"Website Logo"}  
+                    onClick={() => {
+                        history.push('/');
+                    }}>
+                </img>
+                <p id="name">Phone Zone</p>
+            </div>
+            <div className="formContainer">
+                <form className="authForm" onSubmit={handleSubmit}>
+                    <h1 className="formHeading">Create your account</h1>
 
-                <div className="fieldDiv">
-                    <label className="formLabel required" for="first-name">First Name</label>
-                    <input className="formInputText" title="first-name" type="text" required />
-                </div>
+                    <div className="fieldDiv">
+                        <label id="firstname-label" className="formLabel formLabelInvalid">First Name</label>
+                        <input className="formInputText" onChange={handleChange} title="firstname" type="text" required />
+                    </div>
 
-                <div className="fieldDiv">
-                    <label className="formLabel required" for="last-name">Last Name</label>
-                    <input className="formInputText" title="last-name" type="text" required />
-                </div>
+                    <div className="fieldDiv">
+                        <label id="lastname-label" className="formLabel formLabelInvalid">Last Name</label>
+                        <input className="formInputText" onChange={handleChange} title="lastname" type="text" required />
+                    </div>
 
-                <div className="fieldDiv">
-                    <label className="formLabel required" for="email">Email</label>
-                    <input className="formInputText" title="email" type="email" required />
-                </div>
+                    <div className="fieldDiv">
+                        <label id="email-label" className="formLabel formLabelInvalid">Email</label>
+                        <input className="formInputText" onChange={handleChange} title="email" type="email" required />
+                    </div>
 
-                <div className="fieldDiv">
-                    <div id="password-field-label">
-                        <label className="formLabel required" for="password">Password</label>
-                        <p class="advice">
+                    <div className="fieldDiv">
+                        
+                        <label id="password-label" className="formLabel formLabelInvalid">Password</label>
+                        <p className="advice">
                             Make sure it's at least 8 characters including a lowercase and an uppercase letter.
                         </p>
+                    
+                        <input className="formInputText" id="password" onChange={handleChange} title="password" type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$" required />
                     </div>
-                    <input className="formInputText" id="password" title="password" type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$" required />
-                </div>
 
-                <div id="password-visibility-container">
-                    <label id="password-visibility-label" for="password-visibility">Toggle Password Visibility</label>
-                    <input 
-                        id="password-visibility" 
-                        title="password-visibility"
-                        type="checkbox"
-                        onClick={() => {
-                            let field = document.getElementById("password")
-                            field.type = field.type === "password" ? "text" : "password" 
-                        }}
-                        >
-                    </input>
-                </div>
+                    <div id="password-visibility-container">
+                        <label className="formLabel">Toggle Password Visibility</label>
+                        <input 
+                            id="password-visibility" 
+                            title="password-visibility"
+                            type="checkbox"
+                            onClick={() => {
+                                let field = document.getElementById("password")
+                                field.type = field.type === "password" ? "text" : "password" 
+                            }}
+                            >
+                        </input>
+                    </div>
 
-                <div className="loginButtonsDiv">
-                    <input className="loginButtons" id="signup-button" type="submit" value="Create account" />
+                    <div className="buttonsDiv">
+                        <input className="submitButton" type="submit" value="Create account" />
 
-                    <button 
-                        className="loginButtons" 
-                        id="nav-button"
-                        onClick={() => {
-                            history.push('/login');
-                        }}>
-                            Already have an account? Login here
-                    </button>
-                </div>
-            </form>
+                        <button 
+                            className="navButton" 
+                            onClick={() => {
+                                history.push('/login');
+                            }}>
+                                Already have an account? Login here
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }
