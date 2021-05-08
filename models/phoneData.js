@@ -1,19 +1,19 @@
 var mongoose = require('./db')
 
-var PhoneSchema = new mongoose.Schema(
-	{title: String, 
-         brand: String,
-         image:String,
-         stock:Number,
-         seller:String,
-         price:Number,
-         reviews:[{
-          reviewer:String,
-          rating:Number,
-          comment:String
-         }],
+var PhoneSchema = new mongoose.Schema({
+        title: String, 
+        brand: String,
+        image:String,
+        stock:Number,
+        seller:String,
+        price:Number,
+        reviews:[{
+            reviewer:String,
+            rating:Number,
+            comment:String
+        }],
         disabled:String,
-        }, {versionKey: false})
+    }, {versionKey: false})
 
 // get all phones 
 PhoneSchema.statics.getPhones = function(callback) {
@@ -105,12 +105,12 @@ PhoneSchema.statics.decrementStock = function(id, amount, callback){
 
 // //create new phone 
 PhoneSchema.statics.createNewPhone = function(title, brand, image, stock, seller, price, disabled, callback){
-        if (disabled){
-                return this 
-                        .create({'title': title, 'brand': brand, 'image':image, 'stock':stock, 'seller':seller, 'price':price, reviews:[], 'disabled':''})
+        if (disabled) {
+            return this 
+                .create({'title': title, 'brand': brand, 'image':image, 'stock':stock, 'seller':seller, 'price':price, reviews:[], 'disabled':''})
         } else {
-                return this 
-                        .create({'title': title, 'brand': brand, 'image':image, 'stock':stock, 'seller':seller, 'price':price})
+            return this 
+                .create({'title': title, 'brand': brand, 'image':image, 'stock':stock, 'seller':seller, 'price':price})
         }
       }            
 
