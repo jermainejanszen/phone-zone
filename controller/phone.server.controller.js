@@ -1,22 +1,22 @@
-var Phone = require("../models/phoneData")
+var Phone = require("../models/phoneData");
 
 
-module.exports.getPhones=function(req,res){
-	Phone.getPhones(function(err,result){
-		if (err){
+module.exports.getPhones = (req, res) => {
+	Phone.getPhones((err, result) => {
+		if (err) {
 			console.log("Cannot find phones!")
-		}else{
-			console.log(result)
-		}	
-	})	
+		} else {
+			return res.json(JSON.stringify({ message: {... result} }));
+		}
+	});
 }
 
-module.exports.soldOutSoon=function(req,res){
-	Phone.soldOutSoon(function(err,result){
-		if (err){
+module.exports.soldOutSoon = (req, res) => {
+	Phone.soldOutSoon((err, result) => {
+		if (err) {
 			console.log("Query error!")
-		}else{
-			console.log(result)
+		} else {
+			return res.json(JSON.stringify({ message: {... result} }));
 		}	
 	});
 }

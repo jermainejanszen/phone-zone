@@ -10,11 +10,6 @@ app.set('views', path.join(__dirname,'../views'));
 
 app.use('/', router);
 
-
-// app.get('/api', (req, res) => {
-//     res.json({ message: "COMP5347 Assignment 2" });
-// });
-
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });

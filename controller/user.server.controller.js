@@ -1,23 +1,23 @@
-var Phone = require("../models/userData")
+var Phone = require("../models/userData");
 
 
-module.exports.getUsers=function(req,res){
-	Phone.getUsers(function(err,result){
-		if (err){
+module.exports.getUsers = (req, res) => {
+	Phone.getUsers((err, result) => {
+		if (err) {
 			console.log("Cannot find users!")
-		}else{
-			console.log(result)
+		} else {
+			return res.json(JSON.stringify({ message: {... result} }));
 		}	
-	})	
+	});	
 }
 
-module.exports.getPassword = function(req, res) {
+module.exports.getPassword = (req, res) => {
     id = req.query.id;
-    User.getPassword(id, function(err, result){
-        if (err){
+    User.getPassword(id, (err, result) => {
+        if (err) {
             console.log("Query error!")
         } else {
-            console.log(result)
+			return res.json(JSON.stringify({ message: {... result} }));
         }
-    })
+    });
 }
