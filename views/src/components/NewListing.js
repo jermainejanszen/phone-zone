@@ -285,7 +285,7 @@ const NewListing = () => {
                         <input className="formInputText" title="title" type="text" placeholder="e.g. Sony Ericsson TM506 Unlock..." required/>
                     </div>
                     <div className="fieldDiv">
-                        <label className="formLabel" for="description">Description</label>
+                        <label className="formLabel" htmlFor="description">Description</label>
                         <input className="formInputText" id="description" title="description" type="text" required/>
                     </div>
                     <div className="fieldDiv">
