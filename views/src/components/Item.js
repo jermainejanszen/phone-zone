@@ -31,7 +31,7 @@ const Item = () => {
         <div id="item-page-div">
             <div id="item-details-div">
                 <div id="item-image-div">
-                    <img id="item-image" src={item.image} alt="The phone" />
+                    <img id="item-image" src={`/phone_images/${item.brand}.jpeg`} alt="The phone" />
                     <div id="item-actions-div">
                         <div id="item-quantity-div">
                             <button 
