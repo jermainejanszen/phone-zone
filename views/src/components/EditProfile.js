@@ -22,7 +22,7 @@ const Profile = () => {
                     <label className="formLabel" htmlFor="firstName">First Name</label>
                     <input className="formInputText" value={firstName} title="firstName" type="text"
                         ref={firstNameInput}
-                        onChange={() => setFirstName(firstNameInput.current?.value.substring(0, 12))} />
+                        onChange={() => setFirstName(firstNameInput.current?.value.substring(0, 24))} />
                 </div>
                 <div className="fieldDiv">
                     <label className="formLabel" htmlFor="lastName">Last Name</label>
