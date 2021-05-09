@@ -1,8 +1,8 @@
-var Phone = require("../models/userData");
+var User = require("../models/userData");
 
 
 module.exports.getUsers = (req, res) => {
-	Phone.getUsers((err, result) => {
+	User.getUsers((err, result) => {
 		if (err) {
 			console.log("Cannot find users!")
 		} else {
@@ -36,10 +36,10 @@ module.exports.updatePassword = (req, res) => {
 // get user information from id - currently hardcoded id
 module.exports.getUserInformation = (req, res) => {
     User.getUserInformation('5f5237a4c1beb1523fa3da65', function(err, result){
-		if (err){
+		if (err) {
 			console.log("Query error!")
 		} else {
-			console.log(result)
+			return res.json(JSON.stringify({ message: {... result} }));
 		}
 	})
 }
