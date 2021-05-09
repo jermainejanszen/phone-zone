@@ -30,3 +30,14 @@ module.exports.bestSellers = (req, res) => {
 		}	
 	});
 }
+
+
+module.exports.searchItemsOnBrandTitleMaxPrice = (req, res) => {
+	Phone.searchItemsOnBrandTitleMaxPrice("Sony", "black", 300, function(err,result){
+		if (err){
+			console.log("Query error!")
+		}else{
+			console.log(result)
+		}	
+	});
+}

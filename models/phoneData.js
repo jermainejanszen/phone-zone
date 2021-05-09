@@ -62,6 +62,12 @@ PhoneSchema.statics.searchItemsBySeller = function(sellerId, callback) {
                 .exec(callback)
       }
 
+// Find all items of certain brand
+PhoneSchema.statics.searchItemsOnBrandTitleMaxPrice = function(brandName, searchTerm, maxPrice, callback) {
+        return this
+                .find({brand: brandName, title: { $regex: searchTerm, $options: "i" }, price: {$lte: maxPrice}})                .exec(callback)
+      }
+
 // Find item by id
 PhoneSchema.statics.searchItemsById = function(id, callback) {
         return this
@@ -124,6 +130,8 @@ var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 // 		console.log(result)
 // 	}	
 // });
+
+
 
 // Phone.getPhones(function(err, result) {
 //   if (err){
