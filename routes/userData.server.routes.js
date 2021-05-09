@@ -2,12 +2,12 @@ var express = require('express')
 var controller = require('../controller/user.server.controller')
 var router = express.Router()
 
-router.get('/updatePassword', controller.updatePassword)
+router.get('/updatePassword/:id/:password', controller.updatePassword)
 router.get('/getUsers', controller.getUsers)
-router.get('/getPassword', controller.getPassword)
+router.get('/getPassword/:id', controller.getPassword)
 router.get('/getUserInformation/:id', controller.getUserInformation)
-router.get('/updateUserInformation', controller.updateUserInformation)
-router.get('/createNewUser', controller.createNewUser)
-router.get('/validateUserInformation', controller.validateUserInformation)
+router.get('/updateUserInformation/:id/:firstname/:lastname/:email', controller.updateUserInformation)
+router.get('/createNewUser/:firstname/:lastname/:email/:password', controller.createNewUser)
+router.get('/validateUserInformation/:email/:password', controller.validateUserInformation)
 
 module.exports = router

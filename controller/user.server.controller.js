@@ -12,8 +12,7 @@ module.exports.getUsers = (req, res) => {
 }
 
 module.exports.getPassword = (req, res) => {
-    id = req.query.id;
-    User.getPassword(id, (err, result) => {
+    User.getPassword(req.params.id, (err, result) => {
         if (err) {
             console.log("Query error!")
         } else {
@@ -22,9 +21,9 @@ module.exports.getPassword = (req, res) => {
     });
 }
 
-// update user password - currently hard coded id
+// update user password 
 module.exports.updatePassword = (req, res) => {
-    User.updatePassword('5f5237a4c1beb1523fa3da65', "potatosalad", function(err, result){
+    User.updatePassword(req.params.id, req.params.password, function(err, result){
 		if (err){
 		  	console.log("Query error!")
 		} else {
@@ -33,7 +32,7 @@ module.exports.updatePassword = (req, res) => {
 	  })
 }
 
-// get user information from id - currently hardcoded id
+// get user information from id 
 module.exports.getUserInformation = (req, res) => {
     User.getUserInformation(req.params.id, function(err, result){
 		if (err) {
@@ -44,9 +43,9 @@ module.exports.getUserInformation = (req, res) => {
 	})
 }
 
-// update user information - currently hard coded parameters
+// update user information 
 module.exports.updateUserInformation = (req, res) => {
-    User.updateUserInformation('5f5237a4c1beb1523fa3da65', 'john', 'smith', 'john.smith@gmail.com', function(err, result){
+    User.updateUserInformation(req.params.id, req.params.firstname, req.params.lastname, req.params.email, function(err, result){
 		if (err){
 		  	console.log("Query error!")
 		} else {
@@ -55,9 +54,9 @@ module.exports.updateUserInformation = (req, res) => {
 	  })
 }
 
-// create new user - currently hardcoded parameters
+// create new user 
 module.exports.createNewUser = (req, res) => {
-    User.createNewUser('john', 'smith', 'john.smith@gmail.com', 'password', function(err, result) {
+    User.createNewUser(req.params.firstname, req.params.lastname, req.params.email, req.params.password, function(err, result) {
 		if (err) {
 			console.log("Query error!")
 		} else {
@@ -66,9 +65,9 @@ module.exports.createNewUser = (req, res) => {
 	})
 }
 
-// validate user information - hard coded parameters 
+// validate user information
 module.exports.validateUserInformation = (req, res) => {
-    User.validateUserInformation('john.smith@gmail.com', 'password', function(err, result){
+    User.validateUserInformation(req.params.email, req.params.password, function(err, result){
 		if (err){
 			console.log("Query error!")
 		} else {
