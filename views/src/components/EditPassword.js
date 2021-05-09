@@ -1,15 +1,18 @@
-import React from 'react'
+import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import UserContext from '../providers/UserContext';
+
 import '../styles/Profile.css';
 import '../styles/EditPassword.css';
 
 
 const EditPassword = () => {
     const history = useHistory();
+    const { user, setUser } = useContext(UserContext);
 
     return (
         <div className="profileContainer">
-            <h1>Hi, Jane</h1>
+            <h1>{`Hi, ${user.firstname}`}</h1>
             <form id="password-form">
                 <h2>Change your password</h2>
                 <div className="fieldDiv">

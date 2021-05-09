@@ -5,15 +5,13 @@ import EditPassword from '../components/EditPassword';
 import NewListing from '../components/NewListing';
 import ProfileNavBar from '../components/ProfileNavBar';
 
-const User = ({authState, setAuthState}) => {
+const User = () => {
 
     const match = useRouteMatch();
 
     return (
         <div>
-            <ProfileNavBar
-                authState={authState}
-                setAuthState={setAuthState} />
+            <ProfileNavBar />
             <Switch>
                 <Route path={`${match.path}/listings`}>
                     <NewListing />
