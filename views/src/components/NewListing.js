@@ -23,8 +23,13 @@ const NewListing = () => {
             setItems(newItems);
             setLoaded(true);
         }
-        fetchItems();
-    })
+
+        if (!loaded) {
+            fetchItems();
+        }
+
+    }, [loaded]);
+
     console.log(items);
 
     const mapItems = () => {
