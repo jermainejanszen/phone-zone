@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useContext } from 'react'
 import { Link, useRouteMatch, useHistory } from 'react-router-dom';
 import SearchContext from '../providers/SearchContext';
+import UserContext from '../providers/UserContext';
 
 import logo from '../resources/logo.svg';
 import checkout96 from '../resources/checkout96.png';
@@ -11,7 +12,15 @@ import nextpage96 from '../resources/nextpage96.png';
 
 import '../styles/NavBar.css';
 
-const NavBar = ({ authState, setAuthState }) => {
+const NavBar = () => {
+
+    const { user, setUser } = useContext(UserContext);
+    const [loggedIn, setLoggedIn] = useState(user !== null);
+    useEffect(() => {
+        if (loggedIn !== (user !== null)) {
+            setLoggedIn(user !== null);
+        }
+    }, [user, loggedIn])
 
     const history = useHistory();
     const [currUrl, setCurrUrl] = useState(useRouteMatch().url);
@@ -121,7 +130,7 @@ const NavBar = ({ authState, setAuthState }) => {
                     className="profile-button">
                     <img className="profile-button-icon" src={checkout96} alt="Checkout" />
                 </button>
-                {authState === 0 ?
+                {!loggedIn ?
                     <button
                         onClick={() => history.push('/login')}
                         className="profile-button">
@@ -135,7 +144,10 @@ const NavBar = ({ authState, setAuthState }) => {
                         </button> 
                         <button
                             className="profile-button"
-                            onClick={() => history.push('/')}>
+                            onClick={() => {
+                                setUser(null);
+                                history.push('/');
+                            }}>
                             <img className="profile-button-icon" src={signout96} alt="Logout" />
                         </button>
                     </div>

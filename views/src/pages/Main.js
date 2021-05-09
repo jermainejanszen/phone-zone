@@ -7,7 +7,7 @@ import Item from '../components/Item';
 import { SearchProvider } from '../providers/SearchContext';
 import { useState } from 'react';
 
-const Main = ({ authState }) => {
+const Main = () => {
 
     const match = useRouteMatch();
 
@@ -20,9 +20,7 @@ const Main = ({ authState }) => {
     return (
         <div>
             <SearchProvider value={{ search, setSearch }}>
-                <NavBar 
-                    className="nav"
-                    authState={authState} />
+                <NavBar className="nav" />
                 <Switch>
                     <Route path={`${match.path}/item`}>
                         <Item />
