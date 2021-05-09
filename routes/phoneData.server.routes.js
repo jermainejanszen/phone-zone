@@ -6,6 +6,15 @@ router.get('/getPhones', controller.getPhones)
 router.get('/soldOutSoon', controller.soldOutSoon)
 router.get('/bestSellers', controller.bestSellers)
 router.get('/searchOnFilters', controller.searchItemsOnBrandTitleMaxPrice)
+router.get('/searchItemsOnTitle', controller.searchItemsOnTitle)
+router.get('/searchItemsOnBrand', controller.searchItemsOnBrand)
+router.get('/searchItemsBySeller', controller.searchItemsBySeller)
+router.get('/deleteItem', controller.deleteItem)
+router.get('/createNewPhone', controller.createNewPhone)
+router.get('/searchItemsById', controller.searchItemsById)
+router.get('/disableItem', controller.disableItem)
+router.get('/removeDisabledStatus', controller.removeDisabledStatus)
+router.get('/decrementStock', controller.decrementStock)
 
 module.exports = router
 
