@@ -12,7 +12,7 @@ const Main = ({ authState }) => {
     const match = useRouteMatch();
 
     const defaultSearch = { 
-        search: "",
+        title: "",
         brand: "all",
         price: "2000"};
     const [search, setSearch] = useState(defaultSearch);

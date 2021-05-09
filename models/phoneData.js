@@ -65,7 +65,7 @@ PhoneSchema.statics.searchItemsBySeller = function(sellerId, callback) {
 // Find all items of certain brand
 PhoneSchema.statics.searchItemsOnBrandTitleMaxPrice = function(brandName, searchTerm, maxPrice, callback) {
         return this
-                .find({brand: brandName, title: { $regex: searchTerm, $options: "i" }, price: {$lte: maxPrice}})                .exec(callback)
+                .find({brand: { $regex: brandName, $options: "i" }, title: { $regex: searchTerm, $options: "i" }, price: {$lte: maxPrice}})                .exec(callback)
       }
 
 // Find item by id

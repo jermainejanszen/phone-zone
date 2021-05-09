@@ -52,7 +52,7 @@ const NavBar = ({ authState, setAuthState }) => {
         history.push(newUrl);
         setCurrUrl(newUrl);
         setSearch({
-            search: searchQuery,
+            title: searchQuery,
             brand: brandQuery,
             price: priceQuery
         });
@@ -79,15 +79,15 @@ const NavBar = ({ authState, setAuthState }) => {
                             <label htmlFor="brand">Brand</label>
                             <select id="search-brand" name="brand" ref={searchBrand}>
                                 <option value="all">All Brands</option>
-                                <option value="apple">Apple</option>
-                                <option value="blackberry">Blackberry</option>
-                                <option value="htc">HTC</option>
-                                <option value="huawei">Huawei</option>
-                                <option value="lg">LG</option>
-                                <option value="motorola">Motorola</option>
-                                <option value="nokia">Nokia</option>
-                                <option value="samsung">Samsung</option>
-                                <option value="sony">Sony</option>
+                                <option value="Apple">Apple</option>
+                                <option value="Blackberry">Blackberry</option>
+                                <option value="Htc">HTC</option>
+                                <option value="Huawei">Huawei</option>
+                                <option value="Lg">LG</option>
+                                <option value="Motorola">Motorola</option>
+                                <option value="Nokia">Nokia</option>
+                                <option value="Samsung">Samsung</option>
+                                <option value="Sony">Sony</option>
                             </select>
                         </div>
                         <div id="search-price-div">

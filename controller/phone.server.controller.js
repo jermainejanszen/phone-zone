@@ -35,12 +35,15 @@ module.exports.bestSellers = (req, res) => {
 
 // find items based on title, brand, max price - currently hard coded parameters
 module.exports.searchItemsOnBrandTitleMaxPrice = (req, res) => {
-	Phone.searchItemsOnBrandTitleMaxPrice("Sony", "black", 300, function(err,result){
-		if (err){
-			console.log("Query error!")
-		}else{
-			console.log(result)
-		}	
+	Phone.searchItemsOnBrandTitleMaxPrice(
+        req.params.brand === "all" ? "" : req.params.brand, 
+        req.params.title ? req.params.title : "", 
+        parseInt(req.params.price), function(err,result) {
+            if (err) {
+                console.log("Query error!")
+            } else {
+                return res.json(JSON.stringify({ message: {... result} }));
+            }	
 	});
 }
 
