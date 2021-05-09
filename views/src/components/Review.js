@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Rating from './Rating';
 
 import '../styles/Review.css';
@@ -7,6 +7,22 @@ const Review = ({ data }) => {
 
     const longComment = data.comment.length > 200;
     const [showLess, setShowLess] = useState(true);
+    const [reviewer, setReviewer] = useState({ firstname: "Unknown", lastname: "Reviewer" });
+
+    useEffect(() => {
+        const fetchReviewer = async () => {
+            const response = await fetch(`/user/getUserInformation/${data.reviewer}`);
+            try {
+                const data = await response.json();
+                const reviewerPromise = await JSON.parse(data);
+                setReviewer(reviewerPromise.message[0]);
+            } catch(err) {
+                console.error(err);
+            }
+        }
+
+        fetchReviewer()
+    }, [data.reviewer])
 
     const getComment = () => {
         if(showLess && longComment) {
@@ -23,7 +39,7 @@ const Review = ({ data }) => {
     return (
         <div id="review-div">
             <div id="review-details">
-                <p id="review-user">{`User: ${data.reviewer}`}</p>
+                <p id="review-user">{`User: ${reviewer.firstname} ${reviewer.lastname}`}</p>
                 <Rating rating={data.rating} />
             </div>
             <p id="review-comment">{getComment()}</p>

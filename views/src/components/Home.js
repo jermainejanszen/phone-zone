@@ -10,7 +10,7 @@ const Home = () => {
                 <FiveGrid className="grid" source="/phone/soldOutSoon" />
             </div>
             <div className="topFiveGrid" id="best-sellers">
-                <h2>Best Sellers</h2>
+                <h2>Best Sellers</h2> 
                 <FiveGrid className="grid" source="/phone/bestSellers" />
             </div>
         </div>
