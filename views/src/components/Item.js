@@ -3,13 +3,29 @@ import Reviews from './Reviews';
 
 import addshoppingcart96 from '../resources/addshoppingcart96.png';
 import '../styles/Item.css';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const Item = () => {
 
     const history = useHistory();
     const item = history.location?.state;
     const quantityInput = useRef(null);
+
+    const [seller, setSeller] = useState(null);
+
+    useEffect(() => {
+        const fetchSeller = async () => {
+            const response = await fetch('/user/getUserInformation');
+            try {
+                const data = await JSON.parse(response.json);
+                const sellerData = data.message;
+            } catch(err) {
+                console.error(err);
+            }
+        }
+
+        fetchSeller();
+    }, [seller])
 
     const minusOnClickHandler = () => {
         const curValue = parseInt(quantityInput.current.value);

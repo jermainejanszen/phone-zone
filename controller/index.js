@@ -9,8 +9,8 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 app.set('views', path.join(__dirname,'../views'));
 
-app.use('/', phoneRouter);
-app.use('/', userRouter);
+app.use('/phone', phoneRouter);
+app.use('/user', userRouter);
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
