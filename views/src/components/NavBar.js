@@ -71,7 +71,7 @@ const NavBar = ({ authState, setAuthState }) => {
                 <p id="name">Phone Zone</p>
             </div>
 
-            <div id="search">
+            <form id="search" onSubmit={(event) => event.preventDefault()}>
                 <input id="search-input" type="text" ref={searchInput} />
                 {searchMode ?
                     <div id="search-filters-div">
@@ -107,12 +107,13 @@ const NavBar = ({ authState, setAuthState }) => {
                     <></>
                 }
                 <button className="profile-button" id="nav-search-button"
+                        type="submit"
                         onClick={onSearchHandler}>
                     <img 
                         className="profile-button-icon" 
                         src={nextpage96} alt="Search" />
                 </button>
-            </div>
+            </form>
 
             <div id="profile">
                 <button
