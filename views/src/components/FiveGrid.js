@@ -71,35 +71,33 @@ export const mockItems = [
 
 const FiveGrid = ({ source }) => {
 
-    const [items, setItems] = useState(null);
+    const [items, setItems] = useState([]);
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        fetch(source)
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-            })
-            .then(data => JSON.parse(data))
-            .then(data => {
-                var newItems = [];
-                for(let i = 0; i < 5; i++) {
-                    if (data.message[i]) {
-                        newItems.push(data.message[i]);
-                    }
-                }
-                setItems(newItems);
-            });
+        const fetchItems = async () => {
+            const response = await fetch(source);
+            const data = await response.json();
+            const itemsPromise = await JSON.parse(data);
+            const newItems = Object.values(itemsPromise.message);
+            setItems(newItems);
+            setLoaded(true);
+        }
+
+        fetchItems();
     }, [source])
+
+    const mapItems = () => {
+        if (items.length > 0) {
+            return items.map((item, index) => <Card item={item} key={index} />);
+        }
+
+        return <p id="search-no-items">No items found.</p>
+    }
 
     return (
         <div className="fiveGrid">
-            {items ? 
-                items.map((item, index) => {
-                    return <Card className="card" item={item} key={index} />
-                }) :
-                <Loading />
-            }
+            {loaded ? mapItems() : <Loading />}
         </div>
     )
 }
