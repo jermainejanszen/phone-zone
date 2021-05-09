@@ -35,7 +35,7 @@ module.exports.updatePassword = (req, res) => {
 
 // get user information from id - currently hardcoded id
 module.exports.getUserInformation = (req, res) => {
-    User.getUserInformation('5f5237a4c1beb1523fa3da65', function(err, result){
+    User.getUserInformation(req.params.id, function(err, result){
 		if (err) {
 			console.log("Query error!")
 		} else {

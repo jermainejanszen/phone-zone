@@ -11,21 +11,22 @@ const Item = () => {
     const item = history.location?.state;
     const quantityInput = useRef(null);
 
-    const [seller, setSeller] = useState(null);
+    const [seller, setSeller] = useState({ firstname: "Unknown", lastname: "Seller" });
 
     useEffect(() => {
         const fetchSeller = async () => {
-            const response = await fetch('/user/getUserInformation');
+            const response = await fetch(`/user/getUserInformation/${item.seller}`);
             try {
-                const data = await JSON.parse(response.json);
-                const sellerData = data.message;
+                const data = await response.json();
+                const sellerPromise = await JSON.parse(data);
+                setSeller(sellerPromise.message[0]);
             } catch(err) {
                 console.error(err);
             }
         }
 
-        fetchSeller();
-    }, [seller])
+        fetchSeller()
+    }, [])
 
     const minusOnClickHandler = () => {
         const curValue = parseInt(quantityInput.current.value);
@@ -75,7 +76,7 @@ const Item = () => {
                     <p id="item-brand">{item.brand}</p>
                     <p id="item-title">{item.title}</p>
                     <p id="item-stock">{`Stock remaining: ${item.stock}`}</p>
-                    <p id="item-seller">{`Seller: ${item.seller}`}</p>
+                    <p id="item-seller">{`Seller: ${seller.firstname} ${seller.lastname}`}</p>
                     <p id="item-price">{`$${item.price}`}</p>
                 </div>
             </div>
