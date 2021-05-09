@@ -59,6 +59,4 @@ userSchema.statics.createNewUser = function(firstName, lastName, email, password
 
 var User = mongoose.model('User', userSchema, 'user_data')
 
-
-
 module.exports = User

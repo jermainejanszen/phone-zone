@@ -83,7 +83,6 @@ const FiveGrid = ({ source }) => {
             setItems(newItems);
             setLoaded(true);
         }
-
         fetchItems();
     }, [source])
 

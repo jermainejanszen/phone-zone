@@ -9,7 +9,7 @@ router.get('/searchOnFilters/:brand/:price/:title', controller.searchItemsOnBran
 router.get('/searchOnFilters/:brand/:price', controller.searchItemsOnBrandTitleMaxPrice)
 router.get('/searchItemsOnTitle', controller.searchItemsOnTitle)
 router.get('/searchItemsOnBrand', controller.searchItemsOnBrand)
-router.get('/searchItemsBySeller', controller.searchItemsBySeller)
+router.get('/searchItemsBySeller/:seller', controller.searchItemsBySeller)
 router.get('/deleteItem', controller.deleteItem)
 router.get('/createNewPhone', controller.createNewPhone)
 router.get('/searchItemsById', controller.searchItemsById)

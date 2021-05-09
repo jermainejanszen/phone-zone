@@ -71,11 +71,11 @@ module.exports.searchItemsOnBrand = (req, res) => {
 
 //find items based on seller - currently hard coded parameters 
 module.exports.searchItemsBySeller = (req, res) => {
-	Phone.searchItemsBySeller("5f5237a4c1beb1523fa3dbac", function(err, result) {
+	Phone.searchItemsBySeller(req.params.seller, function(err, result) {
         if (err){
-          console.log("Query error!")
+          	console.log("Query error!")
         } else {
-          console.log(result)
+			return res.json(JSON.stringify({ message: {... result} }));
         }
       })
 }

@@ -1,256 +1,36 @@
 import Card from './Card';
-
+import { useState, useEffect } from 'react';
 import remove from '../resources/remove.svg';
 import hide96 from '../resources/hide96.png';
 
 import '../styles/Profile.css';
 import '../styles/NewListing.css';
 
-const mockItems = [
-    {
-        "title": "Galaxy s III mini SM-G730V Verizon Cell Phone BLUE",
-        "brand": "Samsung",
-        "image": "/phone_images/Samsung.jpeg",
-        "stock": 9,
-        "seller": "5f5237a4c1beb1523fa3db73",
-        "price": 56.0,
-        "reviews": [{
-            "reviewer": "5f5237a4c1beb1523fa3db1f",
-            "rating": 3,
-            "comment": "Got phone yesterday all ... pleased now!"
-        }]
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Galaxy s III mini SM-G730V Verizon Cell Phone BLUE",
-        "brand": "Samsung",
-        "image": "/phone_images/Samsung.jpeg",
-        "stock": 9,
-        "seller": "5f5237a4c1beb1523fa3db73",
-        "price": 56.0,
-        "reviews": [{
-            "reviewer": "5f5237a4c1beb1523fa3db1f",
-            "rating": 3,
-            "comment": "Got phone yesterday all ... pleased now!"
-        }]
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Galaxy s III mini SM-G730V Verizon Cell Phone BLUE",
-        "brand": "Samsung",
-        "image": "/phone_images/Samsung.jpeg",
-        "stock": 9,
-        "seller": "5f5237a4c1beb1523fa3db73",
-        "price": 56.0,
-        "reviews": [{
-            "reviewer": "5f5237a4c1beb1523fa3db1f",
-            "rating": 3,
-            "comment": "Got phone yesterday all ... pleased now!"
-        }]
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Galaxy s III mini SM-G730V Verizon Cell Phone BLUE",
-        "brand": "Samsung",
-        "image": "/phone_images/Samsung.jpeg",
-        "stock": 9,
-        "seller": "5f5237a4c1beb1523fa3db73",
-        "price": 56.0,
-        "reviews": [{
-            "reviewer": "5f5237a4c1beb1523fa3db1f",
-            "rating": 3,
-            "comment": "Got phone yesterday all ... pleased now!"
-        }]
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Galaxy s III mini SM-G730V Verizon Cell Phone BLUE",
-        "brand": "Samsung",
-        "image": "/phone_images/Samsung.jpeg",
-        "stock": 9,
-        "seller": "5f5237a4c1beb1523fa3db73",
-        "price": 56.0,
-        "reviews": [{
-            "reviewer": "5f5237a4c1beb1523fa3db1f",
-            "rating": 3,
-            "comment": "Got phone yesterday all ... pleased now!"
-        }]
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Galaxy s III mini SM-G730V Verizon Cell Phone BLUE",
-        "brand": "Samsung",
-        "image": "/phone_images/Samsung.jpeg",
-        "stock": 9,
-        "seller": "5f5237a4c1beb1523fa3db73",
-        "price": 56.0,
-        "reviews": [{
-            "reviewer": "5f5237a4c1beb1523fa3db1f",
-            "rating": 3,
-            "comment": "Got phone yesterday all ... pleased now!"
-        }]
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },
-]
 
 const NewListing = () => {
+
+    const [items, setItems] = useState([]);
+    const [loaded, setLoaded] = useState(false);
+
+    useEffect(() => {
+        const fetchItems = async () => {
+            let seller = "5f5237a4c1beb1523fa3da77"
+            const response = await fetch(`/phone/searchItemsBySeller/${seller}`);
+            const data = await response.json();
+            const itemsPromise = await JSON.parse(data);
+            const newItems = Object.values(itemsPromise.message);
+            setItems(newItems);
+            setLoaded(true);
+        }
+        fetchItems();
+    })
+    console.log(items);
     return (
         <div className="profileContainer">
             <div id="my-listings">
                 <h2>Your Listings</h2>
                 <div className="scrollMenu">
-                    {mockItems.map((item, index) => {
+                    {items.map((item, index) => {
                         return (
                             <div className="cardContainer" key={index}>
                                 <div>
