@@ -2,6 +2,7 @@ import Card from './Card';
 import { useState, useEffect } from 'react';
 import remove from '../resources/remove.svg';
 import hide96 from '../resources/hide96.png';
+import Loading from './Loading';
 
 import '../styles/Profile.css';
 import '../styles/NewListing.css';
@@ -25,22 +26,30 @@ const NewListing = () => {
         fetchItems();
     })
     console.log(items);
+
+    const mapItems = () => {
+        if (items.length > 0) {
+            return items.map((item, index) => {
+                return (
+                    <div className="cardContainer" key={index}>
+                        <div>
+                            <img className="itemIcon" src={hide96} alt="Hide Item" />
+                            <img className="itemIcon" src={remove} alt="Delete Item" />
+                        </div>
+                        <Card className="ownItem" item={item} />
+                    </div>
+                )
+            });
+        }
+        return <p id="search-no-items">No items found.</p>
+    }
+
     return (
         <div className="profileContainer">
             <div id="my-listings">
                 <h2>Your Listings</h2>
                 <div className="scrollMenu">
-                    {items.map((item, index) => {
-                        return (
-                            <div className="cardContainer" key={index}>
-                                <div>
-                                    <img className="itemIcon" src={hide96} alt="Hide Item" />
-                                    <img className="itemIcon" src={remove} alt="Delete Item" />
-                                </div>
-                                <Card className="ownItem" item={item} />
-                            </div>
-                        )
-                    })}
+                    {loaded ? mapItems() : <Loading />}
                 </div>
             </div>
             <div id="add-listing">
