@@ -33,7 +33,7 @@ module.exports.bestSellers = (req, res) => {
 	});
 }
 
-// find items based on title, brand, max price - currently hard coded parameters
+// find items based on title, brand, max price
 module.exports.searchItemsOnBrandTitleMaxPrice = (req, res) => {
 	Phone.searchItemsOnBrandTitleMaxPrice(
         req.params.brand === "all" ? "" : req.params.brand, 
@@ -47,29 +47,29 @@ module.exports.searchItemsOnBrandTitleMaxPrice = (req, res) => {
 	});
 }
 
-// find all items with 'blue' in their title 
+// find all items with term in title
 module.exports.searchItemsOnTitle = (req, res) => {
-	Phone.searchItemsOnTitle("blue", function(err, result) {
+	Phone.searchItemsOnTitle(req.params.title, function(err, result) {
 		if (err){
-		  console.log("Query error!")
+		  	console.log("Query error!")
 		} else {
-		  console.log(result)
+			return res.json(JSON.stringify({ message: {... result} }));
 		}
 	  })
 }
 
-// find all items based on brand - currently hardcoded parameters 
+// find all items based on brand 
 module.exports.searchItemsOnBrand = (req, res) => {
-	Phone.searchItemsOnBrand("Sony", function(err, result) {
+	Phone.searchItemsOnBrand(req.params.brand, function(err, result) {
         if (err){
-          console.log("Query error!")
+          	console.log("Query error!")
         } else {
-          console.log(result)
+			return res.json(JSON.stringify({ message: {... result} }));
         }
       })
 }
 
-//find items based on seller - currently hard coded parameters 
+//find items based on seller 
 module.exports.searchItemsBySeller = (req, res) => {
 	Phone.searchItemsBySeller(req.params.seller, function(err, result) {
         if (err){
@@ -80,68 +80,68 @@ module.exports.searchItemsBySeller = (req, res) => {
       })
 }
 
-// delete item - currently hardcoded id parameter
+// delete item 
 module.exports.deleteItem = (req, res) => {
-	Phone.deleteItem("6091e173cbdb0f1713584d51", function(err, result) {
+	Phone.deleteItem(req.params.id, function(err, result) {
         if (err){
-          console.log("Query error!")
+          	console.log("Query error!")
         } else {
-          console.log(result)
+			return res.json(JSON.stringify({ message: {... result} }));
         }
       })
 }
 
 // create new phone - currently hardcoded parameters 
 module.exports.createNewPhone = (req, res) => {
-	Phone.createNewPhone("CLEAR CLEAN ESN Sprint EPIC 4G Galaxy", "Samsung", "imageurl", 3, "5f5237a4c1beb1523fa3dbac", 200.01, true, function(err, result) {
+	Phone.createNewPhone(req.params.title, req.params.brand, parseInt(req.params.stock), req.params.seller, parseInt(req.params.price), req.params.disabled, function(err, result) {
         if (err){
-          console.log("Query error!")
+          	console.log("Query error!")
         } else {
-          console.log(result)
+			return res.json(JSON.stringify({ message: {... result} }));
         }
       })
 }
 
-// get item based on id - currently hard coded parameters
+// get item based on id 
 module.exports.searchItemsById = (req, res) => {
-	Phone.searchItemsById("6091e173cbdb0f1713584d4f", function(err, result) {
+	Phone.searchItemsById(req.params.id, function(err, result) {
         if (err){
-          console.log("Query error!")
+          	console.log("Query error!")
         } else {
-          console.log(result)
+			return res.json(JSON.stringify({ message: {... result} }));
         }
       })
 }
 
-// set item as disabled - currently hard coded parameters
+// set item as disabled
 module.exports.disableItem = (req, res) => {
-	Phone.disableItem("6091e173cbdb0f1713584d4f", function(err, result) {
+	Phone.disableItem(req.params.id, function(err, result) {
         if (err){
-          console.log("Query error!")
+          	console.log("Query error!")
         } else {
-          console.log(result)
+			return res.json(JSON.stringify({ message: {... result} }));
         }
       })
 }
 
-// get rid of disabled status on phone - currently hardcoded parameters
+// get rid of disabled status on phone
 module.exports.removeDisabledStatus = (req, res) => {
-	Phone.removeDisabledStatus("6091e173cbdb0f1713584d4f", function(err, result) {
+	Phone.removeDisabledStatus(req.params.id, function(err, result) {
         if (err){
-          console.log("Query error!")
+          	console.log("Query error!")
         } else {
-          console.log(result)
+			return res.json(JSON.stringify({ message: {... result} }));
         }
       })
 }
 
-// decrement stock by amount user bought - currently hardcoded parameters
+// decrement stock by amount user bought 
 module.exports.decrementStock = (req, res) => {
-	Phone.decrementStock("6091e173cbdb0f1713584d4f", 2, function(err, result) {
+	Phone.decrementStock(req.params.id, 2, function(err, result) {
         if (err){
-          console.log("Query error!")
+          	console.log("Query error!")
         } else {
-          console.log(result)
+			return res.json(JSON.stringify({ message: {... result} }));
         }
       })
 

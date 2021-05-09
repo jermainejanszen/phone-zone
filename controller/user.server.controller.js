@@ -26,9 +26,9 @@ module.exports.getPassword = (req, res) => {
 module.exports.updatePassword = (req, res) => {
     User.updatePassword('5f5237a4c1beb1523fa3da65', "potatosalad", function(err, result){
 		if (err){
-		  console.log("Query error!")
+		  	console.log("Query error!")
 		} else {
-		  console.log(result)
+			return res.json(JSON.stringify({ message: {... result} }));
 		}
 	  })
 }
@@ -48,9 +48,9 @@ module.exports.getUserInformation = (req, res) => {
 module.exports.updateUserInformation = (req, res) => {
     User.updateUserInformation('5f5237a4c1beb1523fa3da65', 'john', 'smith', 'john.smith@gmail.com', function(err, result){
 		if (err){
-		  console.log("Query error!")
+		  	console.log("Query error!")
 		} else {
-		  console.log(result)
+			return res.json(JSON.stringify({ message: {... result} }));
 		}
 	  })
 }
@@ -61,7 +61,7 @@ module.exports.createNewUser = (req, res) => {
 		if (err) {
 			console.log("Query error!")
 		} else {
-			console.log(result)
+			return res.json(JSON.stringify({ message: {... result} }));
 		}
 	})
 }
@@ -72,7 +72,7 @@ module.exports.validateUserInformation = (req, res) => {
 		if (err){
 			console.log("Query error!")
 		} else {
-			console.log(result)
+			return res.json(JSON.stringify({ message: {... result} }));
 		}
 	})
 }
