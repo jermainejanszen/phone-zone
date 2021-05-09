@@ -10,7 +10,7 @@ import signout96 from '../resources/signout96.png';
 
 import '../styles/ProfileNavBar.css'; 
 
-const ProfileNavBar = ({authState, setAuthState}) => {
+const ProfileNavBar = () => {
 
     const history = useHistory();
     const match = useRouteMatch();

@@ -1,13 +1,16 @@
+import React, { useContext, useRef, useState } from 'react'
+import UserContext from '../providers/UserContext';
 
-import React, { useRef, useState } from 'react'
 import '../styles/Profile.css';
 import '../styles/EditProfile.css';
 
 const Profile = () => {
 
-    const [firstName, setFirstName] = useState("Jane");
-    const [lastName, setLastName] = useState("Doe");
-    const [email, setEmail] = useState("jane@doe.com");
+    const { user, setUser } = useContext(UserContext);
+
+    const [firstName, setFirstName] = useState(user.firstname);
+    const [lastName, setLastName] = useState(user.lastname);
+    const [email, setEmail] = useState(user.email);
 
     const firstNameInput = useRef(null);
     const lastNameInput = useRef(null);
@@ -16,7 +19,7 @@ const Profile = () => {
     return (
         <div className="profileContainer">
             <h1>{`Hi, ${firstName}`}</h1>
-            <form id="profile-form"> 
+            <form id="profile-form" onSubmit={(event) => event.preventDefault()}> 
                 <h2>Update your details:</h2>
                 <div className="fieldDiv">
                     <label className="formLabel" htmlFor="firstName">First Name</label>
@@ -42,6 +45,14 @@ const Profile = () => {
                         setFirstName(firstNameInput.current?.value);
                         setLastName(lastNameInput.current?.value);
                         setEmail(emailInput.current?.value);
+
+                        // Update user on db
+                        setUser({
+                            ...user, 
+                            firstname: firstName,
+                            lastname: lastName,
+                            email: email, 
+                        })
                     }}>
                         Update Profile
                 </button>
