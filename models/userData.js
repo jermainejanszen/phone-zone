@@ -59,53 +59,6 @@ userSchema.statics.createNewUser = function(firstName, lastName, email, password
 
 var User = mongoose.model('User', userSchema, 'user_data')
 
-//eventually remove from here 
-// User.getPassword('5f5237a4c1beb1523fa3da65', function(err, result){
-//   if (err){
-//     console.log("Query error!")
-//   } else {
-//     console.log(result)
-//   }
-// })
 
-// User.updatePassword('5f5237a4c1beb1523fa3da65', "potatosalad", function(err, result){
-//   if (err){
-//     console.log("Query error!")
-//   } else {
-//     console.log(result)
-//   }
-// })
-
-User.getUserInformation('5f5237a4c1beb1523fa3da65', function(err, result){
-    if (err){
-        console.log("Query error!")
-    } else {
-        console.log(result)
-    }
-})
-
-// User.updateUserInformation('5f5237a4c1beb1523fa3da65', 'john', 'smith', 'john.smith@gmail.com', function(err, result){
-//   if (err){
-//     console.log("Query error!")
-//   } else {
-//     console.log(result)
-//   }
-// })
-
-User.createNewUser('john', 'smith', 'john.smith@gmail.com', 'password', function(err, result) {
-    if (err) {
-        console.log("Query error!")
-    } else {
-        console.log(result)
-    }
-})
-
-User.validateUserInformation('john.smith@gmail.com', 'password', function(err, result){
-    if (err){
-        console.log("Query error!")
-    } else {
-        console.log(result)
-    }
-})
 
 module.exports = User
