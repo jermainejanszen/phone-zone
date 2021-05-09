@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import Card from './Card';
+import SearchContext from '../providers/SearchContext';
 
 import '../styles/Search.css';
 
@@ -251,6 +253,10 @@ const mockItems = [
 ]
 
 const Search = () => {
+
+    const { search } = useContext(SearchContext);
+    console.log(search);
+
     return (
         <div>
             <h1>Search Results</h1>

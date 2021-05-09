@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useContext } from 'react'
 import { Link, useRouteMatch, useHistory } from 'react-router-dom';
+import SearchContext from '../providers/SearchContext';
 
 import logo from '../resources/logo.svg';
 import checkout96 from '../resources/checkout96.png';
@@ -16,6 +17,8 @@ const NavBar = ({ authState, setAuthState }) => {
     const [currUrl, setCurrUrl] = useState(useRouteMatch().url);
     const [searchMode, setSearchMode] = useState(/\/home\/search*/.test(currUrl));
     const [maxPrice, setMaxPrice] = useState("2000");
+
+    const { setSearch } = useContext(SearchContext);
 
     // Checks the current url to determine whether to show the search page
     useEffect(() => {
@@ -48,6 +51,11 @@ const NavBar = ({ authState, setAuthState }) => {
         const newUrl = `/home/search/?search=${searchQuery}?brand=${brandQuery}?price=${priceQuery}`;
         history.push(newUrl);
         setCurrUrl(newUrl);
+        setSearch({
+            search: searchQuery,
+            brand: brandQuery,
+            price: priceQuery
+        });
     }
 
     const onPriceChangeHandler = () => {
