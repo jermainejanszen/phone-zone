@@ -26,7 +26,7 @@ const Item = () => {
         }
 
         fetchSeller()
-    }, [])
+    }, [item.seller])
 
     const minusOnClickHandler = () => {
         const curValue = parseInt(quantityInput.current.value);
