@@ -81,9 +81,9 @@ const NavBar = ({ authState, setAuthState }) => {
                                 <option value="all">All Brands</option>
                                 <option value="Apple">Apple</option>
                                 <option value="Blackberry">Blackberry</option>
-                                <option value="Htc">HTC</option>
+                                <option value="HTC">HTC</option>
                                 <option value="Huawei">Huawei</option>
-                                <option value="Lg">LG</option>
+                                <option value="LG">LG</option>
                                 <option value="Motorola">Motorola</option>
                                 <option value="Nokia">Nokia</option>
                                 <option value="Samsung">Samsung</option>

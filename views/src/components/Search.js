@@ -256,7 +256,6 @@ const mockItems = [
 const Search = () => {
 
     const { search } = useContext(SearchContext);
-    console.log(search);
 
     const [items, setItems] = useState([]);
     const [loaded, setLoaded] = useState(false);
@@ -282,8 +281,6 @@ const Search = () => {
 
         fetchItems();
     }, [search]);
-
-    console.log(items);
 
     const mapItems = () => {
         if (items.length > 0) {
