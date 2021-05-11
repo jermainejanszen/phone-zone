@@ -41,6 +41,15 @@ PhoneSchema.statics.bestSellers = function(callback) {
           .exec(callback)
 }
 
+PhoneSchema.statics.findHighestPrice = function(callback){
+        return this
+                .find({})
+                .select('price')
+                .sort({'price': -1})
+                .limit(1)
+                .exec(callback)
+}
+
 // Find all items with search term in their title
 PhoneSchema.statics.searchItemsOnTitle = function(searchTerm, callback) {
         return this
@@ -65,7 +74,8 @@ PhoneSchema.statics.searchItemsBySeller = function(sellerId, callback) {
 // Find all items of certain brand
 PhoneSchema.statics.searchItemsOnBrandTitleMaxPrice = function(brandName, searchTerm, maxPrice, callback) {
         return this
-                .find({brand: { $regex: brandName, $options: "i" }, title: { $regex: searchTerm, $options: "i" }, price: {$lte: maxPrice}})                .exec(callback)
+                .find({brand: { $regex: brandName, $options: "i" }, title: { $regex: searchTerm, $options: "i" }, price: {$lte: maxPrice}})                
+                .exec(callback)
       }
 
 // Find item by id
@@ -118,9 +128,9 @@ PhoneSchema.statics.createNewPhone = function(title, brand, image, stock, seller
             return this 
                 .create({'title': title, 'brand': brand, 'image':image, 'stock':stock, 'seller':seller, 'price':price})
         }
-      }            
+      }  
+
 
 var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
 
 module.exports = Phone
-

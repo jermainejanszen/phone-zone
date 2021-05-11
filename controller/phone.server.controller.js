@@ -144,7 +144,17 @@ module.exports.decrementStock = (req, res) => {
 			return res.json(JSON.stringify({ message: {... result} }));
         }
       })
+}
 
+module.exports.findHighestPrice = (req, res) => {
+	Phone.findHighestPrice(function(err, result) {
+        if (err){
+          	console.log("Query error!")
+        } else {
+			console.log(res);
+			return res.json(JSON.stringify({ message: {... result} }));
+        }
+      })
 }
 
 

@@ -16,6 +16,7 @@ router.get('/searchItemsById/:id', controller.searchItemsById)
 router.get('/disableItem/:id', controller.disableItem)
 router.get('/removeDisabledStatus/:id', controller.removeDisabledStatus)
 router.get('/decrementStock/:id', controller.decrementStock)
+router.get('/findHighestPrice', controller.findHighestPrice)
 
 module.exports = router
 
