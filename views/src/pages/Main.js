@@ -1,20 +1,43 @@
 import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import NavBar from '../components/NavBar';
 import Home from '../components/Home';
 import Search from '../components/Search';
 import Item from '../components/Item';
 import { SearchProvider } from '../providers/SearchContext';
-import { useState } from 'react';
+
 
 const Main = () => {
 
+    const [highestPrice, setHighestPrice] = useState({price:"2000"});
+
     const match = useRouteMatch();
+ 
+
+    useEffect(() => {
+        const fetchItems = async () => {
+            let url = `/phone/findHighestPrice`;
+            const response = await fetch(url);
+
+            try {
+                const data = await response.json();
+                const pricePromise = await JSON.parse(data);
+                setHighestPrice(pricePromise.message[0]);
+            } catch(err) {
+                console.error(err);
+                console.log('error')
+
+            }
+        }
+        fetchItems();
+    },[]);
 
     const defaultSearch = { 
         title: "",
         brand: "all",
-        price: "2000"};
+        price: highestPrice.price};
+    
     const [search, setSearch] = useState(defaultSearch);
 
     return (
@@ -38,6 +61,6 @@ const Main = () => {
             </SearchProvider>
         </div>
     )
-}
 
+}
 export default Main

@@ -25,8 +25,8 @@ const NavBar = () => {
     const history = useHistory();
     const [currUrl, setCurrUrl] = useState(useRouteMatch().url);
     const [searchMode, setSearchMode] = useState(/\/home\/search*/.test(currUrl));
-    const [maxPrice, setMaxPrice] = useState("2000");
-
+    const [highestPrice, setHighestPrice] = useState([]);
+    const [maxPrice, setMaxPrice] = useState([]);
     const { setSearch } = useContext(SearchContext);
 
     // Checks the current url to determine whether to show the search page
@@ -36,6 +36,25 @@ const NavBar = () => {
             setSearchMode(inSearchMode);
         }
     }, [currUrl, searchMode])
+
+    useEffect(() => {
+        const fetchHighestPrice = async () => {
+            let url = `/phone/findHighestPrice`;
+            const response = await fetch(url);
+            try {
+                const data = await response.json();
+                const pricePromise = await JSON.parse(data);
+                setHighestPrice(pricePromise.message[0]);
+                setMaxPrice(pricePromise.message[0].price)
+            } catch(err) {
+                console.error(err);
+                console.log('error')
+                setHighestPrice("2000")
+                setMaxPrice("2000")
+            }
+        }
+        fetchHighestPrice();
+    },[]);
 
     const searchInput = useRef(null);
     const searchBrand = useRef(null);
@@ -52,7 +71,7 @@ const NavBar = () => {
             brandQuery = searchBrand.current.value;
         }
 
-        var priceQuery = "2000";
+        var priceQuery = highestPrice.price;
         if (searchPrice.current != null) {
             priceQuery = searchPrice.current.value;
         }
@@ -105,9 +124,9 @@ const NavBar = () => {
                                 id="search-price" 
                                 type="range" 
                                 name="price" 
-                                defaultValue="2000" 
+                                defaultValue={highestPrice.price}
                                 min="0" 
-                                max="2000"
+                                max={highestPrice.price}
                                 onChange={onPriceChangeHandler}
                                 ref={searchPrice} />
                             <p id="search-price-text">{`$${maxPrice}`}</p>
