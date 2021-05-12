@@ -52,9 +52,14 @@ userSchema.statics.updatePassword= function(id, newPassword, callback){
         }
 
 // //create new user 
-userSchema.statics.createNewUser = function(firstName, lastName, email, password, callback){
-    return this 
-          .create({'firstname': firstName, 'lastname': lastName, 'email':email, 'password':password})
+userSchema.statics.createNewUser = function(firstname, lastname, email, password){
+    let newUser = new User({
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        password:password
+      })
+     return newUser.save();
 }
 
 var User = mongoose.model('User', userSchema, 'user_data')

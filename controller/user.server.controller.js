@@ -56,13 +56,13 @@ module.exports.updateUserInformation = (req, res) => {
 
 // create new user 
 module.exports.createNewUser = (req, res) => {
-    User.createNewUser(req.params.firstname, req.params.lastname, req.params.email, req.params.password, function(err, result) {
-		if (err) {
-			console.log("Query error!")
-		} else {
-			return res.json(JSON.stringify({ message: {... result} }));
-		}
-	})
+    User.createNewUser(req.params.firstname, req.params.lastname, req.params.email, req.params.password).then(result => {
+				console.log(result)
+				return res.json(result._id);
+			})
+			.catch(err => {
+				console.error(err)
+			})
 }
 
 // validate user information
