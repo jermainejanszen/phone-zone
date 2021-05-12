@@ -5,7 +5,7 @@ import EditPassword from '../components/EditPassword';
 import NewListing from '../components/NewListing';
 import ProfileNavBar from '../components/ProfileNavBar';
 
-const User = () => {
+const Profile = () => {
 
     const match = useRouteMatch();
 
@@ -30,4 +30,4 @@ const User = () => {
     )
 }
 
-export default User
+export default Profile

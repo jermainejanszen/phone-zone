@@ -3,7 +3,7 @@ import { Switch, Route, BrowserRouter as Router, Redirect } from 'react-router-d
 
 import Checkout from './pages/Checkout';
 import Login from './pages/Login';
-import User from './pages/User'
+import Profile from './pages/Profile'
 import Main from './pages/Main';
 import Signup from './pages/Signup';
 import EditPassword from './components/EditPassword';
@@ -38,7 +38,7 @@ const App = () => {
                             <Checkout />
                         </Route>
                         <Route path="/user">
-                            <User />
+                            <Profile />
                         </Route>
                         <Route path="/password">
                             <EditPassword />
