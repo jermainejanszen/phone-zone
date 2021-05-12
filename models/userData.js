@@ -5,8 +5,8 @@ var userSchema = new mongoose.Schema({
          firstname: String, 
          lastname: String,
          email:String,
-         password:String
-    })
+         password:String,
+    }, {versionKey: false})
 
 // get all users
 userSchema.statics.getUsers = function(callback) {
@@ -57,7 +57,8 @@ userSchema.statics.createNewUser = function(firstname, lastname, email, password
         firstname: firstname,
         lastname: lastname,
         email: email,
-        password:password
+        password:password,
+        versionKey: false 
       })
      return newUser.save();
 }
