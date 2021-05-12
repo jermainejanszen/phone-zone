@@ -3,15 +3,18 @@ import Reviews from './Reviews';
 
 import addshoppingcart96 from '../resources/addshoppingcart96.png';
 import '../styles/Item.css';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useContext } from 'react';
+import UserContext, { User } from '../providers/UserContext';
 
 const Item = () => {
 
     const history = useHistory();
-    const item = history.location?.state;
+    const [item, setItem] = useState(history.location?.state);
     const quantityInput = useRef(null);
 
     const [seller, setSeller] = useState({ firstname: "Unknown", lastname: "Seller" });
+
+    const { user, setUser } = useContext(UserContext);
 
     useEffect(() => {
         const fetchSeller = async () => {
@@ -44,6 +47,12 @@ const Item = () => {
         quantityInput.current.value = curValue + 1;
     }
 
+    const addToCart = () => {
+        let q = parseInt(quantityInput.current.value)
+        user.cart.addItem({ ...item, quantity: q })
+        setItem({ ...item, stock: Math.max(0, item.stock - q) })
+    }
+
     return (
         <div id="item-page-div">
             <div id="item-details-div">
@@ -67,7 +76,7 @@ const Item = () => {
                                 id="item-plus-button"
                                 onClick={plusOnClickHandler}>+</button>
                         </div>
-                        <button id="item-add-cart-button">
+                        <button id="item-add-cart-button" onClick={addToCart}>
                             <img id="item-add-cart-icon" src={addshoppingcart96} alt="Add to checkout" />
                         </button>
                     </div>

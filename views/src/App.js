@@ -3,11 +3,11 @@ import { Switch, Route, BrowserRouter as Router, Redirect } from 'react-router-d
 
 import Checkout from './pages/Checkout';
 import Login from './pages/Login';
-import User from './pages/User'
+import Profile from './pages/Profile'
 import Main from './pages/Main';
 import Signup from './pages/Signup';
 import EditPassword from './components/EditPassword';
-import { UserProvider } from './providers/UserContext';
+import { UserProvider, User } from './providers/UserContext';
 
 import './styles/App.css';
 
@@ -21,7 +21,7 @@ const mockUser = {
 
 const App = () => {
 
-    const [user, setUser] = useState(mockUser);
+    const [user, setUser] = useState(new User());
 
     return (
         <UserProvider value={{user, setUser}}>
@@ -38,7 +38,7 @@ const App = () => {
                             <Checkout />
                         </Route>
                         <Route path="/user">
-                            <User />
+                            <Profile />
                         </Route>
                         <Route path="/password">
                             <EditPassword />

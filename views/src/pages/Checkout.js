@@ -10,7 +10,7 @@ const Checkout = () => {
 
     const history = useHistory();
 
-    const [state, setState] = useState(mockItems);
+    const [state, setState] = useState([]);
 
     return (
         <div id="checkout-container">
