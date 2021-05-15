@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from 'react'
 import UserContext from '../providers/UserContext';
-import { Link, useHistory, useRouteMatch } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import '../styles/Profile.css';
 import '../styles/EditProfile.css';

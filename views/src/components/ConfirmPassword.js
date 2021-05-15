@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Link, useHistory, useRouteMatch } from 'react-router-dom';
-import logo from '../resources/logo.svg';
+import { useHistory } from 'react-router-dom';
 import '../styles/Auth.css';
 
 const ConfirmPassword = () => {
