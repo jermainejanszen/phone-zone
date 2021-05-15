@@ -1,15 +1,18 @@
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import Reviews from './Reviews';
+import { useEffect, useRef, useState, useContext } from 'react';
+import UserContext, { User } from '../providers/UserContext';
+import Loading from './Loading';
 
 import addshoppingcart96 from '../resources/addshoppingcart96.png';
 import '../styles/Item.css';
-import { useEffect, useRef, useState, useContext } from 'react';
-import UserContext, { User } from '../providers/UserContext';
 
 const Item = () => {
 
     const history = useHistory();
+    const location = useLocation();
     const [item, setItem] = useState(history.location?.state);
+    const [loading, setLoading] = useState(item === undefined);
     const quantityInput = useRef(null);
 
     const [seller, setSeller] = useState({ firstname: "Unknown", lastname: "Seller" });
@@ -17,7 +20,27 @@ const Item = () => {
     const { user, setUser } = useContext(UserContext);
 
     useEffect(() => {
+        const fetchItem = async () => {
+            if (item === undefined) {
+                const response = await fetch(`/phone/searchItemsOnTitle/${location.pathname.substring(11)}`);
+                try {
+                    const data = await response.json();
+                    const itemPromise = await JSON.parse(data);
+                    setItem(itemPromise.message[0]);
+                } catch(err) {
+                    console.error(err);
+                }
+            }
+        }
+
+        fetchItem()
+    }, [item])
+
+    useEffect(() => {
         const fetchSeller = async () => {
+            if (item?.seller === undefined) {
+                return;
+            }
             const response = await fetch(`/user/getUserInformation/${item.seller}`);
             try {
                 const data = await response.json();
@@ -26,10 +49,12 @@ const Item = () => {
             } catch(err) {
                 console.error(err);
             }
+
+            setLoading(false);
         }
 
         fetchSeller()
-    }, [item.seller])
+    }, [item?.seller])
 
     const minusOnClickHandler = () => {
         const curValue = parseInt(quantityInput.current.value);
@@ -58,6 +83,7 @@ const Item = () => {
         setItem({ ...item, stock: Math.max(0, item.stock - q) })
     }
 
+    if (loading) return <Loading />;
     return (
         <div id="item-page-div">
             <div id="item-details-div">
