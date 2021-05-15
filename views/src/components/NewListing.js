@@ -15,12 +15,21 @@ const NewListing = () => {
     const { user, setUser } = useContext(UserContext);
     const [form, setForm] = useState({});
 
+    const disableItem =  async (id) => {
+        console.log(id)
+        let url = `/phone/disableItem/${id}`;
+        const response = await fetch(url)
+    }
+
+    const deleteItem = async (id) => {
+        console.log(id)
+        let url = `/phone/deleteItem/${id}`;
+        const response = await fetch(url)
+    }
+
 
     useEffect(() => {
         const fetchItems = async () => {
-            console.log("user id")
-            console.log(user.id)
-
             let seller = user.id
             const response = await fetch(`/phone/searchItemsBySeller/${seller}`);
             const data = await response.json();
@@ -33,7 +42,6 @@ const NewListing = () => {
         if (!loaded) {
             fetchItems();
         }
-
     }, [loaded]);
 
     const handleChange = (event) => {
@@ -45,7 +53,6 @@ const NewListing = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-    
 
         const addItem = async () => {
             let url = `/phone/createNewPhone/${form.title}/${form.brand}/${form.stock}/${user.id}/${form.price}`;
@@ -54,8 +61,6 @@ const NewListing = () => {
 
         addItem();
         setLoaded(false);
-
-        /* Updates the page if the email already exists in the DB */
     }
 
     console.log(items);
@@ -66,8 +71,20 @@ const NewListing = () => {
                 return (
                     <div className="cardContainer" key={index}>
                         <div>
-                            <img className="itemIcon" src={hide96} alt="Hide Item" />
-                            <img className="itemIcon" src={remove} alt="Delete Item" />
+                            <button
+                                onClick={() => {
+                                    disableItem(item._id)
+                                    setLoaded(false)         
+                                }}>
+                                <img className="itemIcon" src={hide96} alt="Hide Item" />
+                            </button>
+                            <button
+                                onClick={() => {
+                                    deleteItem(item._id)
+                                    setLoaded(false)
+                                }}>
+                                <img className="itemIcon" src={remove} alt="Delete Item" />
+                            </button>
                         </div>
                         <Card className="ownItem" item={item} />
                     </div>
@@ -104,7 +121,6 @@ const NewListing = () => {
                     </div>
                     <div className="fieldDiv">
                         <label className="formLabel">Title</label>
-                        {/* <label className="formLabel" htmlFor="title">Title</label> */}
                         <input className="formInputText" onChange={handleChange} title="title" type="text" placeholder="e.g. Sony Ericsson TM506 Unlock..." required/>
                     </div>
                     <div className="fieldDiv">

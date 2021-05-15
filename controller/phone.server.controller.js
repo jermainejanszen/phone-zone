@@ -84,9 +84,10 @@ module.exports.searchItemsBySeller = (req, res) => {
 module.exports.deleteItem = (req, res) => {
 	Phone.deleteItem(req.params.id, function(err, result) {
         if (err){
+			console.log(req.params.id)
           	console.log("Query error!")
         } else {
-			return res.json(JSON.stringify({ message: {... result} }));
+			console.log("item deleted")
         }
       })
 }

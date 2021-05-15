@@ -30,7 +30,6 @@ const Search = () => {
                 console.error(err);
             }
         }
-
         fetchItems();
     }, [search]);
 
