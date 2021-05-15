@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import logo from '../resources/logo.svg';
 import close from '../resources/close96.png';
+import UserContext, { User } from '../providers/UserContext';
 
 import '../styles/Auth.css';
 
@@ -9,6 +10,8 @@ const Login = () => {
 
     const history = useHistory();
     const location = useLocation();
+    const { user, setUser } = useContext(UserContext);
+
     const [form, setForm] = useState({});
 
     const handleChange = (event) => {
@@ -34,9 +37,9 @@ const Login = () => {
                 if (Object.keys(result.message).length === 0) {
                     console.log("Invalid credentials");
                     document.getElementById("invalid-credentials").style.display = "flex";
-                    
                 } else {
                     console.log("Logged in successfully!");
+                    setUser(new User(result.message[0]));
                     history.push(location.state);
                 }
             } catch (err) {

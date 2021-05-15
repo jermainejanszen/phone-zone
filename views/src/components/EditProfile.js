@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from 'react'
-import UserContext from '../providers/UserContext';
+import UserContext, { User } from '../providers/UserContext';
 import { useHistory } from 'react-router-dom';
 
 import '../styles/Profile.css';
@@ -9,7 +9,6 @@ const Profile = () => {
 
     const { user, setUser } = useContext(UserContext);
     const history = useHistory();
-
 
     const [firstName, setFirstName] = useState(user.firstname);
     const [lastName, setLastName] = useState(user.lastname);
@@ -49,12 +48,13 @@ const Profile = () => {
                         setFirstName(firstNameInput.current?.value);
                         setLastName(lastNameInput.current?.value);
                         setEmail(emailInput.current?.value);
-                        setUser({
-                            ...user, 
-                            firstname: firstName,
-                            lastname: lastName,
-                            email: email, 
-                        })
+                        setUser(
+                            new User({ 
+                                _id: user.id, 
+                                firstname: firstName, 
+                                lastname: lastName,
+                                email: email
+                            }))
                         history.push('/user/confirmPassword');
                     }}>
                         Update Profile

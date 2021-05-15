@@ -1,6 +1,7 @@
 
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link, useHistory, useRouteMatch } from 'react-router-dom';
+import UserContext, { User } from '../providers/UserContext'
 
 import logo from '../resources/logo.svg';
 import edit from '../resources/edit.svg';
@@ -14,6 +15,8 @@ const ProfileNavBar = () => {
 
     const history = useHistory();
     const match = useRouteMatch();
+    const { user, setUser } = useContext(UserContext);
+
     const [currentPath, setCurrentPath] = useState(match.path);
 
     return (
@@ -57,7 +60,10 @@ const ProfileNavBar = () => {
                 <button
                     className="profile-button"
                     id="signout-button"
-                    onClick={() => history.push('/')}>
+                    onClick={() =>  {
+                        setUser(null);
+                        history.push('/')
+                    }}>
                     <img id="signout-button-icon" src={signout96} alt="Logout" />
                 </button>
             </div>

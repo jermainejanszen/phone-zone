@@ -21,7 +21,7 @@ const mockUser = {
 
 const App = () => {
 
-    const [user, setUser] = useState(new User());
+    const [user, setUser] = useState(new User({}));
 
     return (
         <UserProvider value={{user, setUser}}>

@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import UserContext, { User } from '../providers/UserContext';
 import logo from '../resources/logo.svg';
 
 import '../styles/Auth.css';
@@ -8,6 +9,7 @@ const Signup = () => {
 
     const history = useHistory();
     const location = useLocation();
+    const { user, setUser } = useContext(UserContext);
     const [form, setForm] = useState({});
 
     const handleChange = (event) => {
@@ -67,6 +69,7 @@ const Signup = () => {
             try {
                 const id = await response.json();
                 console.log(id);
+                setUser(new User({ _id: id, firstname: form.firstname, lastname: form.lastname, email: form.email }))
                 history.push(location.state);
             } catch (err) {
                 console.log(err);

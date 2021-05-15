@@ -1,9 +1,12 @@
 import React from 'react';
 
 export class User {
-    constructor(id) {
-        this.id = id;
-        this.cart = new Cart();
+    constructor(details) {
+        this.id = details._id;
+        this.email = details.email;
+        this.firstname = details.firstname;
+        this.lastname = details.lastname;
+        this.password = details.password;
     }
 }
 

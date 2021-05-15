@@ -43,6 +43,7 @@
 
 /** formatting for buttons corresponding to updates across the various profile pages **/
 .updateButton {
+    cursor: pointer;
     border: transparent;
     border-radius: 10em;
     color: white;
