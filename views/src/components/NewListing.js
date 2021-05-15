@@ -1,8 +1,9 @@
 import Card from './Card';
-import { useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import remove from '../resources/remove.svg';
 import hide96 from '../resources/hide96.png';
 import Loading from './Loading';
+import UserContext from '../providers/UserContext';
 
 import '../styles/Profile.css';
 import '../styles/NewListing.css';
@@ -12,10 +13,12 @@ const NewListing = () => {
 
     const [items, setItems] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const { user, setUser } = useContext(UserContext);
+
 
     useEffect(() => {
         const fetchItems = async () => {
-            let seller = "5f5237a4c1beb1523fa3da77"
+            let seller = user.id
             const response = await fetch(`/phone/searchItemsBySeller/${seller}`);
             const data = await response.json();
             const itemsPromise = await JSON.parse(data);
@@ -87,6 +90,7 @@ const NewListing = () => {
                         <input className="formInputText" title="price" type="number" required/>
                     </div>
                     <button className="updateButton">Add item</button>
+
                 </form>
             </div>
         </div>
