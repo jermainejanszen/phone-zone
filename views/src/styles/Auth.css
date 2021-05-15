@@ -25,12 +25,12 @@
 .fieldDiv {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
 }
 
 .formLabel {
     font-weight: 500;
     font-size: 16px;
+    align-self: flex-start;
 }
 
 .formLabelInvalid:after {
@@ -47,8 +47,9 @@
     display: block;
     padding: 0.6em 0.6em;
     margin: 0.4em 0em 1em 0em;
-    width: 93%;
+    width: 95%;
     font-size: 1em;
+    align-self: center;
 }
 
 .formInputText:focus {
@@ -155,4 +156,9 @@
     cursor: pointer;
     width: 15px;
     filter: invert(10%) sepia(66%) saturate(7499%) hue-rotate(8deg) brightness(77%) contrast(118%);
+}
+
+.unclickable {
+    cursor: auto;
+    opacity: 60%;
 }

@@ -131,8 +131,7 @@ const NewListing = () => {
                         <label className="formLabel">Price</label>
                         <input className="formInputText" onChange={handleChange} title="price" type="number" required/>
                     </div>
-                    <button className="updateButton">Add item</button>
-
+                    <button className="submitButton">Add item</button>
                 </form>
             </div>
         </div>

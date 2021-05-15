@@ -10,55 +10,79 @@ const Profile = () => {
     const { user, setUser } = useContext(UserContext);
     const history = useHistory();
 
-    const [firstName, setFirstName] = useState(user.firstname);
-    const [lastName, setLastName] = useState(user.lastname);
-    const [email, setEmail] = useState(user.email);
+    const [form, setForm] = useState({
+        firstname: user.firstname,
+        lastname: user.lastname,
+        email: user.email
+    });
 
-    const firstNameInput = useRef(null);
-    const lastNameInput = useRef(null);
-    const emailInput = useRef(null);
+    const anyChanges = () => {
+        const firstname = document.getElementById("firstname").value;
+        const lastname = document.getElementById("lastname").value;
+        const email = document.getElementById("email").value;
+
+        return firstname !== user.firstname || lastname !== user.lastname || email !== user.email;
+    }
+
+    const handleChange = (event) => {
+        const field = event.target;
+        const label = document.getElementById(event.target.title + "-label");
+        const updateButton = document.getElementById("update-button");
+
+        field.value = field.value.trim();
+
+        if (field.checkValidity()) {
+            label.classList.remove("formLabelInvalid");
+            label.classList.add("formLabelValid");
+        } else {
+            label.classList.remove("formLabelValid");
+            label.classList.add("formLabelInvalid");
+        }
+
+        setForm({
+            ...form,
+            [event.target.title]: event.target.value.trim()
+        });
+
+        if (anyChanges()) {
+            updateButton.classList.remove("unclickable");
+        } else {
+            updateButton.classList.add("unclickable");
+        }
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if (anyChanges()) {
+            history.push('/user/confirmPassword', form);
+        }
+    }
 
     return (
         <div className="profileContainer">
-            <h1>{`Hi, ${firstName}`}</h1>
-            <form id="profile-form" onSubmit={(event) => event.preventDefault()}> 
+            <h1>{`Hi, ${form.firstname}`}</h1>
+            <form id="profile-form" onSubmit={handleSubmit}> 
                 <h2>Update your details:</h2>
+
                 <div className="fieldDiv">
-                    <label className="formLabel" htmlFor="firstName">First Name</label>
-                    <input className="formInputText" value={firstName} title="firstName" type="text"
-                        ref={firstNameInput}
-                        onChange={() => setFirstName(firstNameInput.current?.value.substring(0, 24))} />
+                    <label id="firstname-label" className="formLabel formLabelValid">First Name</label>
+                    <input id="firstname" className="formInputText" onChange={handleChange} title="firstname" value={form.firstname} type="text" required />
                 </div>
+
                 <div className="fieldDiv">
-                    <label className="formLabel" htmlFor="lastName">Last Name</label>
-                    <input className="formInputText" value={lastName} title="lastName" type="text"
-                        ref={lastNameInput}
-                        onChange={() => setLastName(lastNameInput.current?.value)} />
+                    <label id="lastname-label" className="formLabel formLabelValid">Last Name</label>
+                    <input id="lastname" className="formInputText" onChange={handleChange} title="lastname" value = {form.lastname} type="text" required />
                 </div>
+
                 <div className="fieldDiv">
-                    <label className="formLabel" htmlFor="email">Email</label>
-                    <input className="formInputText" value={email} title="email" type="text"
-                        ref={emailInput}
-                        onChange={() => setEmail(emailInput.current?.value)} />
+                    <label id="email-label" className="formLabel formLabelValid">Email</label>
+                    <input id="email" className="formInputText" onChange={handleChange} title="email"  value = {form.email} type="email" required />
                 </div>
-                <button 
-                    type="button"
-                    className="updateButton" 
-                    onClick={() => {
-                        setFirstName(firstNameInput.current?.value);
-                        setLastName(lastNameInput.current?.value);
-                        setEmail(emailInput.current?.value);
-                        setUser(
-                            new User({ 
-                                _id: user.id, 
-                                firstname: firstName, 
-                                lastname: lastName,
-                                email: email
-                            }))
-                        history.push('/user/confirmPassword');
-                    }}>
-                        Update Profile
-                </button>
+
+                <div className="buttonsDiv">
+                    <button id="update-button" type="submit" className="submitButton unclickable">Update Profile</button>
+                </div>
             </form>
         </div>
     )
