@@ -10,8 +10,6 @@ const Login = () => {
     const location = useLocation();
     const [form, setForm] = useState({});
 
-    console.log(location.state);
-
     const handleChange = (event) => {
         setForm({
             ...form,
