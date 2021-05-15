@@ -17,7 +17,7 @@ const Card = ({ item }) => {
         <Link 
             className="card"
             to={{
-                pathname: `/home/item/?title=${item.title}`,
+                pathname: `/home/item/${item.title}`,
                 state: item
             }}>
             <img className="cardImage" src={`/phone_images/${item.brand}.jpeg`} alt="The phone" />

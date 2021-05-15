@@ -7,6 +7,7 @@ export class User {
         this.firstname = details.firstname;
         this.lastname = details.lastname;
         this.password = details.password;
+        this.cart = new Cart();
     }
 }
 
