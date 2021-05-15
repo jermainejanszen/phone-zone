@@ -71,14 +71,14 @@ const NewListing = () => {
                 return (
                     <div className="cardContainer" key={index}>
                         <div>
-                            <button
+                            <button className="delete-disable-button"
                                 onClick={() => {
                                     disableItem(item._id)
                                     setLoaded(false)         
                                 }}>
                                 <img className="itemIcon" src={hide96} alt="Hide Item" />
                             </button>
-                            <button
+                            <button className="delete-disable-button"
                                 onClick={() => {
                                     deleteItem(item._id)
                                     setLoaded(false)
@@ -107,7 +107,7 @@ const NewListing = () => {
                     <h2>Add a new item</h2>
                     <div className="fieldDiv">
                         <label className="formLabel">Brand</label>
-                        <select className="formSelect" onChange={handleChange} title="brand" type="text" placeholder="e.g. Sony" required>
+                        <select className="formSelect" onChange={handleChange} title="brand" type="text" required>
                             <option value="Apple">Apple</option>
                             <option value="BlackBerry">BlackBerry</option>
                             <option value="HTC">HTC</option>
