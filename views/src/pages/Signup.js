@@ -17,6 +17,8 @@ const Signup = () => {
             field.value = field.value.trim();
         }
 
+        field.setCustomValidity('');
+
         if (field.checkValidity()) {
             label.classList.remove("formLabelInvalid");
             label.classList.add("formLabelValid");
@@ -35,42 +37,33 @@ const Signup = () => {
         event.preventDefault()
         console.log(form)
 
-        /* Checks if the email already exists in the DB 
-        const emailExists = async () => {
-            let url = `user/getUsers`;
+        /* Updates the page if the email already exists in the DB */
+        const emailAlreadyExists = () => {
+            console.log('Email already in the system');
 
-            const response = await fetch(url)
+            let email = document.getElementById('email');
+            let emailLabel = document.getElementById('email-label')
 
-            try {
-                const data = await response.json()
-                const usersPromise = await JSON.parse(data);
-                const users = usersPromise.message
+            emailLabel.classList.remove("formLabelValid");
+            emailLabel.classList.add("formLabelInvalid");
 
-                Object.keys(users).forEach((key) => {
-                    let user = users[key];
-                    if (user['email'] === form.email) {
-                        return true;
-                    }
-                });
+            email.focus();
+            email.setCustomValidity("Email already taken");
+            email.reportValidity();
+        }
 
-            } catch (err) {
-                console.log(err);
-            }
-
-            return false;
-        } */
-        
-        /* if (emailExists()) {
-            console.log("Email already exists!");
-            return;
-        } */
 
         /* Signs the user up */
         const signup = async () => {
             let url = `/user/createNewUser/${form.firstname}/${form.lastname}/${form.email}/${form.password}`;
 
             const response = await fetch(url);
-            
+
+            if (response.status === 500) {
+                emailAlreadyExists()
+                return;
+            }
+
             try {
                 const id = await response.json();
                 console.log(id);
@@ -81,6 +74,7 @@ const Signup = () => {
         }
 
         signup();
+        history.goBack();
     }
 
     return (
@@ -109,7 +103,7 @@ const Signup = () => {
 
                     <div className="fieldDiv">
                         <label id="email-label" className="formLabel formLabelInvalid">Email</label>
-                        <input className="formInputText" onChange={handleChange} title="email" type="email" required />
+                        <input id="email" className="formInputText" onChange={handleChange} title="email" type="email" required />
                     </div>
 
                     <div className="fieldDiv">

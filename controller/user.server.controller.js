@@ -61,7 +61,7 @@ module.exports.createNewUser = (req, res) => {
 				return res.json(result._id);
 			})
 			.catch(err => {
-				console.error(err)
+				res.status(500).send(err);
 			})
 }
 

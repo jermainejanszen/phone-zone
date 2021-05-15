@@ -66,7 +66,7 @@ userSchema.statics.createNewUser = function(firstname, lastname, email, password
         password: hash(password),
         versionKey: false 
       });
-     return newUser.save();
+    return newUser.save();
 }
 
 var User = mongoose.model('User', userSchema, 'user_data')
