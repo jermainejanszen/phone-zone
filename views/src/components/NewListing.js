@@ -4,7 +4,6 @@ import remove from '../resources/remove.svg';
 import hide96 from '../resources/hide96.png';
 import Loading from './Loading';
 import UserContext from '../providers/UserContext';
-
 import '../styles/Profile.css';
 import '../styles/NewListing.css';
 
@@ -14,10 +13,14 @@ const NewListing = () => {
     const [items, setItems] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const { user, setUser } = useContext(UserContext);
+    const [form, setForm] = useState({});
 
 
     useEffect(() => {
         const fetchItems = async () => {
+            console.log("user id")
+            console.log(user.id)
+
             let seller = user.id
             const response = await fetch(`/phone/searchItemsBySeller/${seller}`);
             const data = await response.json();
@@ -32,6 +35,28 @@ const NewListing = () => {
         }
 
     }, [loaded]);
+
+    const handleChange = (event) => {
+        setForm({
+            ...form,
+            [event.target.title]: event.target.value.trim()
+        });
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+    
+
+        const addItem = async () => {
+            let url = `/phone/createNewPhone/${form.title}/${form.brand}/${form.stock}/${user.id}/${form.price}`;
+            const response = await fetch(url);
+        }
+
+        addItem();
+        setLoaded(false);
+
+        /* Updates the page if the email already exists in the DB */
+    }
 
     console.log(items);
 
@@ -61,11 +86,11 @@ const NewListing = () => {
                 </div>
             </div>
             <div id="add-listing">
-                <form id="manage-listings-form">
+                <form id="manage-listings-form" onSubmit={handleSubmit}>
                     <h2>Add a new item</h2>
                     <div className="fieldDiv">
-                        <label className="formLabel" htmlFor="brand">Brand</label>
-                        <select className="formSelect" title="brand" type="text" placeholder="e.g. Sony" required>
+                        <label className="formLabel">Brand</label>
+                        <select className="formSelect" onChange={handleChange} title="brand" type="text" placeholder="e.g. Sony" required>
                             <option value="Apple">Apple</option>
                             <option value="BlackBerry">BlackBerry</option>
                             <option value="HTC">HTC</option>
@@ -78,16 +103,17 @@ const NewListing = () => {
                         </select>
                     </div>
                     <div className="fieldDiv">
-                        <label className="formLabel" htmlFor="title">Title</label>
-                        <input className="formInputText" title="title" type="text" placeholder="e.g. Sony Ericsson TM506 Unlock..." required/>
+                        <label className="formLabel">Title</label>
+                        {/* <label className="formLabel" htmlFor="title">Title</label> */}
+                        <input className="formInputText" onChange={handleChange} title="title" type="text" placeholder="e.g. Sony Ericsson TM506 Unlock..." required/>
                     </div>
                     <div className="fieldDiv">
-                        <label className="formLabel" htmlFor="description">Description</label>
-                        <input className="formInputText" id="description" title="description" type="text" required/>
+                        <label className="formLabel">Stock</label>
+                        <input className="formInputText" onChange={handleChange} title="stock" type="number" required/>
                     </div>
                     <div className="fieldDiv">
-                        <label className="formLabel" htmlFor="price">Price</label>
-                        <input className="formInputText" title="price" type="number" required/>
+                        <label className="formLabel">Price</label>
+                        <input className="formInputText" onChange={handleChange} title="price" type="number" required/>
                     </div>
                     <button className="updateButton">Add item</button>
 

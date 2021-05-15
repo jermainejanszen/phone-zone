@@ -121,14 +121,22 @@ PhoneSchema.statics.decrementStock = function(id, amount, callback){
 
 // //create new phone 
 PhoneSchema.statics.createNewPhone = function(title, brand, image, stock, seller, price, disabled, callback){
-        if (disabled) {
-            return this 
-                .create({'title': title, 'brand': brand, 'image':image, 'stock':stock, 'seller':seller, 'price':price, reviews:[], 'disabled':''})
-        } else {
-            return this 
-                .create({'title': title, 'brand': brand, 'image':image, 'stock':stock, 'seller':seller, 'price':price})
-        }
+        return this 
+        .create({'title': title, 'brand': brand, 'image':image, 'stock':stock, 'seller':seller, 'price':price, reviews:[]})
       }  
+
+// //create new user 
+PhoneSchema.statics.createNewPhone = function(title, brand, stock, seller, price){
+        let newPhone = new Phone({
+            title: title, 
+            brand: brand,
+            stock:stock,
+            seller:seller,
+            price:price,
+            versionKey: false 
+          });
+        return newPhone.save();
+    }
 
 
 var Phone = mongoose.model('Phone', PhoneSchema, 'phone_data')
