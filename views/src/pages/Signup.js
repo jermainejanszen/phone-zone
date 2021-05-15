@@ -35,7 +35,52 @@ const Signup = () => {
         event.preventDefault()
         console.log(form)
 
-        /* TODO: Implement logic for signing the user up */
+        /* Checks if the email already exists in the DB 
+        const emailExists = async () => {
+            let url = `user/getUsers`;
+
+            const response = await fetch(url)
+
+            try {
+                const data = await response.json()
+                const usersPromise = await JSON.parse(data);
+                const users = usersPromise.message
+
+                Object.keys(users).forEach((key) => {
+                    let user = users[key];
+                    if (user['email'] === form.email) {
+                        return true;
+                    }
+                });
+
+            } catch (err) {
+                console.log(err);
+            }
+
+            return false;
+        } */
+        
+        /* if (emailExists()) {
+            console.log("Email already exists!");
+            return;
+        } */
+
+        /* Signs the user up */
+        const signup = async () => {
+            let url = `/user/createNewUser/${form.firstname}/${form.lastname}/${form.email}/${form.password}`;
+
+            const response = await fetch(url);
+            
+            try {
+                const id = await response.json();
+                console.log(id);
+            } catch (err) {
+                console.log(err);
+                console.log('error');
+            }
+        }
+
+        signup();
     }
 
     return (
