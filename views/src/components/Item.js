@@ -48,6 +48,11 @@ const Item = () => {
     }
 
     const addToCart = () => {
+        if (user === null) {
+            history.push('/login', window.location.pathname);
+            return;
+        }
+
         let q = parseInt(quantityInput.current.value)
         user.cart.addItem({ ...item, quantity: q })
         setItem({ ...item, stock: Math.max(0, item.stock - q) })
