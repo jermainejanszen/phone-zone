@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import logo from '../resources/logo.svg';
+import close from '../resources/close96.png';
 
 import '../styles/Auth.css';
 
@@ -32,6 +33,8 @@ const Login = () => {
                 const result = await JSON.parse(data);
                 if (Object.keys(result.message).length === 0) {
                     console.log("Invalid credentials");
+                    document.getElementById("invalid-credentials").style.display = "flex";
+                    
                 } else {
                     console.log("Logged in successfully!");
                     history.push(location.state);
@@ -59,14 +62,19 @@ const Login = () => {
                 <form className="authForm" onSubmit={handleSubmit}>
                     <h1 className="formHeading">Login</h1>
 
+                    <div id="invalid-credentials">
+                        <p id="invalid-credentials-msg">Incorrect email or password.</p>
+                        <img id="close-button" src={close} onClick={() => document.getElementById("invalid-credentials").style.display = "none"}></img>
+                    </div>
+
                     <div className="fieldDiv">
                         <label className="formLabel">Email</label>
-                        <input className="formInputText" onChange={handleChange} title="email" type="email" required />
+                        <input className="formInputText" onChange={handleChange} title="email" type="text" />
                     </div>
 
                     <div className="fieldDiv">
                         <label className="formLabel">Password</label>
-                        <input className="formInputText" onChange={handleChange} id="password" title="password" type="password" required />
+                        <input className="formInputText" onChange={handleChange} id="password" title="password" type="password" />
                     </div>
 
                     <div id="password-visibility-container">

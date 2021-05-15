@@ -57,6 +57,22 @@
     box-shadow: 0 0 10px #719ECE;
 }
 
+#invalid-credentials {
+    border: 1px solid rgb(179, 0, 0);
+    border-radius: 10px;
+    margin-bottom: 12.5px;
+    background-color: rgb(255, 255, 255);
+    display: none;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#invalid-credentials-msg {
+    margin-block: 14px;
+    color: rgb(179, 0, 0)
+}
+
 .advice {
     text-align: left;
     font-size: 0.8em;
@@ -72,6 +88,7 @@
 }
 
 .submitButton, .navButton {
+    cursor: pointer;
     border: transparent;
     border-radius: 10px;
     color: white;
@@ -92,7 +109,8 @@
 }
 
 #password-visibility-container {
-    margin-bottom: 20px;
+    margin-top: 2.5px;
+    margin-bottom: 12.5px;
     text-align: center;
     display: flex;
     flex-direction:row;
@@ -131,4 +149,10 @@
 
 #auth-logo {
     width: 4em;
+}
+
+#close-button {
+    cursor: pointer;
+    width: 15px;
+    filter: invert(10%) sepia(66%) saturate(7499%) hue-rotate(8deg) brightness(77%) contrast(118%);
 }
