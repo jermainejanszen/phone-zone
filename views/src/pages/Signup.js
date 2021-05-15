@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import logo from '../resources/logo.svg';
 
 import '../styles/Auth.css';
@@ -7,6 +7,7 @@ import '../styles/Auth.css';
 const Signup = () => {
 
     const history = useHistory();
+    const location = useLocation();
     const [form, setForm] = useState({});
 
     const handleChange = (event) => {
@@ -52,7 +53,6 @@ const Signup = () => {
             email.reportValidity();
         }
 
-
         /* Signs the user up */
         const signup = async () => {
             let url = `/user/createNewUser/${form.firstname}/${form.lastname}/${form.email}/${form.password}`;
@@ -74,7 +74,7 @@ const Signup = () => {
         }
 
         signup();
-        history.goBack();
+        history.push(location.state);
     }
 
     return (
@@ -136,7 +136,7 @@ const Signup = () => {
                         <button 
                             className="navButton" 
                             onClick={() => {
-                                history.push('/login');
+                                history.push('/login', location.state);
                             }}>
                                 Already have an account? Login here
                         </button>

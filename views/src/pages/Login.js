@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import logo from '../resources/logo.svg';
 
 import '../styles/Auth.css';
@@ -7,7 +7,10 @@ import '../styles/Auth.css';
 const Login = () => {
 
     const history = useHistory();
+    const location = useLocation();
     const [form, setForm] = useState({});
+
+    console.log(location.state);
 
     const handleChange = (event) => {
         setForm({
@@ -33,7 +36,7 @@ const Login = () => {
                     console.log("Invalid credentials");
                 } else {
                     console.log("Logged in successfully!");
-                    history.goBack();
+                    history.push(location.state);
                 }
             } catch (err) {
                 console.log(err);
@@ -88,7 +91,7 @@ const Login = () => {
                         <button 
                             className="navButton" 
                             onClick={() => {
-                                history.push('/signup');
+                                history.push('/signup', location.state);
                             }}>
                                 Create a new account
                         </button>

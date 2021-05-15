@@ -151,7 +151,7 @@ const NavBar = () => {
                 </button>
                 {!loggedIn ?
                     <button
-                        onClick={() => history.push('/login')}
+                        onClick={() => history.push('/login', window.location.pathname)}
                         className="profile-button">
                         <img className="profile-button-icon" src={login96} alt="Login" />
                     </button> :
