@@ -57,12 +57,38 @@
     box-shadow: 0 0 10px #719ECE;
 }
 
-.formSelect {
-    display: block;
-    padding: 0.6em 0.6em;
-    margin: 0.4em 0em 1em 0em;
-    width: 98%;
-    font-size: 1em;
+.advice {
+    text-align: left;
+    font-size: 0.8em;
+    margin: 0.25em 0em 0.25em 0em;
+    color: gray;
+}
+
+.buttonsDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.submitButton, .navButton {
+    border: transparent;
+    border-radius: 10px;
+    color: white;
+    font-size: 17px;
+    padding: 0.7em 0em;
+    margin: 0.7em 0em;
+    background-color: #4b96e6;
+}
+
+.submitButton:focus, .navButton:focus {
+    outline: none;
+}
+
+.navButton {
+    background-color: white;
+    border: 1px solid #4b96e6;
+    color: #4b96e6;
 }
 
 #password-visibility-container {
