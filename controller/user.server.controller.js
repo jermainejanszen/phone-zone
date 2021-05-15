@@ -54,7 +54,7 @@ module.exports.updateUserInformation = (req, res) => {
 	  })
 }
 
-// create new user 
+// create new user and returns the user id
 module.exports.createNewUser = (req, res) => {
     User.createNewUser(req.params.firstname, req.params.lastname, req.params.email, req.params.password).then(result => {
 				console.log(result)
@@ -72,6 +72,17 @@ module.exports.validateUserInformation = (req, res) => {
 			console.log("Query error!")
 		} else {
 			return res.json(JSON.stringify({ message: {... result} }));
+		}
+	})
+}
+
+// check whether email taken
+module.exports.checkIfEmailTaken = (req, res) => {
+    User.checkIfEmailTaken(req.params.email, function(err, result){
+		if (err){
+			console.log("Query error!")
+		} else {
+			return res.json(result);
 		}
 	})
 }

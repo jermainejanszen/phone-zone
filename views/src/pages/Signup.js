@@ -67,6 +67,7 @@ const Signup = () => {
             try {
                 const id = await response.json();
                 console.log(id);
+                history.push(location.state);
             } catch (err) {
                 console.log(err);
                 console.log('error');
@@ -74,7 +75,6 @@ const Signup = () => {
         }
 
         signup();
-        history.push(location.state);
     }
 
     return (
