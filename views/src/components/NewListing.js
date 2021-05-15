@@ -4,7 +4,6 @@ import remove from '../resources/remove.svg';
 import hide96 from '../resources/hide96.png';
 import Loading from './Loading';
 import UserContext from '../providers/UserContext';
-
 import '../styles/Profile.css';
 import '../styles/NewListing.css';
 
@@ -14,6 +13,19 @@ const NewListing = () => {
     const [items, setItems] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const { user, setUser } = useContext(UserContext);
+    const [form, setForm] = useState({});
+
+    const disableItem =  async (id) => {
+        console.log(id)
+        let url = `/phone/disableItem/${id}`;
+        const response = await fetch(url)
+    }
+
+    const deleteItem = async (id) => {
+        console.log(id)
+        let url = `/phone/deleteItem/${id}`;
+        const response = await fetch(url)
+    }
 
 
     useEffect(() => {
@@ -30,8 +42,26 @@ const NewListing = () => {
         if (!loaded) {
             fetchItems();
         }
-
     }, [loaded]);
+
+    const handleChange = (event) => {
+        setForm({
+            ...form,
+            [event.target.title]: event.target.value.trim()
+        });
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+
+        const addItem = async () => {
+            let url = `/phone/createNewPhone/${form.title}/${form.brand}/${form.stock}/${user.id}/${form.price}`;
+            const response = await fetch(url);
+        }
+
+        addItem();
+        setLoaded(false);
+    }
 
     console.log(items);
 
@@ -41,8 +71,20 @@ const NewListing = () => {
                 return (
                     <div className="cardContainer" key={index}>
                         <div>
-                            <img className="itemIcon" src={hide96} alt="Hide Item" />
-                            <img className="itemIcon" src={remove} alt="Delete Item" />
+                            <button
+                                onClick={() => {
+                                    disableItem(item._id)
+                                    setLoaded(false)         
+                                }}>
+                                <img className="itemIcon" src={hide96} alt="Hide Item" />
+                            </button>
+                            <button
+                                onClick={() => {
+                                    deleteItem(item._id)
+                                    setLoaded(false)
+                                }}>
+                                <img className="itemIcon" src={remove} alt="Delete Item" />
+                            </button>
                         </div>
                         <Card className="ownItem" item={item} />
                     </div>
@@ -61,11 +103,11 @@ const NewListing = () => {
                 </div>
             </div>
             <div id="add-listing">
-                <form id="manage-listings-form">
+                <form id="manage-listings-form" onSubmit={handleSubmit}>
                     <h2>Add a new item</h2>
                     <div className="fieldDiv">
-                        <label className="formLabel" htmlFor="brand">Brand</label>
-                        <select className="formSelect" title="brand" type="text" placeholder="e.g. Sony" required>
+                        <label className="formLabel">Brand</label>
+                        <select className="formSelect" onChange={handleChange} title="brand" type="text" placeholder="e.g. Sony" required>
                             <option value="Apple">Apple</option>
                             <option value="BlackBerry">BlackBerry</option>
                             <option value="HTC">HTC</option>
@@ -78,16 +120,16 @@ const NewListing = () => {
                         </select>
                     </div>
                     <div className="fieldDiv">
-                        <label className="formLabel" htmlFor="title">Title</label>
-                        <input className="formInputText" title="title" type="text" placeholder="e.g. Sony Ericsson TM506 Unlock..." required/>
+                        <label className="formLabel">Title</label>
+                        <input className="formInputText" onChange={handleChange} title="title" type="text" placeholder="e.g. Sony Ericsson TM506 Unlock..." required/>
                     </div>
                     <div className="fieldDiv">
-                        <label className="formLabel" htmlFor="description">Description</label>
-                        <input className="formInputText" id="description" title="description" type="text" required/>
+                        <label className="formLabel">Stock</label>
+                        <input className="formInputText" onChange={handleChange} title="stock" type="number" required/>
                     </div>
                     <div className="fieldDiv">
-                        <label className="formLabel" htmlFor="price">Price</label>
-                        <input className="formInputText" title="price" type="number" required/>
+                        <label className="formLabel">Price</label>
+                        <input className="formInputText" onChange={handleChange} title="price" type="number" required/>
                     </div>
                     <button className="submitButton">Add item</button>
                 </form>

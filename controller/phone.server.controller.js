@@ -84,22 +84,23 @@ module.exports.searchItemsBySeller = (req, res) => {
 module.exports.deleteItem = (req, res) => {
 	Phone.deleteItem(req.params.id, function(err, result) {
         if (err){
+			console.log(req.params.id)
           	console.log("Query error!")
         } else {
-			return res.json(JSON.stringify({ message: {... result} }));
+			console.log("item deleted")
         }
       })
 }
 
-// create new phone - currently hardcoded parameters 
+// create new phone 
 module.exports.createNewPhone = (req, res) => {
-	Phone.createNewPhone(req.params.title, req.params.brand, parseInt(req.params.stock), req.params.seller, parseInt(req.params.price), req.params.disabled, function(err, result) {
-        if (err){
-          	console.log("Query error!")
-        } else {
-			return res.json(JSON.stringify({ message: {... result} }));
-        }
-      })
+	Phone.createNewPhone(req.params.title, req.params.brand, parseInt(req.params.stock), req.params.seller, parseInt(req.params.price)).then(result => {
+		console.log(result)
+		return res.json(result._id);
+	})
+	.catch(err => {
+		res.status(500).send(err);
+	})
 }
 
 // get item based on id 

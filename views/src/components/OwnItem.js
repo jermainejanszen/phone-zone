@@ -4,10 +4,31 @@ import '../styles/Card.css';
 import '../styles/OwnItem.css';
 
 const OwnItem = ({ item }) => {
+
+    const disableItem =  async () => {
+        let url = `/phone/disableItem/${item.id}`
+        const response = await fetch(url)
+    }
+
+    const deleteItem = async () => {
+        let url = `/phone/deleteItem/${item.id}`
+        const response = await fetch(url)
+    }
+
     return (
         <div className="card">
-            <img className="itemIcon" src={hide96} alt="Hide Item" />
-            <img className="itemIcon" src={remove} alt="Delete Item" />
+            <button
+                onClick={() => {
+                    disableItem()        
+                }}>
+                <img className="itemIcon" src={hide96} alt="Hide Item" />            
+            </button>
+            <button
+                onClick={() => {
+                    deleteItem()        
+                }}>
+                <img className="itemIcon" src={remove} alt="Delete Item" />
+            </button>
             <div>
                 <img className="cardImage" src={item.image} alt="The phone" />
             </div>
