@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useState } from 'react'
 import UserContext from '../providers/UserContext';
+import { Link, useHistory, useRouteMatch } from 'react-router-dom';
 
 import '../styles/Profile.css';
 import '../styles/EditProfile.css';
@@ -7,6 +8,8 @@ import '../styles/EditProfile.css';
 const Profile = () => {
 
     const { user, setUser } = useContext(UserContext);
+    const history = useHistory();
+
 
     const [firstName, setFirstName] = useState(user.firstname);
     const [lastName, setLastName] = useState(user.lastname);
@@ -40,19 +43,19 @@ const Profile = () => {
                         onChange={() => setEmail(emailInput.current?.value)} />
                 </div>
                 <button 
+                    type="button"
                     className="updateButton" 
                     onClick={() => {
                         setFirstName(firstNameInput.current?.value);
                         setLastName(lastNameInput.current?.value);
                         setEmail(emailInput.current?.value);
-
-                        // Update user on db
                         setUser({
                             ...user, 
                             firstname: firstName,
                             lastname: lastName,
                             email: email, 
                         })
+                        history.push('/user/confirmPassword');
                     }}>
                         Update Profile
                 </button>

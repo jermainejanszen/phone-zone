@@ -4,6 +4,7 @@ import EditProfile from '../components/EditProfile';
 import EditPassword from '../components/EditPassword';
 import NewListing from '../components/NewListing';
 import ProfileNavBar from '../components/ProfileNavBar';
+import ConfirmPassword from '../components/ConfirmPassword';
 
 const Profile = () => {
 
@@ -18,6 +19,9 @@ const Profile = () => {
                 </Route>
                 <Route path={`${match.path}/editpassword`}>
                     <EditPassword />
+                </Route>
+                <Route path={`${match.path}/confirmPassword`}>
+                    <ConfirmPassword />
                 </Route>
                 <Route path={match.path}>
                     <EditProfile />

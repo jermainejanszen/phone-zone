@@ -2,10 +2,10 @@ var mongoose = require('./db')
 var ObjectId = require('mongoose').Schema.ObjectId
 
 var userSchema = new mongoose.Schema({  
-         firstname: String, 
+         firstname: {type: String, required: true}, 
          lastname: String,
-         email:String,
-         password:String,
+         email: {type: String, unique: true, required: true},
+         password:{type: String, required: true},
     }, {versionKey: false})
 
 // get all users
@@ -53,14 +53,8 @@ userSchema.statics.updatePassword= function(id, newPassword, callback){
 
 // //create new user 
 userSchema.statics.createNewUser = function(firstname, lastname, email, password){
-    let newUser = new User({
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        password:password,
-        versionKey: false 
-      })
-     return newUser.save();
+    return this 
+        .find({'email':email})
 }
 
 var User = mongoose.model('User', userSchema, 'user_data')
