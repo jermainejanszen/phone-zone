@@ -16,9 +16,18 @@ const Profile = () => {
         email: user.email
     });
 
+    const anyChanges = () => {
+        const firstname = document.getElementById("firstname").value;
+        const lastname = document.getElementById("lastname").value;
+        const email = document.getElementById("email").value;
+
+        return firstname !== user.firstname || lastname !== user.lastname || email !== user.email;
+    }
+
     const handleChange = (event) => {
         const field = event.target;
         const label = document.getElementById(event.target.title + "-label");
+        const updateButton = document.getElementById("update-button");
 
         field.value = field.value.trim();
 
@@ -34,11 +43,22 @@ const Profile = () => {
             ...form,
             [event.target.title]: event.target.value.trim()
         });
+
+        if (anyChanges()) {
+            console.log("ASD");
+            updateButton.classList.remove("unclickable");
+        } else {
+            console.log("ASDASDA");
+            updateButton.classList.add("unclickable");
+        }
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        history.push('/user/confirmPassword', form);
+
+        if (anyChanges()) {
+            history.push('/user/confirmPassword', form);
+        }
     }
 
     return (
@@ -49,12 +69,12 @@ const Profile = () => {
 
                 <div className="fieldDiv">
                     <label id="firstname-label" className="formLabel formLabelValid">First Name</label>
-                    <input className="formInputText" onChange={handleChange} title="firstname" value={form.firstname} type="text" required />
+                    <input id="firstname" className="formInputText" onChange={handleChange} title="firstname" value={form.firstname} type="text" required />
                 </div>
 
                 <div className="fieldDiv">
                     <label id="lastname-label" className="formLabel formLabelValid">Last Name</label>
-                    <input className="formInputText" onChange={handleChange} title="lastname" value = {form.lastname} type="text" required />
+                    <input id="lastname" className="formInputText" onChange={handleChange} title="lastname" value = {form.lastname} type="text" required />
                 </div>
 
                 <div className="fieldDiv">
@@ -63,7 +83,7 @@ const Profile = () => {
                 </div>
 
                 <div className="buttonsDiv">
-                    <button type="submit" className="submitButton">Update Profile</button>
+                    <button id="update-button" type="submit" className="submitButton unclickable">Update Profile</button>
                 </div>
             </form>
         </div>
