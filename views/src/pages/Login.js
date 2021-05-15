@@ -20,7 +20,28 @@ const Login = () => {
         event.preventDefault()
         console.log(form)
 
-        /* TODO: Implement logic for logging the user in */
+        /* Attempts to log the user in */
+        const login = async () => {
+            let url = `user/validateUserInformation/${form.email}/${form.password}`;
+
+            const response = await fetch(url);
+
+            try {
+                const data = await response.json();
+                const result = await JSON.parse(data);
+                if (Object.keys(result.message).length === 0) {
+                    console.log("Invalid credentials");
+                } else {
+                    console.log("Logged in successfully!");
+                    history.goBack();
+                }
+            } catch (err) {
+                console.log(err);
+                console.log('error');
+            }
+        }
+
+        login();
     }
 
     return (

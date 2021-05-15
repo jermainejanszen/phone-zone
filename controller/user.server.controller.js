@@ -67,8 +67,8 @@ module.exports.createNewUser = (req, res) => {
 
 // validate user information
 module.exports.validateUserInformation = (req, res) => {
-    User.validateUserInformation(req.params.email, req.params.password, function(err, result){
-		if (err){
+    User.validateUserInformation(req.params.email, req.params.password, function(err, result) {
+		if (err) {
 			console.log("Query error!")
 		} else {
 			return res.json(JSON.stringify({ message: {... result} }));
