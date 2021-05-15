@@ -26,7 +26,7 @@ const Profile = () => {
 
     const handleChange = (event) => {
         const field = event.target;
-        const label = document.getElementById(event.target.title + "-label");
+        const label = document.getElementById(event.target.id + "-label");
         const updateButton = document.getElementById("update-button");
 
         field.value = field.value.trim();
@@ -41,7 +41,7 @@ const Profile = () => {
 
         setForm({
             ...form,
-            [event.target.title]: event.target.value.trim()
+            [event.target.id]: event.target.value.trim()
         });
 
         if (anyChanges()) {
@@ -62,22 +62,22 @@ const Profile = () => {
     return (
         <div className="profileContainer">
             <h1>{`Hi, ${form.firstname}`}</h1>
-            <form id="profile-form" onSubmit={handleSubmit}> 
+            <form id="edit-form" onSubmit={handleSubmit}> 
                 <h2>Update your details:</h2>
 
                 <div className="fieldDiv">
                     <label id="firstname-label" className="formLabel formLabelValid">First Name</label>
-                    <input id="firstname" className="formInputText" onChange={handleChange} title="firstname" value={form.firstname} type="text" required />
+                    <input id="firstname" className="formInputText" onChange={handleChange} value={form.firstname} type="text" required />
                 </div>
 
                 <div className="fieldDiv">
                     <label id="lastname-label" className="formLabel formLabelValid">Last Name</label>
-                    <input id="lastname" className="formInputText" onChange={handleChange} title="lastname" value = {form.lastname} type="text" required />
+                    <input id="lastname" className="formInputText" onChange={handleChange} value={form.lastname} type="text" required />
                 </div>
 
                 <div className="fieldDiv">
                     <label id="email-label" className="formLabel formLabelValid">Email</label>
-                    <input id="email" className="formInputText" onChange={handleChange} title="email"  value = {form.email} type="email" required />
+                    <input id="email" className="formInputText" onChange={handleChange} value={form.email} type="email" required />
                 </div>
 
                 <div className="buttonsDiv">

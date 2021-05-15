@@ -1,14 +1,9 @@
 /** forms used in the edit profile section of the e-commerce site **/
-#profile-form {
+#edit-form {
     display: inline-block;
     align-items: center;
     margin-right: 20em;
     margin-top: 5em;
     min-width: 25em;
     max-width: 60em;
-}
-
-.faded {
-    cursor: auto;
-    opacity: 50%;
 }

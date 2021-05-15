@@ -1,6 +1,6 @@
 
 import { useState, useContext } from 'react';
-import { Link, useHistory, useRouteMatch } from 'react-router-dom';
+import { Link, useHistory, useRouteMatch, useLocation } from 'react-router-dom';
 import UserContext, { User } from '../providers/UserContext'
 
 import logo from '../resources/logo.svg';
@@ -14,10 +14,11 @@ import '../styles/ProfileNavBar.css';
 const ProfileNavBar = () => {
 
     const history = useHistory();
-    const match = useRouteMatch();
+    const location = useLocation();
     const { user, setUser } = useContext(UserContext);
 
-    const [currentPath, setCurrentPath] = useState(match.path);
+    const [currentPath, setCurrentPath] = useState(location.pathname);
+    console.log(location);
 
     return (
         <div className="navBar">
@@ -30,7 +31,7 @@ const ProfileNavBar = () => {
                 </div>
                 <div id="sideBar">
                     <button
-                        className={`tab-button ${currentPath === '/user' ? "current-tab" : ""}`}
+                        className={`tab-button ${location.pathname === '/user' ? "current-tab" : ""}`}
                         onClick={() => {
                             history.push('/user');
                             setCurrentPath('/user');
@@ -39,7 +40,7 @@ const ProfileNavBar = () => {
                         <img className="tab-button-icon" src={edit} alt="Edit" />
                     </button>
                     <button
-                        className={`tab-button ${currentPath === '/user/editpassword' ? "current-tab" : ""}`}
+                        className={`tab-button ${location.pathname === '/user/editpassword' ? "current-tab" : ""}`}
                         onClick={() => {
                             history.push('/user/editpassword');
                             setCurrentPath('/user/editpassword');
@@ -48,7 +49,7 @@ const ProfileNavBar = () => {
                         <img className="tab-button-icon" src={key} alt="Change" />
                     </button>
                     <button
-                        className={`tab-button ${currentPath === '/user/listings' ? "current-tab" : ""}`}
+                        className={`tab-button ${location.pathname === '/user/listings' ? "current-tab" : ""}`}
                         onClick={() => {
                             history.push('/user/listings');
                             setCurrentPath('/user/listings');
