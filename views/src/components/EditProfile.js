@@ -45,10 +45,8 @@ const Profile = () => {
         });
 
         if (anyChanges()) {
-            console.log("ASD");
             updateButton.classList.remove("unclickable");
         } else {
-            console.log("ASDASDA");
             updateButton.classList.add("unclickable");
         }
     }
