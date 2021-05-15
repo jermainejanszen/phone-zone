@@ -86,7 +86,7 @@ const NewListing = () => {
                         <label className="formLabel" htmlFor="price">Price</label>
                         <input className="formInputText" title="price" type="number" required/>
                     </div>
-                    <button className="updateButton">Add item</button>
+                    <button className="submitButton">Add item</button>
                 </form>
             </div>
         </div>
