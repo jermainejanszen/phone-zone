@@ -14,14 +14,38 @@ const Item = () => {
     const { user, setUser } = useContext(UserContext);
 
     const [item, setItem] = useState(location.state.item);
-    const [loading, setLoading] = useState(true);
     const [quantity, setQuantity] = useState(0);
 
     const [remainingStock, setRemainingStock] = useState(
         user === null ? location.state.item.stock : user.cart.getRemainingStock(location.state.item)
     );
+
     const [seller, setSeller] = useState({ firstname: "Unknown", lastname: "Seller" });
 
+    const [itemLoaded, setItemLoaded] = useState(false);
+    const [sellerLoaded, setSellerLoaded] = useState(false)
+    
+    useEffect(() => {
+        const fetchItem = async () => {
+            const response = await fetch(`/phone/searchItemsById/${item._id}`)
+            
+            try {
+                const data = await response.json();
+                const result = await JSON.parse(data);
+                const dbItem = result.message[0];
+                setItem(dbItem);
+                setRemainingStock(
+                    user === null ? dbItem.stock : user.cart.getRemainingStock(dbItem)
+                );
+            } catch (err) {
+                console.log(err);
+            }
+
+            setItemLoaded(true);
+        }
+
+        fetchItem();
+    }, [item._id]);
 
     useEffect(() => {
         const fetchSeller = async () => {
@@ -34,7 +58,7 @@ const Item = () => {
                 console.error(err);
             }
 
-            setLoading(false);
+            setSellerLoaded(true);
         }
 
         fetchSeller()
@@ -72,7 +96,8 @@ const Item = () => {
         setQuantity(0);
     }
 
-    if (loading) return <Loading />;
+    if (!itemLoaded || !sellerLoaded) return <Loading />;
+
     return (
         <div id="item-page-div">
             <div id="item-details-div">
