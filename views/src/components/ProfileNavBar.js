@@ -62,8 +62,10 @@ const ProfileNavBar = () => {
                     className="profile-button"
                     id="signout-button"
                     onClick={() =>  {
-                        setUser(null);
-                        history.push('/')
+                        if (window.confirm('Are you sure you want to logout?')) {
+                            setUser(null);
+                            history.push('/');
+                        }
                     }}>
                     <img id="signout-button-icon" src={signout96} alt="Logout" />
                 </button>
