@@ -1,11 +1,11 @@
-import React, { useContext, useRef, useState } from 'react'
-import UserContext, { User } from '../providers/UserContext';
+import React, { useContext, useState } from 'react'
+import UserContext from '../providers/UserContext';
 import { useHistory } from 'react-router-dom';
 
 import '../styles/Profile.css';
 import '../styles/EditProfile.css';
 
-const Profile = () => {
+const EditProfile = () => {
 
     const { user, setUser } = useContext(UserContext);
     const history = useHistory();
@@ -88,4 +88,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default EditProfile;

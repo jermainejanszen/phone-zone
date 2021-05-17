@@ -7,3 +7,8 @@
     min-width: 25em;
     max-width: 60em;
 }
+
+.unclickable {
+    cursor: auto;
+    opacity: 60%;
+}

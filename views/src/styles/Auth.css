@@ -157,8 +157,3 @@
     width: 15px;
     filter: invert(10%) sepia(66%) saturate(7499%) hue-rotate(8deg) brightness(77%) contrast(118%);
 }
-
-.unclickable {
-    cursor: auto;
-    opacity: 60%;
-}
