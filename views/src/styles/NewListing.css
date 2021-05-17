@@ -65,3 +65,9 @@
     border: none;
     outline: none;
 }
+
+.disabled {
+    opacity: 50%;
+    color: hotpink;
+    background-color: indianred;
+}

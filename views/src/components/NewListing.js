@@ -13,11 +13,11 @@ const NewListing = () => {
     const [items, setItems] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const { user, setUser } = useContext(UserContext);
-    const [form, setForm] = useState({});
+    const [form, setForm] = useState({brand:"Apple"});
 
-    const disableItem =  async (id) => {
-        console.log(id)
-        let url = `/phone/disableItem/${id}`;
+    const disableItem =  async (item, index) => {
+        console.log(item._id)
+        let url = `/phone/disableItem/${item._id}`;
         const response = await fetch(url)
     }
 
@@ -35,6 +35,7 @@ const NewListing = () => {
             const data = await response.json();
             const itemsPromise = await JSON.parse(data);
             const newItems = Object.values(itemsPromise.message);
+            
             setItems(newItems);
             setLoaded(true);
         }
@@ -69,11 +70,12 @@ const NewListing = () => {
         if (items.length > 0) {
             return items.map((item, index) => {
                 return (
-                    <div className="cardContainer" key={index}>
+                    <div id={`card-container-${index}`} className={item.hasOwnProperty('disabled') ? "cardContainer disabled" : "cardContainer"} key={index}>
                         <div>
                             <button className="delete-disable-button"
                                 onClick={() => {
-                                    disableItem(item._id)
+                                    console.log(item.disabled)
+                                    disableItem(item, index)
                                     setLoaded(false)         
                                 }}>
                                 <img className="itemIcon" src={hide96} alt="Hide Item" />
@@ -87,8 +89,10 @@ const NewListing = () => {
                             </button>
                         </div>
                         <Card className="ownItem" item={item} />
+
                     </div>
                 )
+
             });
         }
         return <p id="search-no-items">No items found.</p>
@@ -108,7 +112,7 @@ const NewListing = () => {
                     <div className="fieldDiv">
                         <label className="formLabel">Brand</label>
                         <select className="formSelect" onChange={handleChange} title="brand" type="text" required>
-                            <option value="Apple">Apple</option>
+                            <option value="Apple" selected="selected">Apple</option>
                             <option value="BlackBerry">BlackBerry</option>
                             <option value="HTC">HTC</option>
                             <option value="Huawei">Huawei</option>
