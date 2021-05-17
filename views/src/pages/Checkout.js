@@ -14,10 +14,12 @@ const Checkout = () => {
     const [totalCost, setTotalCost] = useState(user.cart.getTotalCost());
 
     const confirmTransaction = () => {
-        items.forEach(async (item) => {
+        items.forEach((item) => {
             let url = `/phone/decrementStock/${item._id}/${item.quantity}`;
-            const response = await fetch(url);
+            fetch(url);
+            console.log("ASDAS");
         });
+        console.log("finished");
         user.cart.clear()
         history.push('/');
     }
