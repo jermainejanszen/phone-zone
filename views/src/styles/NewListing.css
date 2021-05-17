@@ -59,3 +59,14 @@
 .itemIcon:hover {
     background-color: #4b96e68a;
 }
+
+.delete-disable-button {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.disabled {
+    background-color: rgba(215, 236, 243, 0.644);
+    border-radius: 10px;
+}

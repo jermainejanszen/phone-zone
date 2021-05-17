@@ -119,12 +119,6 @@ PhoneSchema.statics.decrementStock = function(id, amount, callback){
                 .exec(callback)
               }
 
-// //create new phone 
-PhoneSchema.statics.createNewPhone = function(title, brand, image, stock, seller, price, disabled, callback){
-        return this 
-        .create({'title': title, 'brand': brand, 'image':image, 'stock':stock, 'seller':seller, 'price':price, reviews:[]})
-      }  
-
 // //create new user 
 PhoneSchema.statics.createNewPhone = function(title, brand, stock, seller, price){
         let newPhone = new Phone({
