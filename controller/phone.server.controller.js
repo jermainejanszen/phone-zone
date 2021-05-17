@@ -138,7 +138,7 @@ module.exports.removeDisabledStatus = (req, res) => {
 
 // decrement stock by amount user bought 
 module.exports.decrementStock = (req, res) => {
-	Phone.decrementStock(req.params.id, 2, function(err, result) {
+	Phone.decrementStock(req.params.id, req.params.amount, function(err, result) {
         if (err){
           	console.log("Query error!")
         } else {

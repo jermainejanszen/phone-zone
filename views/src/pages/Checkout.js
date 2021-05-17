@@ -13,6 +13,15 @@ const Checkout = () => {
     const [items, setItems] = useState(user.cart.items);
     const [totalCost, setTotalCost] = useState(user.cart.getTotalCost());
 
+    const confirmTransaction = () => {
+        items.forEach(async (item) => {
+            let url = `/phone/decrementStock/${item._id}/${item.quantity}`;
+            const response = await fetch(url);
+        });
+        user.cart.clear()
+        history.push('/');
+    }
+
     return (
         <div id="checkout-container">
             <div id="back-button-div">
@@ -47,8 +56,8 @@ const Checkout = () => {
                 </ul>
             </div>
             <div id="transaction-container">
-                <p id="total-cost-text">Total cost: ${user.cart.getTotalCost()}</p>
-                <button id="confirm-transaction-button">
+                <p id="total-cost-text">Total cost: ${totalCost}</p>
+                <button id="confirm-transaction-button" onClick={confirmTransaction}>
                     Click here to confirm the transaction
                 </button>
             </div>

@@ -55,6 +55,10 @@ export class Cart {
         });
         return total.toFixed(2);
     }
+
+    clear() {
+        this.items = [];
+    }
 }
 
 const UserContext = React.createContext({ user: null, setUser: null });
