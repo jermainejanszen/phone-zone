@@ -64,7 +64,7 @@ const CheckoutItem = ({ item, onRemove }) => {
                 </div>
                 <div className="checkoutColumn">
                     <b>Subtotal</b>
-                    <p>${quantity * item.price}</p>
+                    <p>${(quantity * item.price).toFixed(2)}</p>
                 </div>
             </div>
             <img id="remove-button" src={remove} alt="Remove Item" onClick={() => onRemove(item.title)} />
