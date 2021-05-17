@@ -17,9 +17,7 @@ const Checkout = () => {
         items.forEach((item) => {
             let url = `/phone/decrementStock/${item._id}/${item.quantity}`;
             fetch(url);
-            console.log("ASDAS");
         });
-        console.log("finished");
         user.cart.clear()
         history.push('/');
     }
