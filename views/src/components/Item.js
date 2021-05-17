@@ -13,7 +13,8 @@ const Item = () => {
     const location = useLocation();
     const [item, setItem] = useState(location.state.item);
     const [loading, setLoading] = useState(false);
-    const quantityInput = useRef(null);
+    const [quantity, setQuantity] = useState(0);
+    console.log(location.state.item);
 
     const [seller, setSeller] = useState({ firstname: "Unknown", lastname: "Seller" });
 
@@ -37,19 +38,11 @@ const Item = () => {
     }, [item?.seller])
 
     const minusOnClickHandler = () => {
-        const curValue = parseInt(quantityInput.current.value);
-        if(curValue === 0) {
-            return
-        }
-        quantityInput.current.value = curValue - 1;
+        setQuantity(Math.max(0, quantity - 1));
     }
 
     const plusOnClickHandler = () => {
-        const curValue = parseInt(quantityInput.current.value);
-        if(curValue === item.stock) {
-            return
-        }
-        quantityInput.current.value = curValue + 1;
+        setQuantity(Math.min(item.stock, quantity + 1));
     }
 
     const addToCart = () => {
@@ -58,9 +51,9 @@ const Item = () => {
             return;
         }
 
-        let q = parseInt(quantityInput.current.value)
-        user.cart.addItem({ ...item, quantity: q })
-        setItem({ ...item, stock: Math.max(0, item.stock - q) })
+        user.cart.addItem({ ...item, quantity: quantity })
+        setItem({ ...item, stock: Math.max(0, item.stock - quantity) })
+        setQuantity(0);
     }
 
     if (loading) return <Loading />;
@@ -79,9 +72,8 @@ const Item = () => {
                                 id="item-quantity-field" 
                                 type="text" 
                                 pattern="[0-9]*" 
-                                value="0" 
-                                readOnly
-                                ref={quantityInput} />
+                                value={quantity} 
+                                readOnly />
                             <button 
                                 className="quantityButton" 
                                 id="item-plus-button"
