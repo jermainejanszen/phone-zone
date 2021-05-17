@@ -37,6 +37,16 @@ export class Cart {
             }
         });
     }
+
+    getRemainingStock(item) {
+        let cartItem = this.getItem(item._id);
+        
+        if (undefined === cartItem) {
+            return item.stock;
+        } else {
+            return item.stock - cartItem.quantity;
+        }
+    }
 }
 
 const UserContext = React.createContext({ user: null, setUser: null });

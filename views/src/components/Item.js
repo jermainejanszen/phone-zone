@@ -11,13 +11,17 @@ const Item = () => {
 
     const history = useHistory();
     const location = useLocation();
+    const { user, setUser } = useContext(UserContext);
+
     const [item, setItem] = useState(location.state.item);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [quantity, setQuantity] = useState(0);
 
+    const [remainingStock, setRemainingStock] = useState(
+        user === null ? location.state.item.stock : user.cart.getRemainingStock(location.state.item)
+    );
     const [seller, setSeller] = useState({ firstname: "Unknown", lastname: "Seller" });
 
-    const { user, setUser } = useContext(UserContext);
 
     useEffect(() => {
         const fetchSeller = async () => {
@@ -38,12 +42,21 @@ const Item = () => {
 
     const minusOnClickHandler = () => {
         let newQuantity = Math.max(0, quantity - 1);
+        if (quantity !== newQuantity) {
+            setRemainingStock(remainingStock + 1);
+        }
         setQuantity(newQuantity);
         setItem({ ...item, quantity: newQuantity });
     }
 
     const plusOnClickHandler = () => {
-        let newQuantity = Math.min(item.stock, quantity + 1);
+        if (remainingStock === 0) {
+            return;
+        }
+        let newQuantity = quantity + 1;
+        if (quantity !== newQuantity) {
+            setRemainingStock(remainingStock - 1);
+        }
         setQuantity(newQuantity);
         setItem({ ...item, quantity: newQuantity });
     }
@@ -54,7 +67,7 @@ const Item = () => {
             return;
         }
 
-        user.cart.addItem({ ...item, quantity: quantity, stock: Math.max(0, item.stock - quantity) });
+        user.cart.addItem({ ...item, quantity: quantity });
         setItem({ ...item, stock: Math.max(0, item.stock - quantity) });
         setQuantity(0);
     }
@@ -90,7 +103,7 @@ const Item = () => {
                 <div id="item-text-div">
                     <p id="item-brand">{item.brand}</p>
                     <p id="item-title">{item.title}</p>
-                    <p id="item-stock">{`Stock remaining: ${item.stock}`}</p>
+                    <p id="item-stock">{`Stock remaining: ${remainingStock}`}</p>
                     <p id="item-seller">{`Seller: ${seller.firstname} ${seller.lastname}`}</p>
                     <p id="item-price">{`$${item.price}`}</p>
                 </div>
