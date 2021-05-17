@@ -144,22 +144,23 @@ const NavBar = () => {
             </form>
 
             <div id="profile">
-                <button
-                    onClick={() => history.push('/checkout')}
-                    className="profile-button">
-                    <img className="profile-button-icon" src={checkout96} alt="Checkout" />
-                </button>
                 {!loggedIn ?
                     <button
-                        onClick={() => history.push('/login', window.location.pathname)}
+                        onClick={() => history.push('/login', { pathname: window.location.pathname })}
                         className="profile-button">
                         <img className="profile-button-icon" src={login96} alt="Login" />
                     </button> :
+                    
                     <div>
+                         <button
+                            onClick={() => history.push('/checkout')}
+                            className="profile-button">
+                            <img className="profile-button-icon" src={checkout96} alt="Checkout" />
+                        </button>
                         <button
-                        onClick={() => history.push('/user')}
-                        className="profile-button">
-                            <img className="profile-button-icon" src={user96} alt="Profile" />
+                            onClick={() => history.push('/user')}
+                            className="profile-button">
+                                <img className="profile-button-icon" src={user96} alt="Profile" />
                         </button> 
                         <button
                             className="profile-button"
