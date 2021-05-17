@@ -21,21 +21,18 @@ export class Cart {
             return;
         }
 
-        let i = this.getItem(item.id)
+        let cartItem = this.getItem(item._id)
 
-        if (undefined === i) {
+        if (undefined === cartItem) {
             this.cart.push(item)
         } else {
-            i.quantity += item.quantity;
-            console.log(i);
+            cartItem.quantity += item.quantity;
         }
-
-        console.log(this.cart)
     }
 
     getItem(id) {
         return this.cart.find((item) => {
-            if (item.id === id) {
+            if (item._id === id) {
                 return item;
             }
         });
