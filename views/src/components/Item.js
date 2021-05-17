@@ -14,7 +14,6 @@ const Item = () => {
     const [item, setItem] = useState(location.state.item);
     const [loading, setLoading] = useState(false);
     const [quantity, setQuantity] = useState(0);
-    console.log(location.state.item);
 
     const [seller, setSeller] = useState({ firstname: "Unknown", lastname: "Seller" });
 
@@ -38,21 +37,25 @@ const Item = () => {
     }, [item?.seller])
 
     const minusOnClickHandler = () => {
-        setQuantity(Math.max(0, quantity - 1));
+        let newQuantity = Math.max(0, quantity - 1);
+        setQuantity(newQuantity);
+        setItem({ ...item, quantity: newQuantity });
     }
 
     const plusOnClickHandler = () => {
-        setQuantity(Math.min(item.stock, quantity + 1));
+        let newQuantity = Math.min(item.stock, quantity + 1);
+        setQuantity(newQuantity);
+        setItem({ ...item, quantity: newQuantity });
     }
 
     const addToCart = () => {
         if (user === null) {
-            history.push('/login', { pathname: window.location.pathname, item: item });
+            history.push('/login', { pathname: window.location.pathname, item: item } );
             return;
         }
 
-        user.cart.addItem({ ...item, quantity: quantity })
-        setItem({ ...item, stock: Math.max(0, item.stock - quantity) })
+        user.cart.addItem({ ...item, quantity: quantity, stock: Math.max(0, item.stock - quantity) });
+        setItem({ ...item, stock: Math.max(0, item.stock - quantity) });
         setQuantity(0);
     }
 

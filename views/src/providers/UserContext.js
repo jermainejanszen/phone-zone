@@ -13,7 +13,7 @@ export class User {
 
 export class Cart {
     constructor() {
-        this.cart = []
+        this.items = []
     }
 
     addItem(item) {
@@ -24,14 +24,14 @@ export class Cart {
         let cartItem = this.getItem(item._id)
 
         if (undefined === cartItem) {
-            this.cart.push(item)
+            this.items.push(item)
         } else {
             cartItem.quantity += item.quantity;
         }
     }
 
     getItem(id) {
-        return this.cart.find((item) => {
+        return this.items.find((item) => {
             if (item._id === id) {
                 return item;
             }

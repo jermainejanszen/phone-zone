@@ -13,10 +13,10 @@
 
 #back-button {
     width: 3em;
+    cursor: pointer;
 }
 
 #checkout-container {
-    width: 150em;
     margin-left: auto;
     margin-right: auto;
 }

@@ -7,9 +7,12 @@ import remove from '../resources/remove96.png';
 
 const CheckoutItem = ({ item, onRemove }) => {
 
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(item?.quantity ? item.quantity : 0);
 
     const minusOnClickHandler = () => {
+        if (quantity - 1 == 0) {
+            onRemove(item.title);
+        }
         setQuantity(Math.max(quantity - 1, 0));
     }
 
