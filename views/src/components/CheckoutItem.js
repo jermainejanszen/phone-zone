@@ -6,7 +6,7 @@ import '../styles/Item.css';
 import remove from '../resources/remove96.png';
 import UserContext from '../providers/UserContext';
 
-const CheckoutItem = ({ item, onRemove }) => {
+const CheckoutItem = ({ item, onRemove, onUpdateQuantity }) => {
 
     const { user } = useContext(UserContext);
     const [quantity, setQuantity] = useState(item?.quantity ? item.quantity : 0);
@@ -18,6 +18,7 @@ const CheckoutItem = ({ item, onRemove }) => {
             let newQuantity = Math.max(0, quantity - 1);
             user.cart.getItem(item._id).quantity = newQuantity;
             setQuantity(newQuantity);
+            onUpdateQuantity();
         }
     }
 
@@ -25,6 +26,7 @@ const CheckoutItem = ({ item, onRemove }) => {
         let newQuantity = Math.min(quantity + 1, item.stock);
         user.cart.getItem(item._id).quantity = newQuantity;
         setQuantity(newQuantity);
+        onUpdateQuantity();
     }
 
     return (

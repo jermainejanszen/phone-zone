@@ -47,6 +47,14 @@ export class Cart {
             return item.stock - cartItem.quantity;
         }
     }
+
+    getTotalCost() {
+        let total = 0;
+        this.items.forEach((item) => {
+            total += item.price * item.quantity;
+        });
+        return total.toFixed(2);
+    }
 }
 
 const UserContext = React.createContext({ user: null, setUser: null });

@@ -11,6 +11,7 @@ const Checkout = () => {
     const history = useHistory();
     const { user, setUser } = useContext(UserContext);
     const [items, setItems] = useState(user.cart.items);
+    const [totalCost, setTotalCost] = useState(user.cart.getTotalCost());
 
     return (
         <div id="checkout-container">
@@ -34,12 +35,22 @@ const Checkout = () => {
                                             return item.title !== title;
                                         });
                                         setItems(user.cart.items);
-                                    }}    
+                                        setTotalCost(user.cart.getTotalCost());
+                                    }}   
+                                    onUpdateQuantity={() => {
+                                        setTotalCost(user.cart.getTotalCost());
+                                    }} 
                                 />
                             </li>
                         );
                     })}
                 </ul>
+            </div>
+            <div id="transaction-container">
+                <p id="total-cost-text">Total cost: ${user.cart.getTotalCost()}</p>
+                <button id="confirm-transaction-button">
+                    Click here to confirm the transaction
+                </button>
             </div>
         </div>
     );

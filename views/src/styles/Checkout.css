@@ -20,3 +20,19 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+#transaction-container {
+    display: flex;
+    font-size: larger;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#total-cost-text {
+    margin-right: 1em;
+}
+
+#confirm-transaction-button {
+    margin-left: 1em;
+}
