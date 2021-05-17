@@ -11,8 +11,8 @@ const Item = () => {
 
     const history = useHistory();
     const location = useLocation();
-    const [item, setItem] = useState(history.location?.state);
-    const [loading, setLoading] = useState(item === undefined);
+    const [item, setItem] = useState(location.state.item);
+    const [loading, setLoading] = useState(false);
     const quantityInput = useRef(null);
 
     const [seller, setSeller] = useState({ firstname: "Unknown", lastname: "Seller" });
@@ -20,27 +20,7 @@ const Item = () => {
     const { user, setUser } = useContext(UserContext);
 
     useEffect(() => {
-        const fetchItem = async () => {
-            if (item === undefined) {
-                const response = await fetch(`/phone/searchItemsOnTitle/${location.pathname.substring(11)}`);
-                try {
-                    const data = await response.json();
-                    const itemPromise = await JSON.parse(data);
-                    setItem(itemPromise.message[0]);
-                } catch(err) {
-                    console.error(err);
-                }
-            }
-        }
-
-        fetchItem()
-    }, [item])
-
-    useEffect(() => {
         const fetchSeller = async () => {
-            if (item?.seller === undefined) {
-                return;
-            }
             const response = await fetch(`/user/getUserInformation/${item.seller}`);
             try {
                 const data = await response.json();
@@ -74,7 +54,7 @@ const Item = () => {
 
     const addToCart = () => {
         if (user === null) {
-            history.push('/login', window.location.pathname);
+            history.push('/login', { pathname: window.location.pathname, item: item });
             return;
         }
 

@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Rating from './Rating';
 
 import '../styles/Card.css';
 
 const Card = ({ item }) => {
+
+    const history = useHistory();
 
     const getAverageRating = item => {
         let rating = 0;
@@ -14,13 +16,10 @@ const Card = ({ item }) => {
     }
 
     return (
-        <Link 
-            className="card"
-            to={{
-                pathname: `/home/item/${item.title}`,
-                state: item
-            }}>
-            <img className="cardImage" src={`/phone_images/${item.brand}.jpeg`} alt="The phone" />
+        <div className = "card" onClick={() =>  {
+            history.push(`/home/item/${item.title}`, { item : item })
+        }}>
+            <img className="cardImage" src={`/phone_images/${item.brand}.jpeg`} alt="The phone"/>
             <div className="cardDetails">
                 <div className="brandPrice">
                     <p className="cardText" id="brand">{item.brand}</p>
@@ -31,7 +30,7 @@ const Card = ({ item }) => {
                 }</p>
                 <Rating id="card-rating" rating={getAverageRating(item)} />
             </div>
-        </Link>
+        </div>
     );
 }
 

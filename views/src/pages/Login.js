@@ -40,7 +40,7 @@ const Login = () => {
                 } else {
                     console.log("Logged in successfully!");
                     setUser(new User(result.message[0]));
-                    history.push(location.state);
+                    history.push(location.state.pathname, { item: location.state.item } );
                 }
             } catch (err) {
                 console.log(err);
