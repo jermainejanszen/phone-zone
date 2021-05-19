@@ -15,9 +15,11 @@ const NewListing = () => {
     const { user, setUser } = useContext(UserContext);
     const [form, setForm] = useState({brand:"Apple"});
 
-    const disableItem =  async (item, index) => {
-        console.log(item._id)
+    const disableItem =  async (item, index, disabledStatus) => {
         let url = `/phone/disableItem/${item._id}`;
+        if (disabledStatus == true) {
+            url = `/phone/removeDisabledStatus/${item._id}`;
+        }
         const response = await fetch(url)
     }
 
@@ -74,8 +76,7 @@ const NewListing = () => {
                         <div>
                             <button className="delete-disable-button"
                                 onClick={() => {
-                                    console.log(item.disabled)
-                                    disableItem(item, index)
+                                    disableItem(item, index, item.hasOwnProperty('disabled'))
                                     setLoaded(false)         
                                 }}>
                                 <img className="itemIcon" src={hide96} alt="Hide Item" />
