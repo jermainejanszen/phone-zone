@@ -91,8 +91,7 @@ const NewListing = () => {
                         <div>
                             <button className="delete-disable-button"
                                 onClick={() => {
-                                    disableItem(item, item.hasOwnProperty('disabled'))
-                                    setLoaded(false)         
+                                    disableItem(item, item.hasOwnProperty('disabled'))         
                                 }}>
                                 <img className="itemIcon" src={hide96} alt="Hide Item" />
                             </button>
