@@ -85,12 +85,23 @@ const Item = () => {
         setItem({ ...item, quantity: newQuantity });
     }
 
+    const animateCartQuantityText = () => {
+        let cartQuantityField = document.getElementById("cart-quantity");
+        cartQuantityField.classList.add("addedToCartAnimation");
+        cartQuantityField.addEventListener("animationend", () => {
+            cartQuantityField.classList.remove("addedToCartAnimation");
+        })
+    }
+
     const addToCart = () => {
         if (user === null) {
             history.push('/login', { pathname: window.location.pathname, item: item } );
             return;
+        } else if (quantity === 0) {
+            return;
         }
-
+ 
+        animateCartQuantityText();
         user.cart.addItem({ ...item, quantity: quantity });
         setItem({ ...item, stock: Math.max(0, item.stock - quantity) });
         setQuantity(0);
@@ -123,7 +134,7 @@ const Item = () => {
                         <button id="item-add-cart-button" onClick={addToCart}>
                             <img id="item-add-cart-icon" src={addshoppingcart96} alt="Add to checkout" />
                         </button>
-                        <p>{`Cart quantity: ${user === null ? 0 : user.cart.getCartQuantity(item)}`}</p>
+                        <p id="cart-quantity">{`Cart quantity: ${user === null ? 0 : user.cart.getCartQuantity(item)}`}</p>
                     </div>
                 </div>
                 <div id="item-text-div">
