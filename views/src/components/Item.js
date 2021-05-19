@@ -123,6 +123,7 @@ const Item = () => {
                         <button id="item-add-cart-button" onClick={addToCart}>
                             <img id="item-add-cart-icon" src={addshoppingcart96} alt="Add to checkout" />
                         </button>
+                        <p>{`Cart quantity: ${user === null ? 0 : user.cart.getCartQuantity(item)}`}</p>
                     </div>
                 </div>
                 <div id="item-text-div">
