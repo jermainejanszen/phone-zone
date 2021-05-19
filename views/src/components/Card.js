@@ -1,5 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import Rating from './Rating';
+import hide96 from '../resources/hide96.png';
 
 import '../styles/Card.css';
 
@@ -14,11 +15,12 @@ const Card = ({ item }) => {
         });
         return Math.round(rating / item.reviews.length)
     }
-
+    
     return (
-        <div className = "card" onClick={() =>  {
+        <div className={`card ${item.disabled === "" ? "cardDisabled" : ""}`} onClick={() =>  {
             history.push(`/home/item/${item.title}`, { item : item })
         }}>
+            <img id="disabled-image" src={hide96} alt="Hidden"/>
             <img className="cardImage" src={`/phone_images/${item.brand}.jpeg`} alt="The phone"/>
             <div className="cardDetails">
                 <div className="brandPrice">

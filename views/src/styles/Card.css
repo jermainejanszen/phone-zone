@@ -18,6 +18,23 @@
     margin: 1em 0em;
 }
 
+.cardDisabled > .cardImage {
+    filter: blur(4px);
+}
+
+#disabled-image {
+    visibility: hidden;
+    width: 9em;
+    border-radius: 10px;
+    margin: 3em;
+    z-index: 1;
+    position: absolute;
+}
+
+.cardDisabled > #disabled-image {
+    visibility: visible;
+}
+
 /* Text */
 .cardDetails {
     display: flex;

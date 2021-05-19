@@ -4,7 +4,9 @@
     flex-direction: row;
     flex-wrap: wrap;
     text-align: right;
+    align-content: center;
     margin: 2em 4em 1em 1em;
+    min-height: 40em;
   }
 
 /** description box of input form **/
@@ -57,16 +59,11 @@
 }
 
 .itemIcon:hover {
-    background-color: #4b96e68a;
+    background-color: rgba(20, 114, 202, 0.25);
 }
 
 .delete-disable-button {
     background: none;
     border: none;
     outline: none;
-}
-
-.disabled {
-    background-color: rgba(215, 236, 243, 0.644);
-    border-radius: 10px;
 }
