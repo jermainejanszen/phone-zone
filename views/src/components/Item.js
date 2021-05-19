@@ -17,7 +17,7 @@ const Item = () => {
     const [quantity, setQuantity] = useState(0);
 
     const [remainingStock, setRemainingStock] = useState(
-        user === null ? location.state.item.stock : user.cart.getRemainingStock(location.state.item)
+        user === null ? item.stock : item.stock - user.cart.getCartQuantity(item)
     );
 
     const [seller, setSeller] = useState({ firstname: "Unknown", lastname: "Seller" });
@@ -35,7 +35,7 @@ const Item = () => {
                 const dbItem = result.message[0];
                 setItem(dbItem);
                 setRemainingStock(
-                    user === null ? dbItem.stock : user.cart.getRemainingStock(dbItem)
+                    user === null ? dbItem.stock : dbItem.stock - user.cart.getCartQuantity(dbItem)
                 );
             } catch (err) {
                 console.log(err);
@@ -45,7 +45,7 @@ const Item = () => {
         }
 
         fetchItem();
-    }, [item._id]);
+    }, [item?._id]);
 
     useEffect(() => {
         const fetchSeller = async () => {

@@ -9,7 +9,6 @@ import '../styles/Auth.css';
 const Login = () => {
 
     const history = useHistory();
-    const location = useLocation();
     const { user, setUser } = useContext(UserContext);
 
     const [form, setForm] = useState({});
@@ -40,7 +39,7 @@ const Login = () => {
                 } else {
                     console.log("Logged in successfully!");
                     setUser(new User(result.message[0]));
-                    history.push(location.state.pathname, { item: location.state.item } );
+                    history.goBack();
                 }
             } catch (err) {
                 console.log(err);
@@ -100,7 +99,7 @@ const Login = () => {
                         <button 
                             className="navButton" 
                             onClick={() => {
-                                history.push('/signup', location.state);
+                                history.replace('/signup');
                             }}>
                                 Create a new account
                         </button>
