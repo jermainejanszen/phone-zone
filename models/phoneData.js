@@ -18,7 +18,7 @@ var PhoneSchema = new mongoose.Schema({
 // get all phones 
 PhoneSchema.statics.getPhones = function(callback) {
     return this
-            .find({})
+            .find({disabled: {$exists: false}})
             .exec(callback)
 }
 
@@ -43,7 +43,7 @@ PhoneSchema.statics.bestSellers = function(callback) {
 
 PhoneSchema.statics.findHighestPrice = function(callback){
         return this
-                .find({})
+                .find({disabled: {$exists: false}})
                 .select('price')
                 .sort({'price': -1})
                 .limit(1)
@@ -53,14 +53,14 @@ PhoneSchema.statics.findHighestPrice = function(callback){
 // Find all items with search term in their title
 PhoneSchema.statics.searchItemsOnTitle = function(searchTerm, callback) {
         return this
-                .find({title: { $regex: searchTerm, $options: "i" }})
+                .find({title: { $regex: searchTerm, $options: "i" }, disabled: {$exists: false}})
                 .exec(callback)
       }
 
 // Find all items of certain brand
 PhoneSchema.statics.searchItemsOnBrand = function(brandName, callback) {
         return this
-                .find({brand: brandName})
+                .find({brand: brandName, disabled: {$exists: false}})
                 .exec(callback)
       }
 
@@ -74,7 +74,7 @@ PhoneSchema.statics.searchItemsBySeller = function(sellerId, callback) {
 // Find all items of certain brand
 PhoneSchema.statics.searchItemsOnBrandTitleMaxPrice = function(brandName, searchTerm, maxPrice, callback) {
         return this
-                .find({brand: { $regex: brandName, $options: "i" }, title: { $regex: searchTerm, $options: "i" }, price: {$lte: maxPrice}})                
+                .find({brand: { $regex: brandName, $options: "i" }, title: { $regex: searchTerm, $options: "i" }, price: {$lte: maxPrice}, disabled: {$exists: false}})                
                 .exec(callback)
       }
 
