@@ -20,12 +20,14 @@ const NewListing = () => {
         if (disabledStatus == true) {
             url = `/phone/removeDisabledStatus/${item._id}`;
         }
+        setLoaded(false) 
         const response = await fetch(url)
     }
 
     const deleteItem = async (id) => {
         console.log(id)
         let url = `/phone/deleteItem/${id}`;
+        setLoaded(false)
         const response = await fetch(url)
     }
 
@@ -59,11 +61,11 @@ const NewListing = () => {
 
         const addItem = async () => {
             let url = `/phone/createNewPhone/${form.title}/${form.brand}/${form.stock}/${user.id}/${form.price}`;
+            setLoaded(false);
             const response = await fetch(url);
         }
 
         addItem();
-        setLoaded(false);
     }
 
     console.log(items);
@@ -76,15 +78,13 @@ const NewListing = () => {
                         <div>
                             <button className="delete-disable-button"
                                 onClick={() => {
-                                    disableItem(item, index, item.hasOwnProperty('disabled'))
-                                    setLoaded(false)         
+                                    disableItem(item, index, item.hasOwnProperty('disabled'))        
                                 }}>
                                 <img className="itemIcon" src={hide96} alt="Hide Item" />
                             </button>
                             <button className="delete-disable-button"
                                 onClick={() => {
                                     deleteItem(item._id)
-                                    setLoaded(false)
                                 }}>
                                 <img className="itemIcon" src={remove} alt="Delete Item" />
                             </button>
