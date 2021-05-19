@@ -24,12 +24,37 @@ const EditProfile = () => {
         return firstname !== user.firstname || lastname !== user.lastname || email !== user.email;
     }
 
+    const emailExists = async () => {
+        const email = document.getElementById("email").value;
+
+        if (email === user.email) {
+            return false;
+        }
+
+        let url = `/user/checkEmailExists/${document.getElementById("email").value}`;
+        console.log(url);
+
+        const response = await fetch(url);
+
+        try {
+            const data = await response.json();
+            const result = await JSON.parse(data);
+            return result.message.hasOwnProperty('0');
+        } catch (err) {
+            console.log(err);
+        }
+
+        return false;
+    }
+
     const handleChange = (event) => {
         const field = event.target;
         const label = document.getElementById(event.target.id + "-label");
         const updateButton = document.getElementById("update-button");
 
         field.value = field.value.trim();
+
+        field.setCustomValidity('');
 
         if (field.checkValidity()) {
             label.classList.remove("formLabelInvalid");
@@ -51,10 +76,20 @@ const EditProfile = () => {
         }
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if (anyChanges()) {
+        if (await emailExists()) {
+            let email = document.getElementById('email');
+            let emailLabel = document.getElementById('email-label')
+
+            emailLabel.classList.remove("formLabelValid");
+            emailLabel.classList.add("formLabelInvalid");
+
+            email.focus();
+            email.setCustomValidity("Email already taken");
+            email.reportValidity();
+        } else if (anyChanges()) {
             history.push('/user/confirmPassword', form);
         }
     }

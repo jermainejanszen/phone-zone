@@ -21,6 +21,12 @@ userSchema.statics.getUsers = function(callback) {
           .exec(callback)
 }
 
+//check if user exists with given email
+userSchema.statics.checkEmailExists = function(email, callback) {
+    return this
+            .find({email: email})
+            .exec(callback)
+}
 // get users' password 
 userSchema.statics.getPassword = function(id, callback){
     return this
