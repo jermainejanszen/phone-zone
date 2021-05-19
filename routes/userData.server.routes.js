@@ -9,5 +9,6 @@ router.get('/getUserInformation/:id', controller.getUserInformation)
 router.get('/updateUserInformation/:id/:firstname/:lastname/:email', controller.updateUserInformation)
 router.get('/createNewUser/:firstname/:lastname/:email/:password', controller.createNewUser)
 router.get('/validateUserInformation/:email/:password', controller.validateUserInformation)
+router.get('/checkEmailExists/:email', controller.validateUserInformation)
 
 module.exports = router

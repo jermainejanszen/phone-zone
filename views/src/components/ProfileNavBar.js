@@ -1,14 +1,12 @@
 
 import { useState, useContext } from 'react';
-import { Link, useHistory, useRouteMatch, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import UserContext, { User } from '../providers/UserContext'
-
 import logo from '../resources/logo.svg';
 import edit from '../resources/edit.svg';
 import key from '../resources/key.svg';
 import selling96 from '../resources/selling96.png';
 import signout96 from '../resources/signout96.png';
-
 import '../styles/ProfileNavBar.css'; 
 
 const ProfileNavBar = () => {
@@ -16,7 +14,6 @@ const ProfileNavBar = () => {
     const history = useHistory();
     const location = useLocation();
     const { user, setUser } = useContext(UserContext);
-
     const [currentPath, setCurrentPath] = useState(location.pathname);
     console.log(location);
 

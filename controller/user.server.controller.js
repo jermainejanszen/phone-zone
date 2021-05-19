@@ -77,12 +77,12 @@ module.exports.validateUserInformation = (req, res) => {
 }
 
 // check whether email taken
-module.exports.checkIfEmailTaken = (req, res) => {
-    User.checkIfEmailTaken(req.params.email, function(err, result){
+module.exports.checkEmailExists = (req, res) => {
+    User.checkEmailExists(req.params.email, function(err, result){
 		if (err){
 			console.log("Query error!")
 		} else {
-			return res.json(result);
+			return res.json(JSON.stringify({ message: {... result} }));
 		}
 	})
 }

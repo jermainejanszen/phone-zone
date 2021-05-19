@@ -15,7 +15,12 @@ const NewListing = () => {
     const { user, setUser } = useContext(UserContext);
     const [form, setForm] = useState({brand:"Apple"});
 
-    const disableItem =  async (item, index, disabledStatus) => {
+    /**
+     * Disable or enable item corresponding to given id
+     * @param {*} item item to be disabled 
+     * @param {*} disabledStatus true if item is currently disabled, false otherwise
+     */
+    const disableItem =  async (item, disabledStatus) => {
         let url = `/phone/disableItem/${item._id}`;
         if (disabledStatus == true) {
             url = `/phone/removeDisabledStatus/${item._id}`;
@@ -23,6 +28,10 @@ const NewListing = () => {
         const response = await fetch(url)
     }
 
+    /**
+     * Delete item corresponding to given id from user's listing
+     * @param {String} id id of item to be deleted
+     */
     const deleteItem = async (id) => {
         console.log(id)
         let url = `/phone/deleteItem/${id}`;
@@ -30,6 +39,9 @@ const NewListing = () => {
     }
 
 
+    /**
+     * Fetch items in user's listing from the database 
+     */
     useEffect(() => {
         const fetchItems = async () => {
             let seller = user.id
@@ -37,11 +49,9 @@ const NewListing = () => {
             const data = await response.json();
             const itemsPromise = await JSON.parse(data);
             const newItems = Object.values(itemsPromise.message);
-            
             setItems(newItems);
             setLoaded(true);
         }
-
         if (!loaded) {
             fetchItems();
         }
@@ -54,20 +64,23 @@ const NewListing = () => {
         });
     }
 
+    /**
+     * Upon submitting the create new listing form, a new phone is sent to be added to the database with the given user details
+     * @param {event} event 
+     */
     const handleSubmit = (event) => {
         event.preventDefault()
-
         const addItem = async () => {
             let url = `/phone/createNewPhone/${form.title}/${form.brand}/${form.stock}/${user.id}/${form.price}`;
             const response = await fetch(url);
         }
-
         addItem();
         setLoaded(false);
     }
 
-    console.log(items);
-
+    /**
+     * Map items returns from database to their individual cards, and set up delete/disable functionality for each
+     */
     const mapItems = () => {
         if (items.length > 0) {
             return items.map((item, index) => {
@@ -76,7 +89,7 @@ const NewListing = () => {
                         <div>
                             <button className="delete-disable-button"
                                 onClick={() => {
-                                    disableItem(item, index, item.hasOwnProperty('disabled'))
+                                    disableItem(item, item.hasOwnProperty('disabled'))
                                     setLoaded(false)         
                                 }}>
                                 <img className="itemIcon" src={hide96} alt="Hide Item" />
