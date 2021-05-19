@@ -38,13 +38,13 @@ export class Cart {
         });
     }
 
-    getRemainingStock(item) {
+    getCartQuantity(item) {
         let cartItem = this.getItem(item._id);
         
         if (undefined === cartItem) {
-            return item.stock;
+            return 0;
         } else {
-            return item.stock - cartItem.quantity;
+            return cartItem.quantity;
         }
     }
 
