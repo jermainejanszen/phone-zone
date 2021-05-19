@@ -130,7 +130,7 @@ const Item = () => {
                     <p id="item-title">{item.title}</p>
                     <p id="item-stock">{`Stock remaining: ${remainingStock}`}</p>
                     <p id="item-seller">{`Seller: ${seller.firstname} ${seller.lastname}`}</p>
-                    <p id="item-price">{`$${item.price}`}</p>
+                    <p id="item-price">{`Price: $${item.price.toFixed(2)}`}</p>
                 </div>
             </div>
             <Reviews id="item-reviews-div" reviews={item.reviews} />
