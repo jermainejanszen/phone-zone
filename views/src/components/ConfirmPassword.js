@@ -15,7 +15,9 @@ const ConfirmPassword = () => {
 
     const form = location.state;
 
-    
+    /**
+     * Makes call to update user information in database and locally 
+     */
     const updateProfile = async () => {
         const url = `/user/updateUserInformation/${user.id}/${form.firstname}/${form.lastname}/${form.email}`;
         const response = await fetch(url);
@@ -37,10 +39,12 @@ const ConfirmPassword = () => {
                 email: form.email
             })
         );
-
         history.goBack();
     }
 
+    /**
+     * Makes a call to check if password inputted is correct 
+     */
     const isCorrectPassword = async () => {
         let url = `/user/getPassword/${user.id}`;
         const response = await fetch(url);
@@ -64,11 +68,19 @@ const ConfirmPassword = () => {
         return false;
     }
 
-
+    /**
+     * Handles changes by setting password 
+     * @param {event} event 
+     */
     const handleChange = (event) => {
         setPassword(event.target.value);
     }
 
+    /**
+     * Handles form submissions by calling required methods to check password 
+     * is correct and updating profile if it is
+     * @param {event} event 
+     */
     const handleSubmit = async (event) => {
         event.preventDefault()
         if (await isCorrectPassword()) {
@@ -78,6 +90,7 @@ const ConfirmPassword = () => {
         }
     }
 
+    // sets up form to allow user to type in password to confirm their identity and approve changes
     return (
         <div>
             <div className="formContainer">
@@ -107,7 +120,6 @@ const ConfirmPassword = () => {
                             >
                         </input>
                     </div>
-
                     <div className="buttonsDiv">
                         <button type="submit" className="submitButton">Confirm</button>
                     </div>

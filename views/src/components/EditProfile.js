@@ -16,6 +16,10 @@ const EditProfile = () => {
         email: user.email
     });
 
+    /**
+     * Method called upon any changes occurring to fields in the input form. 
+     * Returns true if any of the fields have been changed from their previous value.
+     */
     const anyChanges = () => {
         const firstname = document.getElementById("firstname").value;
         const lastname = document.getElementById("lastname").value;
@@ -24,6 +28,9 @@ const EditProfile = () => {
         return firstname !== user.firstname || lastname !== user.lastname || email !== user.email;
     }
 
+    /**
+     * Checks database to see if another user has created an account with the same email
+     */
     const emailExists = async () => {
         const email = document.getElementById("email").value;
 
@@ -47,6 +54,10 @@ const EditProfile = () => {
         return false;
     }
 
+    /**
+     * Handles changes to the input form and provides validation checks
+     * @param {event} event 
+     */
     const handleChange = (event) => {
         const field = event.target;
         const label = document.getElementById(event.target.id + "-label");
@@ -76,6 +87,11 @@ const EditProfile = () => {
         }
     }
 
+    /**
+     * Called upon a user clicking to submit their information changes and 
+     * makes a call to update the database correspondingly
+     * @param {event} event 
+     */
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -94,6 +110,7 @@ const EditProfile = () => {
         }
     }
 
+    // sets up input form for user to see and change their details in 
     return (
         <div className="profileContainer">
             <h1>{`Hi, ${form.firstname}`}</h1>

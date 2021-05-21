@@ -59,6 +59,10 @@ const NewListing = () => {
         }
     }, [loaded]);
 
+    /**
+     * handles changes to the form 
+     * @param {event} event 
+     */
     const handleChange = (event) => {
         setForm({
             ...form,
@@ -112,6 +116,7 @@ const NewListing = () => {
         return <p id="search-no-items">No items found.</p>
     }
 
+    // sets up the form for users to add new listings with 
     return (
         <div className="profileContainer">
             <div id="my-listings">
