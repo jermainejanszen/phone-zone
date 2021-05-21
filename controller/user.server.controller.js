@@ -1,6 +1,6 @@
 var User = require("../models/userData");
 
-
+// return all users 
 module.exports.getUsers = (req, res) => {
 	User.getUsers((err, result) => {
 		if (err) {
@@ -11,6 +11,7 @@ module.exports.getUsers = (req, res) => {
 	});	
 }
 
+// get user's password given their id 
 module.exports.getPassword = (req, res) => {
     User.getPassword(req.params.id, (err, result) => {
         if (err) {

@@ -1,5 +1,6 @@
 var mongoose = require('./db')
 
+// define the phone schema for items from phone data base 
 var PhoneSchema = new mongoose.Schema({
         title: String, 
         brand: String,
@@ -41,6 +42,7 @@ PhoneSchema.statics.bestSellers = function(callback) {
           .exec(callback)
 }
 
+// find the highest priced item in the database
 PhoneSchema.statics.findHighestPrice = function(callback){
         return this
                 .find({disabled: {$exists: false}})
@@ -85,6 +87,7 @@ PhoneSchema.statics.searchItemsById = function(id, callback) {
                 .exec(callback)
       }
 
+// remove item from database given id
 PhoneSchema.statics.removeItem = function(itemId, callback) {
         return this
                 .remove({_id, itemId})

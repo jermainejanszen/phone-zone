@@ -15,7 +15,7 @@ const ConfirmPassword = () => {
 
     const form = location.state;
 
-
+    
     const updateProfile = async () => {
         const url = `/user/updateUserInformation/${user.id}/${form.firstname}/${form.lastname}/${form.email}`;
         const response = await fetch(url);

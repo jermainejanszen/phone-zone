@@ -147,6 +147,7 @@ module.exports.decrementStock = (req, res) => {
       })
 }
 
+// find the highest price of any item in the phones database
 module.exports.findHighestPrice = (req, res) => {
 	Phone.findHighestPrice(function(err, result) {
         if (err){

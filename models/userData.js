@@ -2,6 +2,7 @@ var mongoose = require('./db')
 var ObjectId = require('mongoose').Schema.ObjectId
 var CryptoJS = require('crypto-js')
 
+// define schema for users from data base 
 var userSchema = new mongoose.Schema({  
          firstname: { type : String, required : true }, 
          lastname: String,

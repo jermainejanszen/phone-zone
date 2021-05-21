@@ -2,6 +2,9 @@ var express = require('express')
 var controller = require('../controller/phone.server.controller')
 var router = express.Router()
 
+/**
+ * Routes pertaining to various query calls to the database relating to the phones dataset 
+ */
 router.get('/getPhones', controller.getPhones)
 router.get('/soldOutSoon', controller.soldOutSoon)
 router.get('/bestSellers', controller.bestSellers)
