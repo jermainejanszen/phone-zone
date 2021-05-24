@@ -94,7 +94,7 @@ const Login = () => {
                     </div>
 
                     <div className="buttonsDiv">
-                        <input className="submitButton" type="submit" value="login" />
+                        <input className="submitButton" type="submit" value="Login" />
                         
                         <button 
                             className="navButton" 
