@@ -5,6 +5,10 @@ import '../styles/Rating.css';
 
 const Rating = ({ rating }) => {
 
+    if (Number.isNaN(rating)) {
+        return <p>No ratings.</p>
+    }
+
     var stars = [];
     for (let i = 0; i < 5; i++) {
         if(i < rating) {
@@ -20,10 +24,6 @@ const Rating = ({ rating }) => {
                 alt="Unfilled star" 
                 className="ratingStar" />);
         }
-    }
-
-    if (Number.isNaN(rating)) {
-        return <p>No ratings.</p>
     }
 
     return (

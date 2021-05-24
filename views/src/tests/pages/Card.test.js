@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-// Home tests
 import Card from '../../components/Card';
 
 const mockItem = {
