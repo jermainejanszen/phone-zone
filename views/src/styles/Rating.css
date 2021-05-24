@@ -1,7 +1,9 @@
+/** formatting for ratings div **/
 #rating-div {
     margin: 1em 0em;
 }
 
+/** formatting for stars showing ratings **/
 .ratingStar {
     width: 1.5em;
 }
