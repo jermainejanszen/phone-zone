@@ -1,14 +1,8 @@
-/** field in input form **/
-.fieldDiv {
-    display: flex;
-    flex-direction: column;
-}
-
 /** container containing profile information */ 
 .profileContainer {
     display: flex;
     flex-direction: row;
-    text-align: center;
+    align-items: center;
     width: 100%;
     justify-content: space-around;
 }
@@ -23,8 +17,8 @@
     text-align: left;
     margin-left: 1em;
     min-width: 5em;
-    max-width: 35vw;
-    text-overflow: clip;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
 }
 
 /** formatting for header 2 in profile section **/
@@ -33,26 +27,15 @@
     text-align: center;
 }
 
-/** styling of buttons within profile section **/
-.buttons {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: center;
-}
-
 /** formatting for buttons corresponding to updates across the various profile pages **/
 .updateButton {
+    cursor: pointer;
     border: transparent;
-    border-radius: 10em;
+    border-radius: 10px;
     color: white;
     font-size: 17px;
     padding: 0.7em 0em;
-    margin: 0.7em 0em;
-    width: 70%;
+    margin: 1em 0em;
     background-color: #4b96e6;
-    align-content: center;
-    text-align: center;
-    position:relative;
     width:100%;
 }

@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import UserContext, { User } from '../providers/UserContext';
 import logo from '../resources/logo.svg';
 
 import '../styles/Auth.css';
@@ -7,6 +8,7 @@ import '../styles/Auth.css';
 const Signup = () => {
 
     const history = useHistory();
+    const { user, setUser } = useContext(UserContext);
     const [form, setForm] = useState({});
 
     const handleChange = (event) => {
@@ -16,6 +18,8 @@ const Signup = () => {
         if (field.title !== "password") {
             field.value = field.value.trim();
         }
+
+        field.setCustomValidity('');
 
         if (field.checkValidity()) {
             label.classList.remove("formLabelInvalid");
@@ -35,7 +39,44 @@ const Signup = () => {
         event.preventDefault()
         console.log(form)
 
-        /* TODO: Implement logic for signing the user up */
+        /* Updates the page if the email already exists in the DB */
+        const emailAlreadyExists = () => {
+            console.log('Email already in the system');
+
+            let email = document.getElementById('email');
+            let emailLabel = document.getElementById('email-label')
+
+            emailLabel.classList.remove("formLabelValid");
+            emailLabel.classList.add("formLabelInvalid");
+
+            email.focus();
+            email.setCustomValidity("Email already taken");
+            email.reportValidity();
+        }
+
+        /* Signs the user up */
+        const signup = async () => {
+            let url = `/user/createNewUser/${form.firstname}/${form.lastname}/${form.email}/${form.password}`;
+
+            const response = await fetch(url);
+
+            if (response.status === 500) {
+                emailAlreadyExists()
+                return;
+            }
+
+            try {
+                const id = await response.json();
+                console.log(id);
+                setUser(new User({ _id: id, firstname: form.firstname, lastname: form.lastname, email: form.email }))
+                history.goBack();
+            } catch (err) {
+                console.log(err);
+                console.log('error');
+            }
+        }
+
+        signup();
     }
 
     return (
@@ -64,7 +105,7 @@ const Signup = () => {
 
                     <div className="fieldDiv">
                         <label id="email-label" className="formLabel formLabelInvalid">Email</label>
-                        <input className="formInputText" onChange={handleChange} title="email" type="email" required />
+                        <input id="email" className="formInputText" onChange={handleChange} title="email" type="email" required />
                     </div>
 
                     <div className="fieldDiv">
@@ -97,7 +138,7 @@ const Signup = () => {
                         <button 
                             className="navButton" 
                             onClick={() => {
-                                history.push('/login');
+                                history.replace('/login');
                             }}>
                                 Already have an account? Login here
                         </button>

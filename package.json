@@ -15,8 +15,11 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "crypto-js": "^4.0.0",
     "express": "^4.17.1",
+    "mongoose": "^5.12.7",
     "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "express-session": "^1.15.6"
   }
 }

@@ -1,13 +1,14 @@
 
 .card {
     margin: 2em;
-    width: fit-content;
     border-radius: 10px;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
     width: 15em;
+    height: fit-content;
     overflow: hidden;
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 
 /* Image */
@@ -17,15 +18,32 @@
     margin: 1em 0em;
 }
 
+.cardDisabled > .cardImage {
+    filter: blur(4px);
+}
+
+#disabled-image {
+    visibility: hidden;
+    width: 9em;
+    border-radius: 10px;
+    margin: 3em;
+    z-index: 1;
+    position: absolute;
+}
+
+.cardDisabled > #disabled-image {
+    visibility: visible;
+}
+
 /* Text */
 .cardDetails {
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     padding: 0em 1em;
-    box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+    height: 17em;
 }
 
 .card:hover {
@@ -44,5 +62,10 @@
 
 #title {
     font-style: italic;
-    flex-grow: 1;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+#card-rating {
+    border: 1px solid black;
 }

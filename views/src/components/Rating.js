@@ -22,6 +22,10 @@ const Rating = ({ rating }) => {
         }
     }
 
+    if (Number.isNaN(rating)) {
+        return <p>No ratings.</p>
+    }
+
     return (
         <div id="rating-div">
             {stars}

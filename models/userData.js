@@ -1,12 +1,19 @@
 var mongoose = require('./db')
 var ObjectId = require('mongoose').Schema.ObjectId
+var CryptoJS = require('crypto-js')
 
+// define schema for users from data base 
 var userSchema = new mongoose.Schema({  
-         firstname: String, 
+         firstname: { type : String, required : true }, 
          lastname: String,
-         email:String,
-         password:String
-    })
+         email: { type : String, unique : true, required : true },
+         password: { type : String, required : true },
+    }, {versionKey: false});
+
+// MD5 hashes the given password
+function hash(password) {
+    return CryptoJS.MD5(password).toString()
+}
 
 // get all users
 userSchema.statics.getUsers = function(callback) {
@@ -15,6 +22,12 @@ userSchema.statics.getUsers = function(callback) {
           .exec(callback)
 }
 
+//check if user exists with given email
+userSchema.statics.checkEmailExists = function(email, callback) {
+    return this
+            .find({email: email})
+            .exec(callback)
+}
 // get users' password 
 userSchema.statics.getPassword = function(id, callback){
     return this
@@ -23,10 +36,10 @@ userSchema.statics.getPassword = function(id, callback){
           .exec(callback)
 }
 
-//validate user information when they sign into the platform 
+// validate user information when they sign into the platform 
 userSchema.statics.validateUserInformation = function(email, password, callback){
     return this
-        .find({email:email, password:password})
+        .find({email:email, password:hash(password)})
         .exec(callback)
 }
 
@@ -38,74 +51,32 @@ userSchema.statics.getUserInformation = function(id, callback){
 }
 
 //update users' infromation  
-userSchema.statics.updateUserInformation = function(id, newFirstName, newLastName, newEmail, callback){
+userSchema.statics.updateUserInformation = function(id, newFirstName, newLastName, newEmail, callback) {
     return this
           .update({_id: id}, {$set:{'firstname':newFirstName, 'lastname':newLastName, 'email':newEmail}})
           .exec(callback)
-        }
+}
 
 //update user password 
-userSchema.statics.updatePassword= function(id, newPassword, callback){
+userSchema.statics.updatePassword = function(id, newPassword, callback) {
     return this
-          .update({_id: id}, {$set:{'password':newPassword}})
-          .exec(callback)
-        }
+          .update({_id: id}, {$set:{'password':hash(newPassword)}})
+          .exec(callback);
+}
 
 // //create new user 
-userSchema.statics.createNewUser = function(firstName, lastName, email, password, callback){
-    return this 
-          .create({'firstname': firstName, 'lastname': lastName, 'email':email, 'password':password})
+userSchema.statics.createNewUser = function(firstname, lastname, email, password){
+    let newUser = new User({
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        password: hash(password),
+        versionKey: false 
+      });
+    return newUser.save();
 }
 
 var User = mongoose.model('User', userSchema, 'user_data')
-
-//eventually remove from here 
-// User.getPassword('5f5237a4c1beb1523fa3da65', function(err, result){
-//   if (err){
-//     console.log("Query error!")
-//   } else {
-//     console.log(result)
-//   }
-// })
-
-// User.updatePassword('5f5237a4c1beb1523fa3da65', "potatosalad", function(err, result){
-//   if (err){
-//     console.log("Query error!")
-//   } else {
-//     console.log(result)
-//   }
-// })
-
-User.getUserInformation('5f5237a4c1beb1523fa3da65', function(err, result){
-    if (err){
-        console.log("Query error!")
-    } else {
-        console.log(result)
-    }
-})
-
-// User.updateUserInformation('5f5237a4c1beb1523fa3da65', 'john', 'smith', 'john.smith@gmail.com', function(err, result){
-//   if (err){
-//     console.log("Query error!")
-//   } else {
-//     console.log(result)
-//   }
-// })
-
-User.createNewUser('john', 'smith', 'john.smith@gmail.com', 'password', function(err, result) {
-    if (err) {
-        console.log("Query error!")
-    } else {
-        console.log(result)
-    }
-})
-
-User.validateUserInformation('john.smith@gmail.com', 'password', function(err, result){
-    if (err){
-        console.log("Query error!")
-    } else {
-        console.log(result)
-    }
-})
+User.createIndexes()
 
 module.exports = User

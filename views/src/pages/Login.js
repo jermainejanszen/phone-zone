@@ -1,12 +1,16 @@
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import logo from '../resources/logo.svg';
+import close from '../resources/close96.png';
+import UserContext, { User } from '../providers/UserContext';
 
 import '../styles/Auth.css';
 
 const Login = () => {
 
     const history = useHistory();
+    const { user, setUser } = useContext(UserContext);
+
     const [form, setForm] = useState({});
 
     const handleChange = (event) => {
@@ -20,7 +24,30 @@ const Login = () => {
         event.preventDefault()
         console.log(form)
 
-        /* TODO: Implement logic for logging the user in */
+        /* Attempts to log the user in */
+        const login = async () => {
+            let url = `user/validateUserInformation/${form.email}/${form.password}`;
+
+            const response = await fetch(url);
+
+            try {
+                const data = await response.json();
+                const result = await JSON.parse(data);
+                if (Object.keys(result.message).length === 0) {
+                    console.log("Invalid credentials");
+                    document.getElementById("invalid-credentials").style.display = "flex";
+                } else {
+                    console.log("Logged in successfully!");
+                    setUser(new User(result.message[0]));
+                    history.goBack();
+                }
+            } catch (err) {
+                console.log(err);
+                console.log('error');
+            }
+        }
+
+        login();
     }
 
     return (
@@ -37,14 +64,19 @@ const Login = () => {
                 <form className="authForm" onSubmit={handleSubmit}>
                     <h1 className="formHeading">Login</h1>
 
+                    <div id="invalid-credentials">
+                        <p id="invalid-credentials-msg">Incorrect email or password.</p>
+                        <img id="close-button" src={close} onClick={() => document.getElementById("invalid-credentials").style.display = "none"}></img>
+                    </div>
+
                     <div className="fieldDiv">
                         <label className="formLabel">Email</label>
-                        <input className="formInputText" onChange={handleChange} title="email" type="email" required />
+                        <input className="formInputText" onChange={handleChange} title="email" type="text" />
                     </div>
 
                     <div className="fieldDiv">
                         <label className="formLabel">Password</label>
-                        <input className="formInputText" onChange={handleChange} id="password" title="password" type="password" required />
+                        <input className="formInputText" onChange={handleChange} id="password" title="password" type="password" />
                     </div>
 
                     <div id="password-visibility-container">
@@ -62,12 +94,12 @@ const Login = () => {
                     </div>
 
                     <div className="buttonsDiv">
-                        <input className="submitButton" type="submit" value="Login" />
+                        <input className="submitButton" type="submit" value="login" />
                         
                         <button 
                             className="navButton" 
                             onClick={() => {
-                                history.push('/signup');
+                                history.replace('/signup');
                             }}>
                                 Create a new account
                         </button>

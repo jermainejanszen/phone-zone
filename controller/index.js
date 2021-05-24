@@ -1,17 +1,27 @@
 
 const express = require('express');
 var path = require('path');
+var session = require('express-session');
 
-const router = require('../routes/phoneData.server.routes')
+const phoneRouter = require('../routes/phoneData.server.routes')
+const userRouter = require('../routes/userData.server.routes')
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 app.set('views', path.join(__dirname,'../views'));
 
-app.use('/', router);
+app.use('/phone', phoneRouter);
+app.use('/user', userRouter);
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
+
+app.use(session({
+    secret: 'ssssshhhhh',
+    cookie: {maxAge: 60000},
+    resave: true,
+    saveUninitialized: true
+}));
 
 module.exports = app;

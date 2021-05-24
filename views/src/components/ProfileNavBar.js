@@ -1,20 +1,20 @@
 
-import { useState } from 'react';
-import { Link, useHistory, useRouteMatch } from 'react-router-dom';
-
+import { useState, useContext } from 'react';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import UserContext, { User } from '../providers/UserContext'
 import logo from '../resources/logo.svg';
 import edit from '../resources/edit.svg';
 import key from '../resources/key.svg';
 import selling96 from '../resources/selling96.png';
 import signout96 from '../resources/signout96.png';
-
 import '../styles/ProfileNavBar.css'; 
 
-const ProfileNavBar = ({authState, setAuthState}) => {
+const ProfileNavBar = () => {
 
     const history = useHistory();
-    const match = useRouteMatch();
-    const [currentPath, setCurrentPath] = useState(match.path);
+    const location = useLocation();
+    const { user, setUser } = useContext(UserContext);
+    const [currentPath, setCurrentPath] = useState(location.pathname);
 
     return (
         <div className="navBar">
@@ -27,7 +27,7 @@ const ProfileNavBar = ({authState, setAuthState}) => {
                 </div>
                 <div id="sideBar">
                     <button
-                        className={`tab-button ${currentPath === '/user' ? "current-tab" : ""}`}
+                        className={`tab-button ${location.pathname === '/user' ? "current-tab" : ""}`}
                         onClick={() => {
                             history.push('/user');
                             setCurrentPath('/user');
@@ -36,7 +36,7 @@ const ProfileNavBar = ({authState, setAuthState}) => {
                         <img className="tab-button-icon" src={edit} alt="Edit" />
                     </button>
                     <button
-                        className={`tab-button ${currentPath === '/user/editpassword' ? "current-tab" : ""}`}
+                        className={`tab-button ${location.pathname === '/user/editpassword' ? "current-tab" : ""}`}
                         onClick={() => {
                             history.push('/user/editpassword');
                             setCurrentPath('/user/editpassword');
@@ -45,7 +45,7 @@ const ProfileNavBar = ({authState, setAuthState}) => {
                         <img className="tab-button-icon" src={key} alt="Change" />
                     </button>
                     <button
-                        className={`tab-button ${currentPath === '/user/listings' ? "current-tab" : ""}`}
+                        className={`tab-button ${location.pathname === '/user/listings' ? "current-tab" : ""}`}
                         onClick={() => {
                             history.push('/user/listings');
                             setCurrentPath('/user/listings');
@@ -57,7 +57,12 @@ const ProfileNavBar = ({authState, setAuthState}) => {
                 <button
                     className="profile-button"
                     id="signout-button"
-                    onClick={() => history.push('/')}>
+                    onClick={() =>  {
+                        if (window.confirm('Are you sure you want to logout?')) {
+                            setUser(null);
+                            history.push('/');
+                        }
+                    }}>
                     <img id="signout-button-icon" src={signout96} alt="Logout" />
                 </button>
             </div>

@@ -1,275 +1,137 @@
 import Card from './Card';
-
+import { useContext, useState, useEffect } from 'react';
 import remove from '../resources/remove.svg';
 import hide96 from '../resources/hide96.png';
-
+import Loading from './Loading';
+import UserContext from '../providers/UserContext';
 import '../styles/Profile.css';
 import '../styles/NewListing.css';
 
-const mockItems = [
-    {
-        "title": "Galaxy s III mini SM-G730V Verizon Cell Phone BLUE",
-        "brand": "Samsung",
-        "image": "/phone_images/Samsung.jpeg",
-        "stock": 9,
-        "seller": "5f5237a4c1beb1523fa3db73",
-        "price": 56.0,
-        "reviews": [{
-            "reviewer": "5f5237a4c1beb1523fa3db1f",
-            "rating": 3,
-            "comment": "Got phone yesterday all ... pleased now!"
-        }]
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Galaxy s III mini SM-G730V Verizon Cell Phone BLUE",
-        "brand": "Samsung",
-        "image": "/phone_images/Samsung.jpeg",
-        "stock": 9,
-        "seller": "5f5237a4c1beb1523fa3db73",
-        "price": 56.0,
-        "reviews": [{
-            "reviewer": "5f5237a4c1beb1523fa3db1f",
-            "rating": 3,
-            "comment": "Got phone yesterday all ... pleased now!"
-        }]
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Galaxy s III mini SM-G730V Verizon Cell Phone BLUE",
-        "brand": "Samsung",
-        "image": "/phone_images/Samsung.jpeg",
-        "stock": 9,
-        "seller": "5f5237a4c1beb1523fa3db73",
-        "price": 56.0,
-        "reviews": [{
-            "reviewer": "5f5237a4c1beb1523fa3db1f",
-            "rating": 3,
-            "comment": "Got phone yesterday all ... pleased now!"
-        }]
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Galaxy s III mini SM-G730V Verizon Cell Phone BLUE",
-        "brand": "Samsung",
-        "image": "/phone_images/Samsung.jpeg",
-        "stock": 9,
-        "seller": "5f5237a4c1beb1523fa3db73",
-        "price": 56.0,
-        "reviews": [{
-            "reviewer": "5f5237a4c1beb1523fa3db1f",
-            "rating": 3,
-            "comment": "Got phone yesterday all ... pleased now!"
-        }]
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Galaxy s III mini SM-G730V Verizon Cell Phone BLUE",
-        "brand": "Samsung",
-        "image": "/phone_images/Samsung.jpeg",
-        "stock": 9,
-        "seller": "5f5237a4c1beb1523fa3db73",
-        "price": 56.0,
-        "reviews": [{
-            "reviewer": "5f5237a4c1beb1523fa3db1f",
-            "rating": 3,
-            "comment": "Got phone yesterday all ... pleased now!"
-        }]
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Galaxy s III mini SM-G730V Verizon Cell Phone BLUE",
-        "brand": "Samsung",
-        "image": "/phone_images/Samsung.jpeg",
-        "stock": 9,
-        "seller": "5f5237a4c1beb1523fa3db73",
-        "price": 56.0,
-        "reviews": [{
-            "reviewer": "5f5237a4c1beb1523fa3db1f",
-            "rating": 3,
-            "comment": "Got phone yesterday all ... pleased now!"
-        }]
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },{
-        "title": "Sony Ericsson TM506 Unlocked QUAD-Band 3G GSM CellPhone",
-        "brand": "Sony",
-        "image": "/phone_images/Sony.jpeg",
-        "stock": 0,
-        "seller": "5f5237a4c1beb1523fa3da68",
-        "price": 173.0,
-        "reviews": [],
-        "disabled": ""
-    },
-]
 
 const NewListing = () => {
+
+    const [items, setItems] = useState([]);
+    const [loaded, setLoaded] = useState(false);
+    const { user, setUser } = useContext(UserContext);
+    const [form, setForm] = useState({brand:"Apple"});
+
+    /**
+     * Disable or enable item corresponding to given id
+     * @param {*} item item to be disabled 
+     * @param {*} disabledStatus true if item is currently disabled, false otherwise
+     */
+    const disableItem =  async (item, disabledStatus) => {
+        let url = `/phone/disableItem/${item._id}`;
+        if (disabledStatus == true) {
+            url = `/phone/removeDisabledStatus/${item._id}`;
+        }
+        setLoaded(false) 
+        const response = await fetch(url)
+    }
+
+    /**
+     * Delete item corresponding to given id from user's listing
+     * @param {String} id id of item to be deleted
+     */
+    const deleteItem = async (id) => {
+        console.log(id)
+        let url = `/phone/deleteItem/${id}`;
+        setLoaded(false)
+        const response = await fetch(url)
+    }
+
+
+    /**
+     * Fetch items in user's listing from the database 
+     */
+    useEffect(() => {
+        const fetchItems = async () => {
+            let seller = user.id
+            const response = await fetch(`/phone/searchItemsBySeller/${seller}`);
+            const data = await response.json();
+            const itemsPromise = await JSON.parse(data);
+            const newItems = Object.values(itemsPromise.message);
+            setItems(newItems);
+            setLoaded(true);
+        }
+        if (!loaded) {
+            fetchItems();
+        }
+    }, [loaded]);
+
+    /**
+     * handles changes to the form 
+     * @param {event} event 
+     */
+    const handleChange = (event) => {
+        setForm({
+            ...form,
+            [event.target.title]: event.target.value.trim()
+        });
+    }
+
+    /**
+     * Upon submitting the create new listing form, a new phone is sent to be added to the database with the given user details
+     * @param {event} event 
+     */
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        const addItem = async () => {
+            let url = `/phone/createNewPhone/${form.title}/${form.brand}/${form.stock}/${user.id}/${form.price}`;
+            setLoaded(false);
+            const response = await fetch(url);
+        }
+        addItem();
+    }
+
+    /**
+     * Map items returns from database to their individual cards, and set up delete/disable functionality for each
+     */
+    const mapItems = () => {
+        if (items.length > 0) {
+            return items.map((item, index) => {
+                return (
+                    <div id={`card-container-${index}`} className={item.hasOwnProperty('disabled') ? "cardContainer disabled" : "cardContainer"} key={index}>
+                        <div>
+                            <button className="delete-disable-button"
+                                onClick={() => {
+                                    disableItem(item, item.hasOwnProperty('disabled'))         
+                                }}>
+                                <img className="itemIcon" src={hide96} alt="Hide Item" />
+                            </button>
+                            <button className="delete-disable-button"
+                                onClick={() => {
+                                    deleteItem(item._id)
+                                }}>
+                                <img className="itemIcon" src={remove} alt="Delete Item" />
+                            </button>
+                        </div>
+                        <Card className="ownItem" item={item} />
+
+                    </div>
+                )
+
+            });
+        }
+        return <p id="search-no-items">No items found.</p>
+    }
+
+    // sets up the form for users to add new listings with 
     return (
         <div className="profileContainer">
             <div id="my-listings">
                 <h2>Your Listings</h2>
                 <div className="scrollMenu">
-                    {mockItems.map((item, index) => {
-                        return (
-                            <div className="cardContainer" key={index}>
-                                <div>
-                                    <img className="itemIcon" src={hide96} alt="Hide Item" />
-                                    <img className="itemIcon" src={remove} alt="Delete Item" />
-                                </div>
-                                <Card className="ownItem" item={item} />
-                            </div>
-                        )
-                    })}
+                    {loaded ? mapItems() : <Loading />}
                 </div>
             </div>
             <div id="add-listing">
-                <form id="manage-listings-form">
+                <form id="manage-listings-form" onSubmit={handleSubmit}>
                     <h2>Add a new item</h2>
                     <div className="fieldDiv">
-                        <label className="formLabel" for="brand">Brand</label>
-                        <select className="formSelect" title="brand" type="text" placeholder="e.g. Sony" required>
-                            <option value="Apple">Apple</option>
+                        <label className="formLabel">Brand</label>
+                        <select className="formSelect" onChange={handleChange} title="brand" type="text" required>
+                            <option value="Apple" selected="selected">Apple</option>
                             <option value="BlackBerry">BlackBerry</option>
                             <option value="HTC">HTC</option>
                             <option value="Huawei">Huawei</option>
@@ -281,18 +143,18 @@ const NewListing = () => {
                         </select>
                     </div>
                     <div className="fieldDiv">
-                        <label className="formLabel" for="title">Title</label>
-                        <input className="formInputText" title="title" type="text" placeholder="e.g. Sony Ericsson TM506 Unlock..." required/>
+                        <label className="formLabel">Title</label>
+                        <input className="formInputText" onChange={handleChange} title="title" type="text" placeholder="e.g. Sony Ericsson TM506 Unlock..." required/>
                     </div>
                     <div className="fieldDiv">
-                        <label className="formLabel" for="description">Description</label>
-                        <input className="formInputText" id="description" title="description" type="text" required/>
+                        <label className="formLabel">Stock</label>
+                        <input className="formInputText" onChange={handleChange} title="stock" type="number" min="1" step="1" required/>
                     </div>
                     <div className="fieldDiv">
-                        <label className="formLabel" for="price">Price</label>
-                        <input className="formInputText" title="price" type="number" required/>
+                        <label className="formLabel">Price</label>
+                        <input className="formInputText" onChange={handleChange} title="price" type="number" min="1" step="any" required/>
                     </div>
-                    <button className="updateButton">Add item</button>
+                    <button className="submitButton">Add item</button>
                 </form>
             </div>
         </div>

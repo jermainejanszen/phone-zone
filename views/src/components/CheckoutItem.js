@@ -1,25 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 import '../styles/CheckoutItem.css';
 import '../styles/Item.css';
 
 import remove from '../resources/remove96.png';
+import UserContext from '../providers/UserContext';
 
-const CheckoutItem = ({ item, onRemove }) => {
+const CheckoutItem = ({ item, onRemove, onUpdateQuantity }) => {
 
-    const [quantity, setQuantity] = useState(0);
+    const { user } = useContext(UserContext);
+    const [quantity, setQuantity] = useState(item?.quantity ? item.quantity : 0);
 
     const minusOnClickHandler = () => {
-        setQuantity(Math.max(quantity - 1, 0));
+        if (quantity - 1 == 0) {
+            onRemove(item.title);
+        } else {
+            let newQuantity = Math.max(0, quantity - 1);
+            user.cart.getItem(item._id).quantity = newQuantity;
+            setQuantity(newQuantity);
+            onUpdateQuantity();
+        }
     }
 
     const plusOnClickHandler = () => {
-        setQuantity(Math.min(quantity + 1, item.stock));
+        let newQuantity = Math.min(quantity + 1, item.stock);
+        user.cart.getItem(item._id).quantity = newQuantity;
+        setQuantity(newQuantity);
+        onUpdateQuantity();
     }
 
     return (
         <div className="checkoutItemContainer">
-            <img className="checkoutItemImage" src={item.image}></img>
+            <img className="checkoutItemImage" src={`/phone_images/${item.brand}.jpeg`} alt="The phone" />
             <div className="checkoutInfoContainer">
                 <div className="checkoutColumn">
                     <b>{item.brand}</b>
@@ -50,11 +62,11 @@ const CheckoutItem = ({ item, onRemove }) => {
                 </div>
                 <div className="checkoutColumn">
                     <b>Stock Remaining</b>
-                    <p>{item.stock}</p>
+                    <p>{item.stock - quantity}</p>
                 </div>
                 <div className="checkoutColumn">
                     <b>Subtotal</b>
-                    <p>${quantity * item.price}</p>
+                    <p>${(quantity * item.price).toFixed(2)}</p>
                 </div>
             </div>
             <img id="remove-button" src={remove} alt="Remove Item" onClick={() => onRemove(item.title)} />
