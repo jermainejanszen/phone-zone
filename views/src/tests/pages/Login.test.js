@@ -16,8 +16,8 @@ test('shows website name', () => {
 
 test('shows form title', () => {
     render(<Login />);
-    const formTitle = screen.getByText(/^Login$/);
-    expect(formTitle).toBeInTheDocument();
+    const formTitle = screen.getAllByText(/^Login$/);
+    expect(formTitle[0]).toBeInTheDocument();
 });
 
 test('shows email label', () => {
