@@ -11,6 +11,10 @@ const CheckoutItem = ({ item, onRemove, onUpdateQuantity }) => {
     const { user } = useContext(UserContext);
     const [quantity, setQuantity] = useState(item?.quantity ? item.quantity : 0);
 
+    /**
+     * Reduces the quantity of the checkout item by one. If the quantity is reduced
+     * to zero the item gets removed from the checkout list.
+     */
     const minusOnClickHandler = () => {
         if (quantity - 1 == 0) {
             onRemove(item.title);
@@ -22,6 +26,10 @@ const CheckoutItem = ({ item, onRemove, onUpdateQuantity }) => {
         }
     }
 
+    /**
+     * Increases the quantity of the checkout item by one. The quantity will be capped at
+     * the items available stock.
+     */
     const plusOnClickHandler = () => {
         let newQuantity = Math.min(quantity + 1, item.stock);
         user.cart.getItem(item._id).quantity = newQuantity;
@@ -32,15 +40,18 @@ const CheckoutItem = ({ item, onRemove, onUpdateQuantity }) => {
     return (
         <div className="checkoutItemContainer">
             <img className="checkoutItemImage" src={`/phone_images/${item.brand}.jpeg`} alt="The phone" />
+            
             <div className="checkoutInfoContainer">
                 <div className="checkoutColumn">
                     <b>{item.brand}</b>
                     <p>{item.title}</p>
                 </div>
+
                 <div className="checkoutColumn">
                     <b>Individual Price</b>
                     <p>${item.price}</p>
                 </div>
+
                 <div className="checkoutColumn">
                     <b>Quantity</b>
                     <div id="item-quantity-div">
@@ -60,15 +71,18 @@ const CheckoutItem = ({ item, onRemove, onUpdateQuantity }) => {
                             onClick={plusOnClickHandler}>+</button>
                     </div>
                 </div>
+
                 <div className="checkoutColumn">
                     <b>Stock Remaining</b>
                     <p>{item.stock - quantity}</p>
                 </div>
+
                 <div className="checkoutColumn">
                     <b>Subtotal</b>
                     <p>${(quantity * item.price).toFixed(2)}</p>
                 </div>
             </div>
+
             <img id="remove-button" src={remove} alt="Remove Item" onClick={() => onRemove(item.title)} />
         </div>
     );
