@@ -87,7 +87,9 @@ const EditPassword = () => {
             [event.target.id]: event.target.value.trim()
         });
     } 
-
+    /**
+     * renders form for entering old and new passwords
+     */
     return (
         <div className="profileContainer">
             <h1>{`Hi, ${user.firstname}`}</h1>

@@ -24,7 +24,6 @@ const Checkout = () => {
         user.cart.clear()
         history.push('/');
     }
-
     return (
         <div id="checkout-container">
             <div id="back-button-div">

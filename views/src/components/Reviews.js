@@ -8,6 +8,9 @@ const Reviews = ({ reviews }) => {
     const hasReviews = reviews.length > 0;
     const [ reviewsShown, setReviewsShown ] = useState(Math.min(3, reviews.length));
     
+    /**
+     * Gets view of all reviews 
+     */
     const getReviewsView = () => {
         const result = [];
         for(let i = 0; i < reviewsShown; i++) {
@@ -16,12 +19,18 @@ const Reviews = ({ reviews }) => {
         return result;
     }
 
+    /**
+     * Handles case where user clicks to see more reviews
+     */
     const showMoreHandler = () => {
         if (reviews.length !== reviewsShown) {
             setReviewsShown(Math.min(reviews.length, reviewsShown + 3));
         }
     }
 
+    /**
+     * Renders reviews view
+     */
     return (
         <div id="reviews-div">
             <h1 id="reviews-heading">Reviews</h1>
