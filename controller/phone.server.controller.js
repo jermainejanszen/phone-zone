@@ -84,7 +84,6 @@ module.exports.searchItemsBySeller = (req, res) => {
 module.exports.deleteItem = (req, res) => {
 	Phone.deleteItem(req.params.id, function(err, result) {
         if (err){
-			console.log(req.params.id)
           	console.log("Query error!")
         } else {
 			console.log("item deleted")
@@ -95,7 +94,6 @@ module.exports.deleteItem = (req, res) => {
 // create new phone 
 module.exports.createNewPhone = (req, res) => {
 	Phone.createNewPhone(req.params.title, req.params.brand, parseInt(req.params.stock), req.params.seller, parseInt(req.params.price)).then(result => {
-		console.log(result)
 		return res.json(result._id);
 	})
 	.catch(err => {
@@ -153,7 +151,6 @@ module.exports.findHighestPrice = (req, res) => {
         if (err){
           	console.log("Query error!")
         } else {
-			console.log(res);
 			return res.json(JSON.stringify({ message: {... result} }));
         }
       })

@@ -13,6 +13,12 @@ app.set('views', path.join(__dirname,'../views'));
 app.use('/phone', phoneRouter);
 app.use('/user', userRouter);
 
+app.use(express.static(path.join(__dirname, '../views/build')));
+
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, '../views/build', 'index.html'));
+});
+
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
