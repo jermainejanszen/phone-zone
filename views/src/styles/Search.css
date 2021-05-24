@@ -1,3 +1,4 @@
+/** formatting search results div **/
 #search-results-div {
     display: flex;
     flex-direction: row;
@@ -8,6 +9,7 @@
     margin-bottom: 6em;
 }
 
+/** formatting when search returns no items **/
 #search-no-items {
     margin-left: auto;
     margin-right: auto;

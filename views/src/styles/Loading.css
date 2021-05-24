@@ -1,3 +1,4 @@
+/** formatting for loading functionality **/
 .Loading {
     width: 100%;
     text-align: center;
@@ -8,17 +9,20 @@
     font-size: calc(10px + 2vmin);
 }
 
+/** formatting for loading logo **/
 .Loading-logo {
   height: 15vmin;
   pointer-events: none;
 }
 
+/** formatting for loading functionality animation **/
 @media (prefers-reduced-motion: no-preference) {
   .Loading-logo {
     animation: Loading-logo-spin infinite 2s linear;
   }
 }
 
+/** formatting for loading functionality spin **/
 @keyframes Loading-logo-spin {
   from {
     transform: rotate(0deg);
