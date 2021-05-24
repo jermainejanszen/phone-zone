@@ -41,5 +41,11 @@
 
 /* formatting for confirm transaction button */
 #confirm-transaction-button {
-    margin-left: 1em;
+    cursor: pointer;
+    border: transparent;
+    border-radius: 10px;
+    color: white;
+    font-size: 17px;
+    padding: 0.7em 0.7em;
+    background-color: #4b96e6;
 }

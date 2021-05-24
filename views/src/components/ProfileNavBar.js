@@ -9,6 +9,9 @@ import selling96 from '../resources/selling96.png';
 import signout96 from '../resources/signout96.png';
 import '../styles/ProfileNavBar.css'; 
 
+/**
+ * Navigation bar for the edit profile, edit password and new listings pages of the user's profile
+ */
 const ProfileNavBar = () => {
 
     const history = useHistory();
@@ -16,6 +19,9 @@ const ProfileNavBar = () => {
     const { user, setUser } = useContext(UserContext);
     const [currentPath, setCurrentPath] = useState(location.pathname);
 
+    /**
+     * Renders nav bar, including buttons for to navigate to each of the profile pages 
+     */
     return (
         <div className="navBar">
             <div id="nav">

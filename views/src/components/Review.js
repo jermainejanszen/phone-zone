@@ -9,6 +9,9 @@ const Review = ({ data }) => {
     const [showLess, setShowLess] = useState(true);
     const [reviewer, setReviewer] = useState({ firstname: "Unknown", lastname: "Reviewer" });
 
+    /**
+     * Fetches information about reviewer from the database 
+     */
     useEffect(() => {
         const fetchReviewer = async () => {
             const response = await fetch(`/user/getUserInformation/${data.reviewer}`);
@@ -24,6 +27,9 @@ const Review = ({ data }) => {
         fetchReviewer()
     }, [data.reviewer])
 
+    /**
+     * gets the comment associated with the review
+     */
     const getComment = () => {
         if(showLess && longComment) {
             return `${data.comment.substring(0, 200)}...`
@@ -32,10 +38,16 @@ const Review = ({ data }) => {
         }
     }
 
+    /**
+     * allows user to click to show more of the review if the review is longer than 200 characters
+     */
     const showMoreOnClick = () => {
         setShowLess(!showLess);
     }
 
+    /**
+     * Renders review information 
+     */
     return (
         <div id="review-div">
             <div id="review-details">

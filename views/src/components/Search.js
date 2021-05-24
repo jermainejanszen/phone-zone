@@ -8,10 +8,12 @@ import '../styles/Search.css';
 const Search = () => {
 
     const { search } = useContext(SearchContext);
-
     const [items, setItems] = useState([]);
     const [loaded, setLoaded] = useState(false);
 
+    /**
+     * Fetches items by calling the database based on the given search filters 
+     */
     useEffect(() => {
         const fetchItems = async () => {
             let url = `/phone/searchOnFilters/${search.brand}/${search.price}`;
@@ -33,6 +35,9 @@ const Search = () => {
         fetchItems();
     }, [search]);
 
+    /**
+     * Maps items to cards 
+     */
     const mapItems = () => {
         if (items.length > 0) {
             return items.map((item, index) => <Card item={item} key={index} />);
@@ -41,6 +46,9 @@ const Search = () => {
         return <p id="search-no-items">No items found.</p>
     }
 
+    /**
+     * Renders search results
+     */
     return (
         <div>
             <h1>Search Results</h1>

@@ -11,5 +11,5 @@
 /** formatting to set button as unclickable **/
 .unclickable {
     cursor: auto;
-    opacity: 60%;
+    background-color: rgba(114, 182, 250, 0.5);
 }
