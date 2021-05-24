@@ -7,7 +7,7 @@ const Reviews = ({ reviews }) => {
 
     const hasReviews = reviews.length > 0;
     const [ reviewsShown, setReviewsShown ] = useState(Math.min(3, reviews.length));
-
+    
     const getReviewsView = () => {
         const result = [];
         for(let i = 0; i < reviewsShown; i++) {

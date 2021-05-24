@@ -8,6 +8,10 @@ const Card = ({ item }) => {
 
     const history = useHistory();
 
+    /**
+     * get average rating from all reviews of an item
+     * @param {item} item 
+     */
     const getAverageRating = item => {
         let rating = 0;
         item.reviews.forEach(element => {
@@ -15,7 +19,9 @@ const Card = ({ item }) => {
         });
         return Math.round(rating / item.reviews.length)
     }
-    
+    /**
+     * renders card containing item image, item details and rating 
+     */
     return (
         <div className={`card ${item.disabled === "" ? "cardDisabled" : ""}`} onClick={() =>  {
             history.push(`/home/item/${item.title}`, { item : item })

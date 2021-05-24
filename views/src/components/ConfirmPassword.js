@@ -54,12 +54,8 @@ const ConfirmPassword = () => {
             const result = await JSON.parse(data);
             const dbPassword = result.message[0].password;
 
-            if (CryptoJS.MD5(password).toString() === dbPassword) {
-                return true;
-            } else {
-                return false;
-            }
-            
+            return CryptoJS.MD5(password).toString() === dbPassword;
+
         } catch (err) {
             console.log(err);
             console.log('error');

@@ -1,3 +1,4 @@
+/** formatting for review div **/
 #review-div {
     display: flex;
     flex-direction: column;
@@ -9,6 +10,7 @@
     margin: 2em 0em;
 }
 
+/** formatting for review details **/
 #review-details {
     display: flex;
     flex-direction: row;
@@ -16,10 +18,12 @@
     border-bottom: 1px solid rgb(179, 179, 179);
 }
 
+/** formatting for review comment **/
 #review-comment {
     text-align: start;
 }
 
+/** formatting for show more part of review when more description available **/
 #review-show-more {
     background: none;
     border: none;

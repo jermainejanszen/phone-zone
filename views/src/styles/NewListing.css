@@ -17,6 +17,7 @@
     max-width: 50em;
 }
 
+/** secondary header for manage listings form **/
 #manage-listings-form > h2 {
     text-align: center;
 }
@@ -40,6 +41,7 @@
     margin: 1em 4em;
 }
 
+/** formatting for update button on new listing page **/
 .updateButton {
     align-self: center;
     max-width: 16em;
@@ -50,6 +52,7 @@
     height: 5em;
 }
 
+/** formatting for the item icon **/
 .itemIcon {
     height: 1em;
     background-color: rgba(211, 211, 211, 0.6);
@@ -58,10 +61,12 @@
     border-radius: 50%;
 }
 
+/** formatting for hovering over the item icon **/
 .itemIcon:hover {
     background-color: rgba(20, 114, 202, 0.25);
 }
 
+/** formatting for the delete disable button **/ 
 .delete-disable-button {
     background: none;
     border: none;

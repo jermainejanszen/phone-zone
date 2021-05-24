@@ -14,6 +14,8 @@ What things you need to install the software and how to install them
 Give examples
 ```
 
+ - Install mongoDB 
+
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
@@ -29,6 +31,29 @@ And repeat
 ```
 until finished
 ```
+
+Setting up the database connection
+- create directory comp5347/mongodb on the U drive of computer 
+
+- Open a command prompt on your computer and cd into C:/Program Files/MongoDB/Server/3.4/bin
+
+- Run the following command: 
+
+```
+mongod.exe --dbpath U:/comp5347/mongodb --smallfiles
+```
+
+- You should see the message “waiting for connections on port 27017” on your command prompt. Leave this command prompt open. 
+
+- Open another command prompt and again, cd into 
+
+- Run the following two commands: 
+
+```
+mongoimport --jsonArray --db assignment_data --collection phone_data --file <full-path-to-downloaded-phone-json-file>
+mongoimport --jsonArray --db assignment_data --collection user_data --file <full-path-to-downloaded-user-json-file>
+```
+
 
 End with an example of getting some data out of the system or using it for a little demo
 

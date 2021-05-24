@@ -1,9 +1,11 @@
+/* formatting for item list */
 #items-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
+/* formatting for back button div */
 #back-button-div {
     position: absolute;
     left: 0;
@@ -11,16 +13,19 @@
     margin: 1.5em 2.5em;
 }
 
+/* formatting for back button*/
 #back-button {
     width: 3em;
     cursor: pointer;
 }
 
+/* formatting for checkout container */
 #checkout-container {
     margin-left: auto;
     margin-right: auto;
 }
 
+/* formatting for transaction container */
 #transaction-container {
     display: flex;
     font-size: larger;
@@ -29,10 +34,12 @@
     align-items: center;
 }
 
+/* formatting for total cost */
 #total-cost-text {
     margin-right: 1em;
 }
 
+/* formatting for confirm transaction button */
 #confirm-transaction-button {
     margin-left: 1em;
 }

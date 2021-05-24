@@ -1,19 +1,23 @@
+/** formatting for the app **/
 .App {
     width: 100%;
     text-align: center;
 }
 
+/** formatting for the app logo **/
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
+/** formatting for the app logo animation **/
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
+/** formatting for the app header **/
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -25,10 +29,12 @@
   color: white;
 }
 
+/** formatting for the app link **/
 .App-link {
   color: #61dafb;
 }
 
+/** formatting for the spinning app logo **/
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

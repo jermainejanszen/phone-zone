@@ -10,6 +10,7 @@ import close from '../resources/close96.png';
 
 
 const EditPassword = () => {
+    
     const history = useHistory();
     const { user, setUser } = useContext(UserContext);
     const [form, setForm] = useState({
@@ -17,6 +18,9 @@ const EditPassword = () => {
         newPassword: ''
     });
 
+    /**
+     * Makes a call to check if password inputted is correct 
+     */
     const isCorrectPassword = async () => {
         let url = `/user/getPassword/${user.id}`;
         const response = await fetch(url);
@@ -26,11 +30,7 @@ const EditPassword = () => {
             const result = await JSON.parse(data);
             const dbPassword = result.message[0].password;
 
-            if (CryptoJS.MD5(form.currentPassword).toString() === dbPassword) {
-                return true;
-            } else {
-                return false;
-            }
+            return CryptoJS.MD5(form.currentPassword).toString() === dbPassword;
             
         } catch (err) {
             console.log(err);
@@ -40,12 +40,20 @@ const EditPassword = () => {
         return false;
     }
 
+    /**
+     * Makes call to update the user's password in the database
+     */
     const updatePassword = async () => {
         let url = `/user/updatePassword/${user.id}/${form.newPassword}`
         const response = await fetch(url);
         history.push('/user');
     }
 
+    /**
+     * Handles form submissions by calling required methods to check current password 
+     * is correct and updating the user's password if it is
+     * @param {event} event 
+     */
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -56,6 +64,10 @@ const EditPassword = () => {
         }
     }
 
+    /**
+     * Handles changes to each field in the form 
+     * @param {event} event 
+     */
     const handleChange = (event) => {
         const field = event.target;
         const label = document.getElementById(event.target.id + "-label");

@@ -1,3 +1,4 @@
+/** formatting for side bar on the profile pages **/
 #sideBar {
     margin: 0.8em 0em;
     width: 100%;
@@ -8,6 +9,7 @@
     justify-content: center;
 }
 
+/** formatting for profile nav bar **/
 #nav {
     display: flex;
     flex-direction: row;
@@ -15,6 +17,7 @@
     justify-content: space-between;
 }
 
+/** formatting for profile title section **/
 #profile-title-section {
     display: flex;
     flex-direction: row;
@@ -23,10 +26,12 @@
     padding-left: 2.4em;
 }
 
+/** formatting for profile title section **/
 #profile-title-section > p {
     align-self: center;
 }
 
+/** formatting for signout button on profile pages **/
 .signout-button {
     display: flex;
     flex-direction: row;
@@ -35,6 +40,7 @@
     justify-self: flex-end;
 }
 
+/** formatting for tab button on profile pages **/
 .tab-button {
     margin: 0.4em 0.4em;
     padding: 0.8em 5em;
@@ -48,29 +54,35 @@
     align-items: center;
 }
 
+/** formatting for tab currently on **/
 .current-tab {
     border: 2px solid;
     border-color:rgb(194, 222, 248);
     background-color:rgba(228, 238, 248, 0.5);
 }
 
+/** formatting for hovering over tab button **/
 .tab-button:hover {
     background-color: aliceblue;
 }
 
+/** formatting for tab button icon **/
 .tab-button-icon {
     max-height: 2em;
     margin-left: 1em;
 }
 
+/** formatting for profile nav bar **/
 .navBar {
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
 }
 
+/** formatting for signout button **/
 #signout-button {
     margin-right: 2em;
 }
 
+/** formatting for signout button icon **/
 #signout-button-icon {
     height: 2em;
 }
