@@ -82,41 +82,33 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+In order to run the tests run
 
 ```
-Give an example
+npm run test
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
+These tests check that the contents on the various pages are being displayed correctly.
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+After running the initial fresh start the app can simply be started by running
+```
+npm start
+```
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [React](https://reactjs.org/) - The web framework used
+* [NPM](https://www.npmjs.com/) - Dependency Management
+* [Node](https://nodejs.org/en/) and [Express](https://expressjs.com/) - The backend frameworks
 
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
+## Version Control
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [Git](https://git-scm.com/) and [GitHub](https://github.com/) for version control. 
 
 ## Authors
 
