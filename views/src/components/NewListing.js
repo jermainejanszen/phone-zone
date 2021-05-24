@@ -148,7 +148,7 @@ const NewListing = () => {
                     </div>
                     <div className="fieldDiv">
                         <label className="formLabel">Stock</label>
-                        <input className="formInputText" onChange={handleChange} title="stock" type="number" min="1" step="1" required/>
+                        <input className="formInputText" onChange={handleChange} title="stock" type="number" min="1" max="1000" step="1" required/>
                     </div>
                     <div className="fieldDiv">
                         <label className="formLabel">Price</label>
