@@ -31,6 +31,9 @@ const Rating = ({ rating }) => {
         }
     }
 
+    /**
+     * Renders rating 
+     */
     return (
         <div id="rating-div">
             {stars}

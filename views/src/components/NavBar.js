@@ -37,6 +37,9 @@ const NavBar = () => {
         }
     }, [currUrl, searchMode])
 
+    /**
+     * fetches the highest price of all items in the database
+     */
     useEffect(() => {
         const fetchHighestPrice = async () => {
             let url = `/phone/findHighestPrice`;
@@ -60,6 +63,9 @@ const NavBar = () => {
     const searchBrand = useRef(null);
     const searchPrice = useRef(null);
 
+    /**
+     * Handles when user goes to search for a specific item
+     */
     const onSearchHandler = () => {
         var searchQuery = "";
         if (searchInput.current != null) {
@@ -86,10 +92,16 @@ const NavBar = () => {
         });
     }
 
+    /**
+     * Handles the max price changing 
+     */
     const onPriceChangeHandler = () => {
         setMaxPrice(searchPrice.current?.value);
     }
 
+    /**
+     * renders navigation bar - including site title, navigation and item search functionality
+     */
     return (
         <div className="nav">
             <div id="title-section">

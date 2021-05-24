@@ -25,6 +25,9 @@ const Item = () => {
     const [itemLoaded, setItemLoaded] = useState(false);
     const [sellerLoaded, setSellerLoaded] = useState(false)
     
+    /**
+     * Fetches item and its information from the database
+     */
     useEffect(() => {
         const fetchItem = async () => {
             const response = await fetch(`/phone/searchItemsById/${item._id}`)
@@ -47,6 +50,9 @@ const Item = () => {
         fetchItem();
     }, [item?._id]);
 
+    /**
+     * Gets information corresponding to seller of item from the database 
+     */
     useEffect(() => {
         const fetchSeller = async () => {
             const response = await fetch(`/user/getUserInformation/${item.seller}`);
@@ -64,6 +70,10 @@ const Item = () => {
         fetchSeller()
     }, [item?.seller])
 
+    /**
+     * Handles when user goes to decrease item quantity from their 
+     * cart (and hence, increase stock available)
+     */
     const minusOnClickHandler = () => {
         let newQuantity = Math.max(0, quantity - 1);
         if (quantity !== newQuantity) {
@@ -73,6 +83,10 @@ const Item = () => {
         setItem({ ...item, quantity: newQuantity });
     }
 
+    /**
+     * Handles when user goes to increase item quantity in their 
+     * cart (and hence, decrease stock available)
+     */
     const plusOnClickHandler = () => {
         if (remainingStock === 0) {
             return;
@@ -85,6 +99,9 @@ const Item = () => {
         setItem({ ...item, quantity: newQuantity });
     }
 
+    /**
+     * Added to card text
+     */
     const animateCartQuantityText = () => {
         let cartQuantityField = document.getElementById("cart-quantity");
         cartQuantityField.classList.add("addedToCartAnimation");
@@ -93,6 +110,10 @@ const Item = () => {
         })
     }
 
+    /**
+     * When user clicks to add to cart, forces them to login if they haven't already. Checks stock to make
+     * sure there is enough of the item. If there is, adds item to user's cart.
+     */
     const addToCart = () => {
         if (user === null) {
             history.push('/login', { pathname: window.location.pathname, item: item } );
@@ -109,6 +130,9 @@ const Item = () => {
 
     if (!itemLoaded || !sellerLoaded) return <Loading />;
 
+    /**
+     * Renders item view
+     */
     return (
         <div id="item-page-div">
             <div id="item-details-div">

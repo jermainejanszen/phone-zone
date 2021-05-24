@@ -9,6 +9,9 @@ const FiveGrid = ({ source }) => {
     const [items, setItems] = useState([]);
     const [loaded, setLoaded] = useState(false);
 
+    /**
+     * Fetches items to populate the five grid
+     */
     useEffect(() => {
         const fetchItems = async () => {
             const response = await fetch(source);
@@ -21,6 +24,9 @@ const FiveGrid = ({ source }) => {
         fetchItems();
     }, [source])
 
+    /**
+     * Maps the fetched items to cards
+     */
     const mapItems = () => {
         if (items.length > 0) {
             return items.map((item, index) => <Card item={item} key={index} />);
@@ -29,6 +35,9 @@ const FiveGrid = ({ source }) => {
         return <p id="search-no-items">No items found.</p>
     }
 
+    /**
+     * Renders five grid once loaded
+     */
     return (
         <div className="fiveGrid">
             {loaded ? mapItems() : <Loading />}

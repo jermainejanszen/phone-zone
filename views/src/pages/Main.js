@@ -11,10 +11,11 @@ import { SearchProvider } from '../providers/SearchContext';
 const Main = () => {
 
     const [highestPrice, setHighestPrice] = useState({price:"2000"});
-
     const match = useRouteMatch();
- 
 
+    /**
+     * Finds the phone with the highest price in the database 
+     */
     useEffect(() => {
         const fetchItems = async () => {
             let url = `/phone/findHighestPrice`;
@@ -33,6 +34,9 @@ const Main = () => {
         fetchItems();
     },[]);
 
+    /**
+     * Sets up parameters for the default search
+     */
     const defaultSearch = { 
         title: "",
         brand: "all",
