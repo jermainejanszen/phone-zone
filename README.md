@@ -14,7 +14,7 @@ What things you need to install the software and how to install them
 Give examples
 ```
 
- - Install mongoDB 
+ - [Install mongoDB](https://docs.mongodb.com/manual/administration/install-community/)
 
 ### Installing
 
@@ -32,7 +32,10 @@ And repeat
 until finished
 ```
 
-Setting up the database connection
+
+### Setting up the database connection
+
+###### Windows machine 
 - create directory comp5347/mongodb on the U drive of computer 
 
 - Open a command prompt on your computer and cd into C:/Program Files/MongoDB/Server/3.4/bin
@@ -45,7 +48,7 @@ mongod.exe --dbpath U:/comp5347/mongodb --smallfiles
 
 - You should see the message “waiting for connections on port 27017” on your command prompt. Leave this command prompt open. 
 
-- Open another command prompt and again, cd into 
+- Open another command prompt and again, cd into C:/Program Files/MongoDB/Server/3.4/bin
 
 - Run the following two commands: 
 
@@ -53,7 +56,27 @@ mongod.exe --dbpath U:/comp5347/mongodb --smallfiles
 mongoimport --jsonArray --db assignment_data --collection phone_data --file <full-path-to-downloaded-phone-json-file>
 mongoimport --jsonArray --db assignment_data --collection user_data --file <full-path-to-downloaded-user-json-file>
 ```
+###### macOS machine 
 
+- create directory comp5347/mongodb on your computer
+
+- Open a terminal and cd into /usr/local/Cellar/mongodb-community/4.4.4/bin
+
+- Run the following command: 
+
+```
+mongod --dbpath <path to comp5347/mongodb folder>
+```
+
+- Open another terminal and again, cd into /usr/local/Cellar/mongodb-community/4.4.4/bin
+
+- Run the following two commands:
+
+```
+mongoimport --jsonArray --db assignment_data --collection phone_data --file <full-path-to-downloaded-phone-json-file>
+mongoimport --jsonArray --db assignment_data --collection user_data --file <full-path-to-downloaded-user-json-file>
+
+```
 
 End with an example of getting some data out of the system or using it for a little demo
 
