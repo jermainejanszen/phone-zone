@@ -17,7 +17,7 @@ const CheckoutItem = ({ item, onRemove, onUpdateQuantity }) => {
      */
     const minusOnClickHandler = () => {
         if (quantity - 1 == 0) {
-            onRemove(item.title);
+            onRemove(item._id);
         } else {
             let newQuantity = Math.max(0, quantity - 1);
             user.cart.getItem(item._id).quantity = newQuantity;
@@ -83,7 +83,7 @@ const CheckoutItem = ({ item, onRemove, onUpdateQuantity }) => {
                 </div>
             </div>
 
-            <img id="remove-button" src={remove} alt="Remove Item" onClick={() => onRemove(item.title)} />
+            <img id="remove-button" src={remove} alt="Remove Item" onClick={() => onRemove(item._id)} />
         </div>
     );
 }

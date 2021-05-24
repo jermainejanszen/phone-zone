@@ -13,6 +13,9 @@ const Checkout = () => {
     const [items, setItems] = useState(user.cart.items);
     const [totalCost, setTotalCost] = useState(user.cart.getTotalCost());
 
+    /**
+     * Makes call to update the stock of each checkout item in the database and locally 
+     */
     const confirmTransaction = () => {
         items.forEach((item) => {
             let url = `/phone/decrementStock/${item._id}/${item.quantity}`;
@@ -36,12 +39,12 @@ const Checkout = () => {
                 <ul id="items-list">
                     {items.map((item) => {
                         return (
-                            <li key={item.title}>
+                            <li key={item._id}>
                                 <CheckoutItem 
                                     item={item} 
-                                    onRemove={(title) => {
-                                        user.cart.items = user.cart.items.filter((item) => {
-                                            return item.title !== title;
+                                    onRemove={(id) => {
+                                        user.cart.items = user.cart.items.filter((i) => {
+                                            return i._id !== id;
                                         });
                                         setItems(user.cart.items);
                                         setTotalCost(user.cart.getTotalCost());
