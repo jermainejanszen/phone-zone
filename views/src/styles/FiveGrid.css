@@ -1,4 +1,4 @@
-
+/** formatting for five grid items on home page **/
 .fiveGrid {
     display: flex;
     flex-direction: row;

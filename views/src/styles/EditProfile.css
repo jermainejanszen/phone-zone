@@ -8,6 +8,7 @@
     max-width: 60em;
 }
 
+/** formatting to set button as unclickable **/
 .unclickable {
     cursor: auto;
     opacity: 60%;

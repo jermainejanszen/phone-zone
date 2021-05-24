@@ -1,3 +1,4 @@
+/** formatting for whole item page **/
 #item-page-div {
     display: flex;
     flex-direction: column;
@@ -6,6 +7,7 @@
     margin-right: auto;
 }
 
+/** formatting for item details div **/
 #item-details-div {
     display: flex;
     flex-direction: row;
@@ -13,36 +15,43 @@
     align-items: center;
 }
 
+/** formatting for item details div **/
 #item-details-div > * {
     margin: 3em 1.5em;
 }
 
+/** formatting for item image div **/
 #item-image-div {
     display: flex;
     flex-direction: column;
 }
 
+/** formatting for item images **/
 #item-image {
     padding: 1em;
     border-radius: 16px;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
 }
 
+/** formatting for item text **/
 #item-text-div {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
+/** formatting for item title **/
 #item-title {
     padding-bottom: 0.5em;
     border-bottom: 1px solid black;
 }
 
+/** formatting for item brand **/
 #item-brand {
     font-weight: bold;
 }
 
+/** formatting for item actions div **/
 #item-actions-div {
     display: flex;
     flex-direction: row;
@@ -51,10 +60,12 @@
     margin-top: 2em;
 }
 
+/** formatting for item actions div **/
 #item-actions-div > * {
     margin: 0em 1em;
 }
 
+/** formatting for add item to cart button **/
 #item-add-cart-button {
     padding: 1em;
     background-color: white;
@@ -64,28 +75,34 @@
     cursor: pointer;
 }
 
+/** formatting for hovering over add item to cart button **/
 #item-add-cart-button:hover {
     box-shadow: 0px 0px 8px #6497ce;
 }
 
+/** formatting for focusing on add item to cart button **/
 #item-add-cart-button:focus {
     outline: none;
 }
 
+/** formatting for add item to cart icon **/
 #item-add-cart-icon {
     height: 2em;
 }
 
+/** formatting for item quantity **/
 #item-quantity-div {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
+/** formatting for item quantity **/
 #item-quantity-div > * {
     width: 3em;
 }
 
+/** formatting for item quantity field **/
 #item-quantity-field {
     border: none;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
@@ -93,11 +110,13 @@
     font-size: 1em;
 }
 
+/** formatting for item quantity field focus **/
 #item-quantity-field:focus {
     outline: none;
     box-shadow: 0px 0px 8px #6497ce;
 }
 
+/** formatting for item quantity button **/
 .quantityButton {
     padding: 0.8em;
     background-color: white;
@@ -108,26 +127,32 @@
     cursor: pointer;
 }
 
+/** formatting for when focusing on item quantity button **/
 .quantityButton:focus {
     outline: none;
 }
 
+/** formatting for hovering over item quantity button **/
 .quantityButton:hover {
     box-shadow: 0px 0px 8px #6497ce;
 }
 
+/** formatting for minusing item quantity button **/
 #item-minus-button {
     border-radius: 12px 0px 0px 12px;
 }
 
+/** formatting for adding item quantity button **/
 #item-plus-button {
     border-radius: 0px 12px 12px 0px;
 }
 
+/** formatting for adding to cart animation **/
 .addedToCartAnimation {
     animation: color-change 1s;
 }
 
+/** formatting for colour change **/
 @keyframes color-change {
     0% { color: black; }
     50% { color: rgb(4, 221, 4); }

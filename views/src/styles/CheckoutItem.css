@@ -1,3 +1,4 @@
+/** formatting for checkout item container **/
 .checkoutItemContainer {
     display: flex;
     flex-direction: row;
@@ -9,10 +10,12 @@
     min-width: 1200px;
 }
 
+/** formatting for checkout item image **/
 .checkoutItemImage {
     width: 12em;
 }
 
+/** formatting for checkout item column **/
 .checkoutColumn {
     display: flex;
     flex-direction: column;
@@ -20,6 +23,7 @@
     max-width: 20em;
 }
 
+/** formatting for checkout item information **/
 .checkoutInfoContainer {
     display: flex;
     flex-direction: row;
@@ -27,14 +31,17 @@
     flex-grow: 1;
 }
 
+/** formatting for checkout item information container **/
 .checkoutInfoContainer > * {
     height: 100%;
 }
 
+/** formatting for checkout item column **/
 .checkoutColumn > * {
     margin-top: 0.75em;
 } 
 
+/** formatting for remove item from checkout button **/
 #remove-button {
     width: 2.5em;
     align-self: center;
