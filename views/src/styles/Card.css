@@ -1,4 +1,4 @@
-
+/** item card formatting **/
 .card {
     margin: 2em;
     border-radius: 10px;
@@ -11,17 +11,19 @@
     cursor: pointer;
 }
 
-/* Image */
+/* item card image formatting */
 .cardImage {
     width: 15em;
     border-radius: 10px;
     margin: 1em 0em;
 }
 
+/* formatting for when item disabled */
 .cardDisabled > .cardImage {
     filter: blur(4px);
 }
 
+/* formatting for item image when item disabled */
 #disabled-image {
     visibility: hidden;
     width: 9em;
@@ -31,11 +33,12 @@
     position: absolute;
 }
 
+/* formatting for when item disabled */
 .cardDisabled > #disabled-image {
     visibility: visible;
 }
 
-/* Text */
+/* formatting for when item card details */
 .cardDetails {
     display: flex;
     flex-direction: column;
@@ -46,26 +49,31 @@
     height: 17em;
 }
 
+/* formatting for hovering over item card */
 .card:hover {
     box-shadow: 0px -1px 9px rgb(19, 103, 182);
 }
 
+/* formatting for item brand and price */
 .brandPrice {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
+/* formatting for item brand */
 #brand {
     font-weight: bold;
 }
 
+/* formatting for item title */
 #title {
     font-style: italic;
     overflow-x: hidden;
     text-overflow: ellipsis;
 }
 
+/* formatting for item rating */
 #card-rating {
     border: 1px solid black;
 }
