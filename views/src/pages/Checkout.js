@@ -25,6 +25,17 @@ const Checkout = () => {
         history.push('/');
     }
 
+    /**
+     * Removes an item with the given id from the cart
+     */
+    const removeItem = (id) => {
+        user.cart.items = user.cart.items.filter((i) => {
+            return i._id !== id;
+        });
+        setItems(user.cart.items);
+        setTotalCost(user.cart.getTotalCost());
+    }
+
     return (
         <div id="checkout-container">
             <div id="back-button-div">
@@ -42,13 +53,7 @@ const Checkout = () => {
                             <li key={item._id}>
                                 <CheckoutItem 
                                     item={item} 
-                                    onRemove={(id) => {
-                                        user.cart.items = user.cart.items.filter((i) => {
-                                            return i._id !== id;
-                                        });
-                                        setItems(user.cart.items);
-                                        setTotalCost(user.cart.getTotalCost());
-                                    }}   
+                                    onRemove={removeItem}   
                                     onUpdateQuantity={() => {
                                         setTotalCost(user.cart.getTotalCost());
                                     }} 

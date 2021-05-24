@@ -13,6 +13,10 @@ const Login = () => {
 
     const [form, setForm] = useState({});
 
+    /**
+     * Handles changes to each field in the login form 
+     * @param {event} event 
+     */
     const handleChange = (event) => {
         setForm({
             ...form,
@@ -20,32 +24,38 @@ const Login = () => {
         });
     }
 
+     /**
+     * Attempts to log the user in
+     */ 
+    const login = async () => {
+        let url = `user/validateUserInformation/${form.email}/${form.password}`;
+
+        const response = await fetch(url);
+
+        try {
+            const data = await response.json();
+            const result = await JSON.parse(data);
+            if (Object.keys(result.message).length === 0) {
+                console.log("Invalid credentials");
+                document.getElementById("invalid-credentials").style.display = "flex";
+            } else {
+                console.log("Logged in successfully!");
+                setUser(new User(result.message[0]));
+                history.goBack();
+            }
+        } catch (err) {
+            console.log(err);
+            console.log('error');
+        }
+    }
+
+    /**
+     * Called upon a user clicking to submit their login information and 
+     * makes a call to the database to verify the user's credentials
+     * @param {event} event 
+     */
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(form)
-
-        /* Attempts to log the user in */
-        const login = async () => {
-            let url = `user/validateUserInformation/${form.email}/${form.password}`;
-
-            const response = await fetch(url);
-
-            try {
-                const data = await response.json();
-                const result = await JSON.parse(data);
-                if (Object.keys(result.message).length === 0) {
-                    console.log("Invalid credentials");
-                    document.getElementById("invalid-credentials").style.display = "flex";
-                } else {
-                    console.log("Logged in successfully!");
-                    setUser(new User(result.message[0]));
-                    history.goBack();
-                }
-            } catch (err) {
-                console.log(err);
-                console.log('error');
-            }
-        }
 
         login();
     }
