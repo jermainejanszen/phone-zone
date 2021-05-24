@@ -2,6 +2,9 @@ import FiveGrid from './FiveGrid';
 
 import '../styles/Home.css';
 
+/**
+ * Renders home page with top five sold out soon items and top five best sellers 
+ */
 const Home = () => {
     return (
         <div className="home">
