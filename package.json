@@ -4,7 +4,11 @@
   "description": "An eCommerce Web Application.",
   "main": "index.js",
   "scripts": {
-    "start": "node controller/index.js"
+    "start": "node controller/index.js",
+    "install": "(cd views && npm install) & npm install",
+    "build": "cd views && npm run build",
+    "test": "cd views && npm run test",
+    "fresh-start": "(npm run install && npm run build) & npm run start"
   },
   "repository": {
     "type": "git",

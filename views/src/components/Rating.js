@@ -7,6 +7,11 @@ import '../styles/Rating.css';
  */
 const Rating = ({ rating }) => {
 
+    // handles case where number is NaN 
+    if (Number.isNaN(rating)) {
+        return <p>No ratings.</p>
+    }
+
     var stars = [];
     for (let i = 0; i < 5; i++) {
         // if star is to be filled 
@@ -24,11 +29,6 @@ const Rating = ({ rating }) => {
                 alt="Unfilled star" 
                 className="ratingStar" />);
         }
-    }
-
-    // handles case where number is NaN 
-    if (Number.isNaN(rating)) {
-        return <p>No ratings.</p>
     }
 
     return (

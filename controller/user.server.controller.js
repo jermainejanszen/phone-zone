@@ -58,7 +58,6 @@ module.exports.updateUserInformation = (req, res) => {
 // create new user and returns the user id
 module.exports.createNewUser = (req, res) => {
     User.createNewUser(req.params.firstname, req.params.lastname, req.params.email, req.params.password).then(result => {
-				console.log(result)
 				return res.json(result._id);
 			})
 			.catch(err => {
