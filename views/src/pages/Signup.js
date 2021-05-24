@@ -95,17 +95,17 @@ const Signup = () => {
 
                     <div className="fieldDiv">
                         <label id="firstname-label" className="formLabel formLabelInvalid">First Name</label>
-                        <input className="formInputText" onChange={handleChange} title="firstname" type="text" required />
+                        <input className="formInputText" onChange={handleChange} title="firstname" type="text" required maxLength="30"/>
                     </div>
 
                     <div className="fieldDiv">
                         <label id="lastname-label" className="formLabel formLabelInvalid">Last Name</label>
-                        <input className="formInputText" onChange={handleChange} title="lastname" type="text" required />
+                        <input className="formInputText" onChange={handleChange} title="lastname" type="text" required maxLength="30"/>
                     </div>
 
                     <div className="fieldDiv">
                         <label id="email-label" className="formLabel formLabelInvalid">Email</label>
-                        <input id="email" className="formInputText" onChange={handleChange} title="email" type="email" required />
+                        <input id="email" className="formInputText" onChange={handleChange} title="email" type="email" required maxLength="60"/>
                     </div>
 
                     <div className="fieldDiv">

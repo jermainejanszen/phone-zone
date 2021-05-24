@@ -119,17 +119,17 @@ const EditProfile = () => {
 
                 <div className="fieldDiv">
                     <label id="firstname-label" className="formLabel formLabelValid">First Name</label>
-                    <input id="firstname" className="formInputText" onChange={handleChange} value={form.firstname} type="text" required />
+                    <input id="firstname" className="formInputText" onChange={handleChange} value={form.firstname} type="text" required maxLength="30"/>
                 </div>
 
                 <div className="fieldDiv">
                     <label id="lastname-label" className="formLabel formLabelValid">Last Name</label>
-                    <input id="lastname" className="formInputText" onChange={handleChange} value={form.lastname} type="text" required />
+                    <input id="lastname" className="formInputText" onChange={handleChange} value={form.lastname} type="text" required maxLength="30"/>
                 </div>
 
                 <div className="fieldDiv">
                     <label id="email-label" className="formLabel formLabelValid">Email</label>
-                    <input id="email" className="formInputText" onChange={handleChange} value={form.email} type="email" required />
+                    <input id="email" className="formInputText" onChange={handleChange} value={form.email} type="email" required maxLength="60"/>
                 </div>
 
                 <div className="buttonsDiv">
