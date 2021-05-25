@@ -8,7 +8,7 @@
     "install": "cd views && npm install",
     "build": "cd views && npm run build",
     "test": "cd views && npm run test",
-    "fresh-start": "(npm install && npm run build) && npm start"
+    "frontend": "cd views && npm start"
   },
   "repository": {
     "type": "git",

@@ -61,23 +61,24 @@ mongoimport --jsonArray --db assignment_data --collection user_data --file <full
 ### Installing
 
 - Set up the database as described above.
-- If this is the first time running the application run the following command. This will install all of the relevant Node dependencies using npm and build the front-end site before starting the server.
+- If this is the first time running the application run the following command. This will install all of the relevant Node dependencies using npm.
 ```
-npm run fresh-start
+npm install
 ```
-- If all of the dependecies are already downloaded and the front-end has been build run the following command in order to start the server.
+- If all of the dependencies are already downloaded run the following commands in separate terminals in order to start the application.
 ```
 npm start
+npm run frontend
 ```
-The server is hosted at `localhost:3001`.
+The server is hosted at `localhost:3001`. The frontend is hosted at `localhost:3000`.
 
 ## Available Scripts
 
-#### Fresh Start
+#### Frontend
 ```
-npm run fresh-start
+npm run frontend
 ```
-Installs all of the required node packages before building the front-end and starting the server on `localhost:3001`.
+Runs the frontend on `localhost:3000`.
 #### Install
 ```
 npm install
@@ -111,9 +112,10 @@ npm run test
 These tests check that the contents on the various pages are being displayed correctly.
 ## Deployment
 
-After running the initial fresh start the app can simply be started by running
+After installing all the dependencies, run the following commands in separate terminals in order to start the application.
 ```
 npm start
+npm run frontend
 ```
 
 ## Built With
