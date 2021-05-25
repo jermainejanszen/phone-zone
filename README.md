@@ -8,30 +8,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+In order to run the application please install the following programs:
 
-```
-Give examples
-```
-
- - [Install mongoDB](https://docs.mongodb.com/manual/administration/install-community/)
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
+- [MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
+- [NodeJS](https://nodejs.org/en/)
 
 ### Setting up the database connection
 
@@ -78,7 +58,47 @@ mongoimport --jsonArray --db assignment_data --collection user_data --file <full
 
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+### Installing
+
+- Set up the database as described above.
+- If this is the first time running the application run the following command. This will install all of the relevant Node dependencies using npm and build the front-end site before starting the server.
+```
+npm run fresh-start
+```
+- If all of the dependecies are already downloaded and the front-end has been build run the following command in order to start the server.
+```
+npm start
+```
+The server is hosted at `localhost:3001`.
+
+## Available Scripts
+
+#### Fresh Start
+```
+npm run fresh-start
+```
+Installs all of the required node packages before building the front-end and starting the server on `localhost:3001`.
+#### Install
+```
+npm install
+```
+Installs all of the required node packages.
+#### Build
+```
+npm run build
+```
+Builds the front-end application.
+#### Start
+```
+npm start
+```
+Starts the server on `localhost:3001`.
+#### Test
+```
+npm run test
+```
+Runs all of the automated tests.
+
 
 ## Running the tests
 
@@ -100,11 +120,7 @@ npm start
 
 * [React](https://reactjs.org/) - The web framework used
 * [NPM](https://www.npmjs.com/) - Dependency Management
-* [Node](https://nodejs.org/en/) and [Express](https://expressjs.com/) - The backend frameworks
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+* [NodeJS](https://nodejs.org/en/) and [Express](https://expressjs.com/) - The backend frameworks
 
 ## Version Control
 
@@ -115,10 +131,6 @@ We use [Git](https://git-scm.com/) and [GitHub](https://github.com/) for version
 * **Benjamin Gane** - *bgan7208* - [GitHub](https://github.sydney.edu.au/bgan7208)
 * **Holly Craig** - *hcra5146* - [GitHub](https://github.sydney.edu.au/hcra5146)
 * **Jermaine Janszen** - *jjan3640* - [GitHub](https://github.sydney.edu.au/jjan3640)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 

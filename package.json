@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node controller/index.js",
-    "install": "(cd views && npm install) & npm install",
+    "install": "cd views && npm install",
     "build": "cd views && npm run build",
     "test": "cd views && npm run test",
-    "fresh-start": "(npm run install && npm run build) & npm run start"
+    "fresh-start": "(npm install && npm run build) & npm start"
   },
   "repository": {
     "type": "git",
