@@ -130,7 +130,7 @@ const NewListing = () => {
                     <h2>Add a new item</h2>
                     <div className="fieldDiv">
                         <label className="formLabel">Brand</label>
-                        <select className="formSelect" onChange={handleChange} title="brand" type="text" required>
+                        <select className="formSelect" id="new-listing-brand" onChange={handleChange} title="brand" type="text" required>
                             <option value="Apple" selected="selected">Apple</option>
                             <option value="BlackBerry">BlackBerry</option>
                             <option value="HTC">HTC</option>
