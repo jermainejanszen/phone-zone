@@ -134,5 +134,5 @@ We use [Git](https://git-scm.com/) and [GitHub](https://github.com/) for version
 
 ## Acknowledgments
 ### Icons
-* Icons style: [https://icons8.com/icons/fluent-systems-regular](https://icons8.com/icons/fluent-systems-regular)\
+* Icons style: [https://icons8.com/icons/fluent-systems-regular](https://icons8.com/icons/fluent-systems-regular)
 * eCommerce icons: [https://icons8.com/icon/pack/ecommerce/fluent-systems-regular](https://icons8.com/icon/pack/ecommerce/fluent-systems-regular)
