@@ -133,7 +133,6 @@ We use [Git](https://git-scm.com/) and [GitHub](https://github.com/) for version
 * **Jermaine Janszen** - *jjan3640* - [GitHub](https://github.sydney.edu.au/jjan3640)
 
 ## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+### Icons
+* Icons style: [https://icons8.com/icons/fluent-systems-regular](https://icons8.com/icons/fluent-systems-regular)\
+* eCommerce icons: [https://icons8.com/icon/pack/ecommerce/fluent-systems-regular](https://icons8.com/icon/pack/ecommerce/fluent-systems-regular)
